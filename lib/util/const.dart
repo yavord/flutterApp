@@ -6,10 +6,12 @@ class Constants{
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Colors.black;
-  static Color lightAccent = Colors.deepOrangeAccent.shade400;
+  static Color lightAccent = Color(0xffe8005d);
   static Color darkAccent = Colors.blueAccent;
-  static Color lightBG = Color(0xfffcfcff);
+  static Color lightBG = Color(0xfff2f0f6);
   static Color darkBG = Colors.black;
+  static Color backgroundTileColor = Color(0xffffffff);
+  static Color myBlue = Colors.cyan.shade400;
 
 
   static ThemeData lightTheme = ThemeData(
@@ -17,6 +19,7 @@ class Constants{
     primaryColor: lightPrimary,
     accentColor:  lightAccent,
     cursorColor: lightAccent,
+    cardColor: backgroundTileColor,
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       elevation: 0,

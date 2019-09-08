@@ -10,7 +10,7 @@ List medications = [
     "form": "tablet",
     "dose": "1",
     "doses": "6",
-    "schedule": "22:00",
+    "schedule": "7:00",
   },
   {
     "icon": "",

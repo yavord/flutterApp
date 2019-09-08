@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patients_platform/widgets/circle_timer.dart';
 
-
 class MedicTiles extends StatefulWidget {
   final String name;
   final String icon;
@@ -11,20 +10,21 @@ class MedicTiles extends StatefulWidget {
   final String doses;
   final String schedule;
 
-  MedicTiles({
-    Key key,
-    this.name, this.icon, this.dose, this.form, this.doses, this.schedule 
-  }) : super(key: key);
-
+  MedicTiles(
+      {Key key,
+      this.name,
+      this.icon,
+      this.dose,
+      this.form,
+      this.doses,
+      this.schedule})
+      : super(key: key);
 
   @override
   _MedicTilesState createState() => _MedicTilesState();
 }
 
-
-
 class _MedicTilesState extends State<MedicTiles> {
-  
   @override
   void initState() {
     super.initState();
@@ -32,85 +32,121 @@ class _MedicTilesState extends State<MedicTiles> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Card(
+        elevation: 0,
+        color: Theme.of(context).cardColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(11),
+          ),
         ),
-      ),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-
-                Row(
-                  children: <Widget>[
-                    /*Icon.asset(
-                      "${widget.icon}",
-                      height: 25,
-                      width: 25,
-                    ),*/
-                   new Container(
-                      child: new Icon(FontAwesomeIcons.pills, size: 20,),
-                    
-                    ),
-                    SizedBox(width: 13),
-                    Text(
-                      "${widget.name}",
-                      style: TextStyle(
-                        fontSize: 25,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      new Container(
+                        child: new Icon(
+                          FontAwesomeIcons.pills,
+                          size: 20,
+                        ),
                       ),
+                      SizedBox(width: 13),
+                      Text(
+                        "${widget.name}",
+                        style: TextStyle(
+                          fontSize: 22,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "Take ${widget.dose} ${widget.form}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-
-
-                Text(
-                  "Take ${widget.dose} ${widget.form}",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
-            child: Row(
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(" "),
+                  Text(
+                    "${widget.doses} ${widget.form}s left",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 125.0),
+              child: Row(
+                children: <Widget>[
+                  Circle(schedule: widget.schedule),
+                ],
+              ),
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-
-                Text(" "),
-
-                                Text(
-                  "${widget.doses} ${widget.form}s left",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.cyan[400],
+                FlatButton(
+                  color: Color(0xff00cf55),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(5.0)),
+                  onPressed: () {},
+                  child: Text(
+                    "Take now",
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
+                OutlineButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(5.0),
+                      ),
+                  
+                  onPressed: () {},
+                  child: Row(
+                    children: <Widget>[
+                      Text("QR "),
+                      Image.asset(
+                        "assets/img/qr.png",
+                        width: 30.0,
+                        height: 30.0,
+                      )
+                    ],
+                  ),
+                ),
+                FlatButton(
+                    onPressed: () {},
+                    child: Row(children: <Widget>[
+                      Text("NFC"),
+                      Image.asset(
+                        "assets/img/nfc.png",
+                        width: 30.0,
+                        height: 30.0,
+                      )
+                    ])),
               ],
             ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 120.0),
-            child: Row(children: <Widget>[
-              
-                Circle(schedule: widget.schedule),
-              
-            ],),
-          )
-          
-        ],
+          ],
+        ),
       ),
     );
   }

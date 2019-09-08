@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
+import 'package:patients_platform/util/const.dart';
 
 class Circle extends StatefulWidget {
   final String doses;
@@ -56,7 +57,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
         child: AspectRatio(
           aspectRatio: 1.0,
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(0.0),
             child: Stack(
               children: <Widget>[
                 Positioned.fill(
@@ -67,27 +68,30 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
                         painter: TimerPainter(
                             animation: controller,
                             backgroundColor: Colors.transparent,
-                            color: Colors.cyan.shade500),
+                            color: Constants.myBlue),
                       );
                     },
                   ),
                 ),
                 Align(
                   alignment: FractionalOffset.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Take after",
-                      ),
-                      AnimatedBuilder(
-                          animation: controller,
-                          builder: (BuildContext context, Widget child) {
-                            return new Text(timerString,
-                                style: TextStyle(fontSize: 27.0));
-                          })
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Take after",
+                        ),
+                        AnimatedBuilder(
+                            animation: controller,
+                            builder: (BuildContext context, Widget child) {
+                              return new Text(timerString,
+                                  style: TextStyle(fontSize: 24.0));
+                            })
+                      ],
+                    ),
                   ),
                 )
               ],
