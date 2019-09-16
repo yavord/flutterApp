@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:patients_platform/widgets/circle_timer.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'barcode.dart';
+import 'package:patients_platform/bloc/barcode/barcode.dart';
+
 class MedicTiles extends StatefulWidget {
   final String name;
   final String icon;
@@ -24,7 +28,7 @@ class MedicTiles extends StatefulWidget {
   _MedicTilesState createState() => _MedicTilesState();
 }
 
-class _MedicTilesState extends State<MedicTiles> {
+class _MedicTilesState extends State<MedicTiles> with BarcodeWidget {
   @override
   void initState() {
     super.initState();
@@ -116,23 +120,41 @@ class _MedicTilesState extends State<MedicTiles> {
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
-                OutlineButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(5.0),
-                      ),
-                  
-                  onPressed: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Text("QR "),
-                      Image.asset(
-                        "assets/img/qr.png",
-                        width: 30.0,
-                        height: 30.0,
-                      )
-                    ],
+                BlocListener(
+                  bloc: BlocProvider.of<BarcodeBloc>(context),
+                  listener: (BuildContext context, BarcodeState state) {
+                    if (state is BarcodeLoaded) {
+                      print('Loaded: ${state.barcode.barcode}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc: BlocProvider.of<BarcodeBloc>(context),
+                    builder: (BuildContext context, BarcodeState state) {
+                      if(state is BarcodeInitial) {
+                        return buildInitialInput();
+                      } else if (state is BarcodeLoaded) {
+                        return buildLoaded();
+                      }
+                    }, //TODO: make this logic more abstract
                   ),
                 ),
+//                OutlineButton(
+//                  shape: RoundedRectangleBorder(
+//                      borderRadius: new BorderRadius.circular(5.0),
+//                      ),
+//
+//                  onPressed: () {},
+//                  child: Row(
+//                    children: <Widget>[
+//                      Text("QR "),
+//                      Image.asset(
+//                        "assets/img/qr.png",
+//                        width: 30.0,
+//                        height: 30.0,
+//                      )
+//                    ],
+//                  ),
+//                ),
                 FlatButton(
                     onPressed: () {},
                     child: Row(children: <Widget>[
