@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:patients_platform/bloc/nfc/nfc.dart';
 
 import 'package:patients_platform/widgets/widgets.dart';
-import 'package:patients_platform/bloc/barcode/barcode.dart';
+import 'package:patients_platform/bloc/blocs.dart';
+
 
 class MedicTiles extends StatefulWidget {
   final String name;
