@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:patients_platform/widgets/circle_timer.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'barcode.dart';
+import 'package:patients_platform/bloc/nfc/nfc.dart';
+
+import 'package:patients_platform/widgets/widgets.dart';
 import 'package:patients_platform/bloc/barcode/barcode.dart';
 
 class MedicTiles extends StatefulWidget {
@@ -28,7 +28,7 @@ class MedicTiles extends StatefulWidget {
   _MedicTilesState createState() => _MedicTilesState();
 }
 
-class _MedicTilesState extends State<MedicTiles> with BarcodeWidget {
+class _MedicTilesState extends State<MedicTiles> with BarcodeWidget, NfcWidget {
   @override
   void initState() {
     super.initState();
@@ -138,16 +138,26 @@ class _MedicTilesState extends State<MedicTiles> with BarcodeWidget {
                     }, //TODO: make this logic more abstract
                   ),
                 ),
-                FlatButton(
-                    onPressed: () {},
-                    child: Row(children: <Widget>[
-                      Text("NFC"),
-                      Image.asset(
-                        "assets/img/nfc.png",
-                        width: 30.0,
-                        height: 30.0,
-                      )
-                    ])),
+                BlocListener(
+                  bloc: BlocProvider.of<NfcBloc>(context),
+                  listener: (BuildContext context, NfcState state) {
+                    if(state is NfcLoaded) {
+                      print('Loaded: ${state.nfc.nfc}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc:  BlocProvider.of<NfcBloc>(context),
+                    builder: (BuildContext context, NfcState state) {
+                      if(state is NfcInitial) {
+                        return buildInitialInputNfc();
+                      } else if (state is NfcLoading) {
+                        return buildLoadingNfc();
+                      } else if (state is NfcLoaded) {
+                        return buildLoadedNfc();
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ],

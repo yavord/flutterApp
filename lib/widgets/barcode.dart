@@ -49,6 +49,4 @@ class _BarcodeButtonsState extends State<BarcodeButton> {
     final barcodeBloc = BlocProvider.of<BarcodeBloc>(context);
     barcodeBloc.dispatch(GetBarcode());
   }
-
-  //TODO: Add dispose method to close stream
 }
