@@ -138,23 +138,6 @@ class _MedicTilesState extends State<MedicTiles> with BarcodeWidget {
                     }, //TODO: make this logic more abstract
                   ),
                 ),
-//                OutlineButton(
-//                  shape: RoundedRectangleBorder(
-//                      borderRadius: new BorderRadius.circular(5.0),
-//                      ),
-//
-//                  onPressed: () {},
-//                  child: Row(
-//                    children: <Widget>[
-//                      Text("QR "),
-//                      Image.asset(
-//                        "assets/img/qr.png",
-//                        width: 30.0,
-//                        height: 30.0,
-//                      )
-//                    ],
-//                  ),
-//                ),
                 FlatButton(
                     onPressed: () {},
                     child: Row(children: <Widget>[

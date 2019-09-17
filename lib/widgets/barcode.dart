@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:patients_platform/models/barcode.dart';
 import 'package:patients_platform/bloc/barcode/barcode.dart';
 
 
