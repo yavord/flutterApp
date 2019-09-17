@@ -25,6 +25,6 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
     } on Exception{
       barcode = 'Unable to complete scan.';
     }
-    return barcode;
+    return Barcode(barcode: barcode);
   }
 }
