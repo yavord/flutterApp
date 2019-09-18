@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:patients_platform/screens/daily_goals.dart';
-import 'package:patients_platform/screens/medical_id.dart';
-import 'package:patients_platform/util/const.dart';
-import 'package:patients_platform/util/data.dart';
-import 'package:patients_platform/widgets/sidebar_drawer.dart';
+import 'package:hmss/screens/daily_goals.dart';
+import 'package:hmss/screens/medical_id.dart';
+import 'package:hmss/util/const.dart';
+import 'package:hmss/util/data.dart';
+import 'package:hmss/widgets/sidebar_drawer.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);

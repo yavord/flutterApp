@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:patients_platform/util/data.dart';
+import 'package:hmss/util/data.dart';
 
 class SidebarDrawer extends StatelessWidget {
   

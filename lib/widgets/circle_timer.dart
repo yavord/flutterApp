@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
-import 'package:patients_platform/util/const.dart';
+import 'package:hmss/util/const.dart';
 
 class Circle extends StatefulWidget {
   final String doses;

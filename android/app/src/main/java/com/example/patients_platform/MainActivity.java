@@ -1,4 +1,4 @@
-package com.example.patients_platform;
+package com.example.hmss;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

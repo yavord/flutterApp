@@ -1,4 +1,4 @@
-# patients_platform
+# hmss
 
 A new Flutter project.
 

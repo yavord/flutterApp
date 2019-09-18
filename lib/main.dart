@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:patients_platform/screens/home.dart';
-import 'package:patients_platform/util/const.dart';
+import 'package:hmss/screens/home.dart';
+import 'package:hmss/util/const.dart';
 
 void main() async{
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {

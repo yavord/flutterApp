@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:patients_platform/util/data.dart';
-import 'package:patients_platform/widgets/medication_tiles.dart';
-import 'package:patients_platform/bloc/barcode/barcode.dart';
-import 'package:patients_platform/bloc/nfc/nfc.dart';
+import 'package:hmss/util/data.dart';
+import 'package:hmss/widgets/medication_tiles.dart';
+import 'package:hmss/bloc/barcode/barcode.dart';
+import 'package:hmss/bloc/nfc/nfc.dart';
 
 
 class DailyGoals extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import 'package:patients_platform/models/barcode.dart';
+import 'package:hmss/models/barcode.dart';
 
 
 @immutable

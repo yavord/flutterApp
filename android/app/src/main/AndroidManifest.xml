@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.patients_platform">
+    package="com.example.hmss">
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature
         android:name="android.hardware.nfc"
@@ -11,7 +11,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="patients_platform"
+        android:label="HMSS"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
