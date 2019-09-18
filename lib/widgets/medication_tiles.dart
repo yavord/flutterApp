@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:patients_platform/widgets/circle_timer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:patients_platform/widgets/widgets.dart';
+import 'package:patients_platform/bloc/blocs.dart';
+
 
 class MedicTiles extends StatefulWidget {
   final String name;
@@ -24,7 +28,7 @@ class MedicTiles extends StatefulWidget {
   _MedicTilesState createState() => _MedicTilesState();
 }
 
-class _MedicTilesState extends State<MedicTiles> {
+class _MedicTilesState extends State<MedicTiles> with BarcodeWidget, NfcWidget {
   @override
   void initState() {
     super.initState();
@@ -116,33 +120,44 @@ class _MedicTilesState extends State<MedicTiles> {
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
-                OutlineButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(5.0),
-                      ),
-                  
-                  onPressed: () {},
-                  child: Row(
-                    children: <Widget>[
-                      Text("QR "),
-                      Image.asset(
-                        "assets/img/qr.png",
-                        width: 30.0,
-                        height: 30.0,
-                      )
-                    ],
+                BlocListener(
+                  bloc: BlocProvider.of<BarcodeBloc>(context),
+                  listener: (BuildContext context, BarcodeState state) {
+                    if (state is BarcodeLoaded) {
+                      print('Loaded: ${state.barcode.barcode}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc: BlocProvider.of<BarcodeBloc>(context),
+                    builder: (BuildContext context, BarcodeState state) {
+                      if(state is BarcodeInitial) {
+                        return buildInitialInput();
+                      } else if (state is BarcodeLoaded) {
+                        return buildLoaded();
+                      }
+                    }, //TODO: make this logic more abstract
                   ),
                 ),
-                FlatButton(
-                    onPressed: () {},
-                    child: Row(children: <Widget>[
-                      Text("NFC"),
-                      Image.asset(
-                        "assets/img/nfc.png",
-                        width: 30.0,
-                        height: 30.0,
-                      )
-                    ])),
+                BlocListener(
+                  bloc: BlocProvider.of<NfcBloc>(context),
+                  listener: (BuildContext context, NfcState state) {
+                    if(state is NfcLoaded) {
+                      print('Loaded: ${state.nfc.nfc}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc:  BlocProvider.of<NfcBloc>(context),
+                    builder: (BuildContext context, NfcState state) {
+                      if(state is NfcInitial) {
+                        return buildInitialInputNfc();
+                      } else if (state is NfcLoading) {
+                        return buildLoadingNfc();
+                      } else if (state is NfcLoaded) {
+                        return buildLoadedNfc();
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ],
