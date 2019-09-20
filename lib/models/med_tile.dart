@@ -15,19 +15,19 @@ class MedTile extends Equatable {
   MedTile({
     this.complete = false,
     @required this.name,
-    this.dose,
-    this.form,
-    this.doses,
-    this.schedule
+    @required this.dose,
+    @required this.form,
+    @required this.doses,
+    @required this.schedule,
   }) : super([complete, name, dose, form, doses, schedule]);
 
-  //TODO: implement MedTileEntity
-//  MedTileEntity toEntity() {
+  //TODO: implement this
+//  MedTile toEntity() {
 //    return MedTileEntity(name, dose, form, doses, schedule);
 //  }
 
-  //TODO: implement this thing
-//  static MedTile fromEntity(MedTileEntity entity) {
+  //TODO: implement this
+//  static MedTile fromEntity(MedTile entity) {
 //    return MedTile(
 //      entity.
 //    )
