@@ -1,6 +1,6 @@
-# patients_platform
+# hmss
 
-A new Flutter project.
+Main branch is actually/currently firebase_test
 
 ## Getting Started
 
