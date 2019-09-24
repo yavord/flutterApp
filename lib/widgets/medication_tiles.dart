@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hmss/widgets/widgets.dart';
 import 'package:hmss/bloc/blocs.dart';
+import 'package:hmss/models/med_tile.dart';
 
 
 class MedicTiles extends StatefulWidget {

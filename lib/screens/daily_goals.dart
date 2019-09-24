@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hmss/models/med_tile.dart';
 
 import 'package:hmss/util/data.dart';
 import 'package:hmss/widgets/medication_tiles.dart';
@@ -31,14 +32,14 @@ class _DailyGoalsState extends State<DailyGoals> {
             primary: false,
             itemCount: medications.length,
             itemBuilder: (BuildContext context, int index) {
-              Map medication = medications[index];
+              MedTile medication = medications[index];
               return MedicTiles(
-                name: medication['name'],
+                name: medication.name,
 //                icon: medication['icon'],
-                dose: medication['dose'],
-                form: medication['form'],
-                doses: medication['doses'],
-                schedule: medication['schedule'],
+                dose: medication.dose,
+                form: medication.form,
+                doses: medication.doses,
+                schedule: medication.schedule,
               );
             },
           ),
