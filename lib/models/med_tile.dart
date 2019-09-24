@@ -23,23 +23,23 @@ class MedTile extends Equatable {
     @required this.schedule,
   }) : super([complete, name, dose, form, doses, schedule]);
 
-  Map dataMap = {
-    "name" : name,
-    "dose" : dose,
-    "form" : form,
-    "doses" : doses,
-    "schedule" : schedule,
-  };
+  //TODO: fit to API
+  Map<String, Object> toEntity() {
+    return {
+      "complete" : complete,
+      "name" : name,
+      "dose" : dose,
+      "form" : form,
+      "doses" : doses,
+      "schedule" : schedule,
+    };
+  }
 
-  //TODO: fit this to API
-//  List<Map> toEntity() {
-//    return MedTileEntity();
-//  }
-
-  //TODO: implement this
-//  static MedTile fromEntity(MedTile entity) {
+  //TODO: fit to API
+//  static MedTile fromEntity(Map<String, Object> entity) {
 //    return MedTile(
-//      entity.
-//    )
+//      complete: entity.complete ?? false,
+//
+//    );
 //  }
 }
