@@ -8,7 +8,7 @@ import 'package:hmss/bloc/blocs.dart';
 
 class MedicTiles extends StatefulWidget {
   final String name;
-  final String icon;
+//  final String icon;
   final String dose;
   final String form;
   final String doses;
@@ -17,7 +17,7 @@ class MedicTiles extends StatefulWidget {
   MedicTiles(
       {Key key,
       this.name,
-      this.icon,
+//      this.icon,
       this.dose,
       this.form,
       this.doses,

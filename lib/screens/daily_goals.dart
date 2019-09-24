@@ -34,7 +34,7 @@ class _DailyGoalsState extends State<DailyGoals> {
               Map medication = medications[index];
               return MedicTiles(
                 name: medication['name'],
-                icon: medication['icon'],
+//                icon: medication['icon'],
                 dose: medication['dose'],
                 form: medication['form'],
                 doses: medication['doses'],

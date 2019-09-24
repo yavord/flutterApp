@@ -3,9 +3,9 @@ String name = "Miro Mutti";
 
 
 
-List medications = [
+List<Map<String, String>> medications = [
   {
-    "icon": "",
+//    "icon": "",
     "name": "Aerius 5mg",
     "form": "tablet",
     "dose": "1",
@@ -13,7 +13,7 @@ List medications = [
     "schedule": "7:00",
   },
   {
-    "icon": "",
+//    "icon": "",
     "name": "Paracetamol",
     "form": "tablet",
     "dose": "1",

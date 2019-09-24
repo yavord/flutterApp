@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 @immutable
 class MedTile extends Equatable {
   final bool complete;
+//  final String id;
   final String name;
   final String dose;
   final String form;
@@ -14,6 +15,7 @@ class MedTile extends Equatable {
   //TODO: Edit constructors to fit database input/output
   MedTile({
     this.complete = false,
+//    @required this.id,
     @required this.name,
     @required this.dose,
     @required this.form,
@@ -21,9 +23,17 @@ class MedTile extends Equatable {
     @required this.schedule,
   }) : super([complete, name, dose, form, doses, schedule]);
 
-  //TODO: implement this
-//  MedTile toEntity() {
-//    return MedTileEntity(name, dose, form, doses, schedule);
+  Map dataMap = {
+    "name" : name,
+    "dose" : dose,
+    "form" : form,
+    "doses" : doses,
+    "schedule" : schedule,
+  };
+
+  //TODO: fit this to API
+//  List<Map> toEntity() {
+//    return MedTileEntity();
 //  }
 
   //TODO: implement this
