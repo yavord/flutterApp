@@ -73,6 +73,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       if(currentState is MedTilesLoaded) {
         final updatedMedTiles =
             currentState.medtiles.where((medtile) => medtile.id != event.medtile.id).toList();
+        //TODO: redo/understand this better
         yield MedTilesLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
       }
