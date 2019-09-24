@@ -33,7 +33,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapLoadMedTileToState() async* {
     try{
       final medtiles = this.data; //TODO: replace this with server/api
-      yield MedTileLoaded(
+      yield MedTilesLoaded(
         medtiles,
       );
     } catch(_) {
@@ -45,10 +45,10 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       MedTileState currentState,
       AddMedTile event,
       ) async* {
-      if(currentState is MedTileLoaded) {
+      if(currentState is MedTilesLoaded) {
         final List<MedTile> updatedMedTiles = List.from(currentState.medtiles)
             ..add(event.medtile);
-        yield MedTileLoaded(updatedMedTiles);
+        yield MedTilesLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
       }
   }
@@ -57,8 +57,12 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       MedTileState currentState,
       UpdateMedTile event,
       ) async* {
-      if(currentState is MedTileLoaded) {
-        final List<MedTile> updatedMedTiles = currentState.medtiles.map(f)
+      if(currentState is MedTilesLoaded) {
+        final List<MedTile> updatedMedTiles = currentState.medtiles.map((medtile) {
+          return medtile.id == event.updatedMedTile.id ? event.updatedMedTile : medtile;
+        }).toList(); //TODO: redo this and understand what it does better
+        yield MedTilesLoaded(updatedMedTiles);
+        _saveMedTiles(updatedMedTiles);
       }
   }
 
@@ -66,7 +70,12 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       MedTileState currentState,
       DeleteMedTile event,
       ) async* {
-
+      if(currentState is MedTilesLoaded) {
+        final updatedMedTiles =
+            currentState.medtiles.where((medtile) => medtile.id != event.medtile.id).toList();
+        yield MedTilesLoaded(updatedMedTiles);
+        _saveMedTiles(updatedMedTiles);
+      }
   }
 
   _saveMedTiles(List<MedTile> medtiles) {
