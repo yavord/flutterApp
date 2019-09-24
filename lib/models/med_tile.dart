@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:hmss/util/data.dart';
 
 
 @immutable
@@ -24,22 +25,19 @@ class MedTile extends Equatable {
   }) : super([complete, name, dose, form, doses, schedule]);
 
   //TODO: fit to API
-  Map<String, Object> toEntity() {
-    return {
-      "complete" : complete,
-      "name" : name,
-      "dose" : dose,
-      "form" : form,
-      "doses" : doses,
-      "schedule" : schedule,
-    };
-  }
+//  Map<String, Object> toEntity() {
+//    return {
+//      "complete" : complete,
+//      "name" : name,
+//      "dose" : dose,
+//      "form" : form,
+//      "doses" : doses,
+//      "schedule" : schedule,
+//    };
+//  }
 
   //TODO: fit to API
 //  static MedTile fromEntity(Map<String, Object> entity) {
-//    return MedTile(
-//      complete: entity.complete ?? false,
-//
-//    );
+//    return MedTile();
 //  }
 }
