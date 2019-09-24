@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:hmss/util/data.dart';
+import 'package:hmss/util/uuid.dart';
 
 
 @immutable
 class MedTile extends Equatable {
   final bool complete;
-//  final String id;
+  final String id;
   final String name;
   final String dose;
   final String form;
@@ -16,13 +17,15 @@ class MedTile extends Equatable {
   //TODO: Edit constructors to fit database input/output
   MedTile({
     this.complete = false,
-//    @required this.id,
+    String id,
     @required this.name,
     @required this.dose,
     @required this.form,
     @required this.doses,
     @required this.schedule,
-  }) : super([complete, name, dose, form, doses, schedule]);
+  }) :
+        this.id = id ?? Uuid().generateV4(),
+        super([complete, name, dose, form, doses, schedule]);
 
   //TODO: fit to API
   Map<String, Object> toEntity() {

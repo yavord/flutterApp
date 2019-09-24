@@ -18,9 +18,9 @@ class AddMedTile extends MedTileEvent {
 }
 
 class UpdateMedTile extends MedTileEvent {
-  final MedTile updateMedtile;
+  final MedTile updatedMedtile;
 
-  UpdateMedTile(this.updateMedtile) : super([updateMedtile]);
+  UpdateMedTile(this.updatedMedtile) : super([updatedMedtile]);
 }
 
 class DeleteMedTile extends MedTileEvent {

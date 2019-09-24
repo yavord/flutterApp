@@ -46,7 +46,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       AddMedTile event,
       ) async* {
       if(currentState is MedTileLoaded) {
-        final List<MedTile> updatedMedTiles = List.from(currentState.medtile)
+        final List<MedTile> updatedMedTiles = List.from(currentState.medtiles)
             ..add(event.medtile);
         yield MedTileLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
@@ -58,7 +58,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       UpdateMedTile event,
       ) async* {
       if(currentState is MedTileLoaded) {
-//        final List<MedTile> updatedMedTiles = currentState
+        final List<MedTile> updatedMedTiles = currentState.medtiles.map(f)
       }
   }
 

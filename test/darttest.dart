@@ -38,5 +38,6 @@ List<MedTile> medications = [
 //final List<MedTile> updated =
 
 main() {
-
+  print(List.from(medications));
+  print(medications);
 }

@@ -1,6 +1,5 @@
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:hmss/models/med_tile.dart';
+import 'package:hmss/util/uuid.dart';
 
 
 
@@ -21,6 +20,7 @@ String name = "Miro Mutti";
 List<MedTile> medications = [
   MedTile(
     complete: true,
+    id: Uuid().generateV4(),
     name: "Aerius 5mg",
     form: "tablet",
     dose: "1",
@@ -29,6 +29,7 @@ List<MedTile> medications = [
   ),
   MedTile(
     complete: true,
+    id: Uuid().generateV4(),
     name: "Paracetamol",
     form: "tablet",
     dose: "1",

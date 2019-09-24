@@ -12,9 +12,9 @@ abstract class MedTileState extends Equatable {
 class MedTileLoading extends MedTileState {}
 
 class MedTileLoaded extends MedTileState {
-  final List<MedTile> medtile;
+  final List<MedTile> medtiles;
 
-  MedTileLoaded([this.medtile = const[]]) : super([medtile]);
+  MedTileLoaded([this.medtiles = const[]]) : super([medtiles]);
 }
 
 class MedTileNotLoaded extends MedTileState {}
