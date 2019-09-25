@@ -41,8 +41,6 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
       return animationStart;
     }
 
-    ;
-
     controller =
         AnimationController(vsync: this, duration: Duration(hours: 24));
     controller.value = nextIntakeTime();

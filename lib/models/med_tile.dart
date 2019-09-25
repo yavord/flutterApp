@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:hmss/util/data.dart';
 import 'package:hmss/util/uuid.dart';
 
 
