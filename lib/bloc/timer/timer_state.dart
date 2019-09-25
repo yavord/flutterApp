@@ -10,5 +10,7 @@ abstract class CircleTimerState extends Equatable {
 class CircleTimerLoading extends CircleTimerState {}
 
 class CircleTimerLoaded extends CircleTimerState {
-//  final Date
+  final double nextIntake;
+
+  CircleTimerLoaded(this.nextIntake) : super([nextIntake]);
 }
