@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'dart:async';
-import 'package:meta/meta.dart';
 
 import 'med_tile.dart';
-import 'package:hmss/models/med_tile.dart';
+import 'package:hmss/models/models.dart';
 import 'package:hmss/util/data.dart'; //TODO: replace this with server/api
 
 

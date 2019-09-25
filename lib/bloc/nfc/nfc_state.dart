@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import 'package:hmss/models/nfc.dart';
+import 'package:hmss/models/models.dart';
 
 
 @immutable

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hmss/models/med_tile.dart';
+import 'package:hmss/models/models.dart';
 
 import 'package:hmss/util/data.dart';
 import 'package:hmss/widgets/medication_tiles.dart';
