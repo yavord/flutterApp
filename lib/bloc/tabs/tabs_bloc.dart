@@ -15,5 +15,4 @@ class TabsBloc extends Bloc<TabEvent, AppTab> {
       yield event.tab;
     }
   }
-
 }
