@@ -15,14 +15,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin{
-//  final TabsBloc _tabsBloc = TabsBloc();
-//
-//  @override
-//  void initState() {
-//    widget.onInit();
-//    //TODO: place stats listeners here
-//    super.initState();
-//  }
+ final TabsBloc _tabsBloc = TabsBloc();
+
+ @override
+ void initState() {
+   widget.onInit();
+   //TODO: place stats listeners here
+   super.initState();
+ }
 
   @override
   Widget build(BuildContext context) {
