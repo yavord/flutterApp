@@ -54,9 +54,43 @@ class MedTileItem extends StatelessWidget {
                       style: TextStyle(fontSize: 22,),
                       ) 
                     ],
-                    )
+                  ),
+                  Row(
+                    children: <Widget>[
+                    Text(
+                      'Take ${medTile.dose} ',
+                      key: TherapyKeys.medTileItemDose(medTile.id),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                    ),
+                    Text(
+                      medTile.form,
+                      key: TherapyKeys.medTileItemForm(medTile.id),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                    ),
+                  ],
+                  ),
                 ],
-                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(" "),
+                  Text(
+                    medTile.doses,
+                    key: TherapyKeys.medTileItemDoses(medTile.id),
+                    style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
+                  ),
+                  Text(
+                    ' ${medTile.form}s left',
+                    key: TherapyKeys.medTileItemForm(medTile.id),
+                    style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
