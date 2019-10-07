@@ -33,7 +33,7 @@ class _DailyGoalsState extends State<DailyGoals> {
             itemCount: medications.length,
             itemBuilder: (BuildContext context, int index) {
               MedTile medication = medications[index];
-              return MedicTiles(
+              return MedTileItem(
                 name: medication.name,
 //                icon: medication['icon'],
                 dose: medication.dose,

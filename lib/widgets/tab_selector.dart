@@ -25,7 +25,7 @@ class TabSelector extends StatelessWidget {
         return BottomNavigationBarItem(
           icon: Icon(
             tab == AppTab.medTiles ? Icons.accessibility_new : Icons.assignment_ind,
-            key: tab == AppTab.medTiles ? TherapyKeys.tabs : TherapyKeys.medId,
+            key: tab == AppTab.medTiles ? TherapyKeys.tabs : TherapyKeys.medIdTab,
           ),
           title: Text(tab == AppTab.medId ? 'Medical ID' : 'Next Intakes'),
         );
