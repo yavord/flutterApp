@@ -8,6 +8,7 @@ import 'package:hmss/bloc/blocs.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/screens/screens.dart';
 import 'package:hmss/util/const.dart';
+import 'package:hmss/routes.dart';
 
 
 void main() {
@@ -16,8 +17,7 @@ void main() {
     BlocProvider(
       builder: (context) {
         return MedTileBloc()..dispatch(LoadMedTiles());
-
-      },
+        },
       child: TherapyApp(),
     )
   );
@@ -29,7 +29,22 @@ class TherapyApp extends StatelessWidget {
     final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     return MaterialApp(
       title: AppLocalizations().appTitle,
-      theme: isDark ? Constants.darkTheme : Constants.lightTheme,
+      theme: Constants.lightTheme,
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+      ],
+      routes: {
+        TherapyAppRoutes.home: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<TabsBloc>(
+                builder: (context) => TabsBloc(),
+              ),
+            ],
+            child: Home(),
+          );
+        }
+      },
     );
   }
 }
