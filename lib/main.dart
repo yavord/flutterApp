@@ -1,41 +1,35 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:hmss/screens/home.dart';
-//import 'package:hmss/screens/home_test.dart';
+import 'package:path_provider/path_provider.dart';
+
+import 'package:hmss/localization.dart';
+import 'package:hmss/bloc/blocs.dart';
+import 'package:hmss/models/models.dart';
+import 'package:hmss/screens/screens.dart';
 import 'package:hmss/util/const.dart';
 
-void main() async{
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
-    runApp(MyApp());
-  });
+
+void main() {
+  BlocSupervisor.delegate = NewBlocDelegate();
+  runApp(
+    BlocProvider(
+      builder: (context) {
+        return MedTileBloc()..dispatch(LoadMedTiles());
+
+      },
+      child: TherapyApp(),
+    )
+  );
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isDark = false;
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDark ? Constants.darkPrimary : Constants.lightPrimary,
-      statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
-    ));
-  }
-
-
+class TherapyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: Constants.appName,
+      title: AppLocalizations().appTitle,
       theme: isDark ? Constants.darkTheme : Constants.lightTheme,
-      home: Home(),
     );
   }
 }

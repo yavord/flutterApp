@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 
+//TODO: implement localization in rest of app
 class AppLocalizations {
   static AppLocalizations of (BuildContext context) {
     return Localizations.of<AppLocalizations> (
