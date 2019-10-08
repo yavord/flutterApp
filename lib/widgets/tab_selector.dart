@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hmss/localization.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/keys.dart';
 
@@ -17,7 +18,7 @@ class TabSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      key: TherapyKeys.medTileTab,
+      key: TherapyKeys.tabs,
       currentIndex: AppTab.values.indexOf(activeTab),
       onTap: (index) => onTabSelected(AppTab.values[index]),
       items: AppTab.values.map((tab) {
@@ -26,7 +27,7 @@ class TabSelector extends StatelessWidget {
             tab == AppTab.medTiles ? Icons.accessibility_new : Icons.assignment_ind,
             key: tab == AppTab.medTiles ? TherapyKeys.medTileTab : TherapyKeys.medIdTab,
           ),
-          title: Text(tab == AppTab.medId ? 'Medical ID' : 'Next Intakes'),
+          title: Text(tab == AppTab.medId ? AppLocalizations.of(context).medId : AppLocalizations.of(context).nextIntake),
         );
       }).toList(),
     );

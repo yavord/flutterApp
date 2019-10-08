@@ -12,6 +12,10 @@ class AppLocalizations {
   }
 
   String get appTitle => 'HMSS';
+
+  String get medId => 'Medical ID';
+
+  String get nextIntake => 'Next Intake';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
