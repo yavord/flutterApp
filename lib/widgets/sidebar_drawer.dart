@@ -9,19 +9,19 @@ class SidebarDrawer extends StatelessWidget {
     return new Drawer(
       child: new ListView(
         children: <Widget>[
-          new UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/img/sky.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            accountName: new Text(name ,style: TextStyle(fontSize: 25, color: Colors.white),),
-            accountEmail: new Text(name.toLowerCase().replaceAll(" ", ".")+"@gmail.com", style: TextStyle(fontSize: 18.0, color: Colors.white)),
-            currentAccountPicture: new CircleAvatar(
-              backgroundImage: AssetImage("assets/img/avatar.jpg"),
-            ),
-          ),
+          // new UserAccountsDrawerHeader(
+          //   decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //       image: AssetImage("assets/img/sky.jpg"),
+          //       fit: BoxFit.cover,
+          //     ),
+          //   ),
+          //   accountName: new Text(name ,style: TextStyle(fontSize: 25, color: Colors.white),),
+          //   accountEmail: new Text(name.toLowerCase().replaceAll(" ", ".")+"@gmail.com", style: TextStyle(fontSize: 18.0, color: Colors.white)),
+          //   currentAccountPicture: new CircleAvatar(
+          //     backgroundImage: AssetImage("assets/img/avatar.jpg"),
+          //   ),
+          // ),
           new ListTile(
             title: new Text("Dashboard", style: TextStyle(fontSize: 18)),
             trailing: new Icon(Icons.home),

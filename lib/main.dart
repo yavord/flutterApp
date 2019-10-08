@@ -8,6 +8,7 @@ import 'package:hmss/bloc/blocs.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/screens/screens.dart';
 import 'package:hmss/util/const.dart';
+import 'package:hmss/util/data.dart';
 import 'package:hmss/routes.dart';
 
 
@@ -16,7 +17,7 @@ void main() {
   runApp(
     BlocProvider(
       builder: (context) {
-        return MedTileBloc()..dispatch(LoadMedTiles());
+        return MedTileBloc(data: medications)..dispatch(LoadMedTiles());
         },
       child: TherapyApp(),
     )
@@ -39,9 +40,7 @@ class TherapyApp extends StatelessWidget {
               BlocProvider<TabsBloc>(
                 builder: (context) => TabsBloc(),
               ),
-              BlocProvider<MedTileBloc> (
-                builder: (context) => MedTileBloc(),
-              ),
+              //TODO: add other widgets
             ],
             child: Home(),
           );

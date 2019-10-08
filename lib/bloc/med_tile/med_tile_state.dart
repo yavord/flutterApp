@@ -9,7 +9,7 @@ abstract class MedTileState extends Equatable {
   MedTileState([List props = const[]]) : super(props);
 }
 
-class MedTileLoading extends MedTileState {}
+class MedTilesLoading extends MedTileState {}
 
 class MedTilesLoaded extends MedTileState {
   final List<MedTile> medtiles;
@@ -17,4 +17,4 @@ class MedTilesLoaded extends MedTileState {
   MedTilesLoaded([this.medtiles = const[]]) : super([medtiles]);
 }
 
-class MedTileNotLoaded extends MedTileState {}
+class MedTilesNotLoaded extends MedTileState {}

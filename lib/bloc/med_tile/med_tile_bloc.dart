@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'dart:async';
+import 'package:meta/meta.dart';
 
 import 'med_tile.dart';
 import 'package:hmss/models/models.dart';
@@ -7,10 +8,12 @@ import 'package:hmss/util/data.dart'; //TODO: replace this with server/api
 
 
 class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
-  List<MedTile> data = medications;
+  List<MedTile> data;
+
+  MedTileBloc({@required this.data});
 
   @override
-  MedTileState get initialState => MedTileLoading();
+  MedTileState get initialState => MedTilesLoading();
 
   @override
   Stream<MedTileState> mapEventToState(
@@ -36,7 +39,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
         medtiles,
       );
     } catch(_) {
-      yield MedTileNotLoaded();
+      yield MedTilesNotLoaded();
     }
   }
 
