@@ -15,7 +15,7 @@ class TherapyKeys {
   static final medTileItemSchedule = (String id) => Key('MedTileItem__${id}__Schedule');
 
   //Tabs
-  static final tabs = const Key('__tabs__');
+  static final medTileTab = const Key('__medTileTabs__');
   static final medIdTab = const Key('__medId');
 
 }

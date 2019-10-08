@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/keys.dart';
 
@@ -18,14 +17,14 @@ class TabSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      key: TherapyKeys.tabs,
+      key: TherapyKeys.medTileTab,
       currentIndex: AppTab.values.indexOf(activeTab),
       onTap: (index) => onTabSelected(AppTab.values[index]),
       items: AppTab.values.map((tab) {
         return BottomNavigationBarItem(
           icon: Icon(
             tab == AppTab.medTiles ? Icons.accessibility_new : Icons.assignment_ind,
-            key: tab == AppTab.medTiles ? TherapyKeys.tabs : TherapyKeys.medIdTab,
+            key: tab == AppTab.medTiles ? TherapyKeys.medTileTab : TherapyKeys.medIdTab,
           ),
           title: Text(tab == AppTab.medId ? 'Medical ID' : 'Next Intakes'),
         );

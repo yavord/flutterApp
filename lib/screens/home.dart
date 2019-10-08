@@ -17,10 +17,11 @@ class Home extends StatelessWidget {
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
-              title: (Text(AppLocalizations.of(context).appTitle)),
-              actions: <Widget>[
-                SidebarDrawer()
-              ],
+              backgroundColor: Colors.transparent,
+              // title: (Text(AppLocalizations.of(context).appTitle)),
+              // actions: <Widget>[
+              //   SidebarDrawer()
+              // ],
           ),
           body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
           //TODO: replace DailyGoals, add AddMedtile "ghost button"

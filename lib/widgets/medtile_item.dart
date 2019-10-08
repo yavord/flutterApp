@@ -62,7 +62,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                   Row(
                     children: <Widget>[
                     Text(
-                      'Take ${medTile.dose} ',
+                      'Take ${medTile.dose}',
                       key: TherapyKeys.medTileItemDose(medTile.id),
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
