@@ -26,7 +26,6 @@ void main() {
 class TherapyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     return MaterialApp(
       title: AppLocalizations().appTitle,
       theme: Constants.lightTheme,
@@ -39,6 +38,9 @@ class TherapyApp extends StatelessWidget {
             providers: [
               BlocProvider<TabsBloc>(
                 builder: (context) => TabsBloc(),
+              ),
+              BlocProvider<MedTileBloc> (
+                builder: (context) => MedTileBloc(),
               ),
             ],
             child: Home(),

@@ -22,15 +22,25 @@ class MedTiles extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         } else if (state is MedTilesLoaded) {
           final medTiles = state.medtiles;
-          return ListView.builder(
-            key: TherapyKeys.medTileList,
-            itemCount: medTiles.length,
-            itemBuilder: (BuildContext context, int index) {
-              final medTile = medTiles[index];
-              return MedTileItem(
-                medTile: medTile,
-              );
-            },
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<BarcodeBloc>(
+                builder: (context) => BarcodeBloc(),
+              ),
+              BlocProvider<NfcBloc>(
+                builder: (context) => NfcBloc(),
+              ),
+            ],
+            child: ListView.builder(
+              key: TherapyKeys.medTileList,
+              itemCount: medTiles.length,
+              itemBuilder: (BuildContext context, int index) {
+                final medTile = medTiles[index];
+                return MedTileItem(
+                  medTile: medTile,
+                );
+              },
+            ),
           );
         } else {
           return Container(key: TherapyKeys.medTileEmptyContainer);
