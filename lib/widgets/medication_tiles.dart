@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hmss/keys.dart';
 import 'package:hmss/models/models.dart';
+import 'package:hmss/widgets/widgets.dart';
+import 'package:hmss/bloc/blocs.dart';
 
 
-class MedTileItem extends StatelessWidget {
+class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
   final MedTile medTile;
   final GestureTapCallback takeNow;
   final GestureTapCallback qr;
@@ -15,6 +18,7 @@ class MedTileItem extends StatelessWidget {
   MedTileItem({
     Key key,
     @required this.medTile,
+    //should these be required?
     this.takeNow,
     this.qr,
     this.nfc,
@@ -91,6 +95,71 @@ class MedTileItem extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 125.0),
+              child: Row(
+                children: <Widget>[
+                  Circle(
+                    schedule: medTile.schedule,
+                    key: TherapyKeys.medTileItemSchedule(medTile.id),
+                  ),
+                ],
+              ),
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                FlatButton(
+                  color: Color(0xff00cf55),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(5.0)),
+                  onPressed: () {},
+                  child: Text(
+                    "Take now",
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                ),
+                BlocListener(
+                  bloc: BlocProvider.of<BarcodeBloc>(context),
+                  listener: (BuildContext context, BarcodeState state) {
+                    if (state is BarcodeLoaded) {
+                      print('Loaded: ${state.barcode.barcode}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc: BlocProvider.of<BarcodeBloc>(context),
+                    builder: (BuildContext context, BarcodeState state) {
+                      if(state is BarcodeInitial) {
+                        return buildInitialInput();
+                      } else if (state is BarcodeLoaded) {
+                        return buildLoaded();
+                      }
+                    }, //TODO: make this logic more abstract
+                  ),
+                ),
+                BlocListener(
+                  bloc: BlocProvider.of<NfcBloc>(context),
+                  listener: (BuildContext context, NfcState state) {
+                    if(state is NfcLoaded) {
+                      print('Loaded: ${state.nfc.nfc}');
+                    }
+                  },
+                  child: BlocBuilder(
+                    bloc:  BlocProvider.of<NfcBloc>(context),
+                    builder: (BuildContext context, NfcState state) {
+                      if(state is NfcInitial) {
+                        return buildInitialInputNfc();
+                      } else if (state is NfcLoading) {
+                        return buildLoadingNfc();
+                      } else if (state is NfcLoaded) {
+                        return buildLoadedNfc();
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),
