@@ -17,8 +17,8 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
 
   MedTileItem({
     Key key,
+    //TODO: add @required circle timer widget bloc 
     @required this.medTile,
-    //should these be required?
     this.takeNow,
     this.qr,
     this.nfc,
