@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hmss/bloc/blocs.dart';
+import 'package:hmss/screens/medtiles.dart';
 import 'package:hmss/widgets/widgets.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/screens/screens.dart';
@@ -22,7 +23,7 @@ class Home extends StatelessWidget {
                 SidebarDrawer()
               ],
           ),
-          body: activeTab == AppTab.medTiles ? DailyGoals() : MedicalID(), 
+          body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
           //TODO: replace DailyGoals, add AddMedtile "ghost button"
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
