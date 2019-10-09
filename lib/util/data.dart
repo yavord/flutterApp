@@ -36,5 +36,14 @@ List<MedTile> medications = [
     doses: "10",
     schedule: "20:30",
   ),
+  MedTile(
+    complete: true,
+    id: Uuid().generateV4(),
+    name: 'Аспиринец',
+    form: 'tablet',
+    dose: '2',
+    doses: '20',
+    schedule: '14:20',
+  ),
 ];
 
