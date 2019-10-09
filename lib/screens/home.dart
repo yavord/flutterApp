@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
               // ],
           ),
           body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
-          //TODO: replace DailyGoals, add AddMedtile "ghost button"
+          //TODO: add AddMedtile "ghost button"
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
             onTabSelected: (tab) => tabsBloc.dispatch(UpdateTab(tab)),

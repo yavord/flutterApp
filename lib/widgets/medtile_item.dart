@@ -27,7 +27,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
       child: Card(
         elevation: 0,
          color: Theme.of(context).cardColor,
@@ -80,9 +80,8 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text(" "),
                   Text(
                     medTile.doses,
                     key: TherapyKeys.medTileItemDoses(medTile.id),
