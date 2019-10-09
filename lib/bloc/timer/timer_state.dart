@@ -14,3 +14,5 @@ class CircleTimerLoaded extends CircleTimerState {
 
   CircleTimerLoaded(this.nextIntake) : super([nextIntake]);
 }
+
+class CircleTimerZero extends CircleTimerState {}
