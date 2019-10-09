@@ -17,3 +17,5 @@ class UpdateCircleTimer extends Equatable {
 }
 
 class ZeroCircleTimer extends Equatable {}
+
+//TODO: add events for notifications to remind user to take pills based on user settings
