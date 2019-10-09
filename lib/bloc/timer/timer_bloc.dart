@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:hmss/bloc/med_tile/med_tile.dart';
 import 'dart:async';
 import 'package:meta/meta.dart';
 import 'dart:math' as math;
@@ -9,13 +10,18 @@ import 'package:hmss/models/timer.dart';
 
 
 class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
-  final String doses;
-  final String schedule;
+  final MedTileBloc medTileBloc;
+  StreamSubscription medTileSubscription;
 
   CircleTimerBloc({
-    @required this.doses,
-    @required this.schedule,
-  });
+    @required this.medTileBloc,
+    }) {
+    medTileSubscription = medTileBloc.state.listen((state) {
+      if (state is MedTilesLoaded) {
+        dispatch(UpdateCircleTimer((state.medtiles as MedTilesLoaded).medtiles));
+      }
+    });
+  }
 
   @override
   CircleTimerState get initialState => CircleTimerLoading();
@@ -26,11 +32,9 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
     ) async* {
     if(event is LoadCircleTimer) {
       yield* _mapLoadCircleTimerToState();
-    }
-    if(event is UpdateCircleTimer) {
+    } else if(event is UpdateCircleTimer) {
       yield* _mapUpdateCircleTimerToState();
-    }
-    if(event is ZeroCircleTimer) {
+    } else if(event is ZeroCircleTimer) {
       yield* _mapZeroCircleTimeToState();
     }
   }

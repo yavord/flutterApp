@@ -19,7 +19,7 @@ String name = "Miro Mutti";
 
 List<MedTile> medications = [
   MedTile(
-    complete: true,
+    complete: false,
     id: Uuid().generateV4(),
     name: "Aerius 5mg",
     form: "tablet",
@@ -28,7 +28,7 @@ List<MedTile> medications = [
     schedule: "7:00",
   ),
   MedTile(
-    complete: true,
+    complete: false,
     id: Uuid().generateV4(),
     name: "Paracetamol",
     form: "tablet",
@@ -37,7 +37,7 @@ List<MedTile> medications = [
     schedule: "20:30",
   ),
   MedTile(
-    complete: true,
+    complete: false,
     id: Uuid().generateV4(),
     name: 'Аспиринец',
     form: 'tablet',
