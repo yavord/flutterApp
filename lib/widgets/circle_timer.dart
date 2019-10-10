@@ -5,14 +5,14 @@ import 'package:intl/intl.dart' as intl;
 import 'package:hmss/util/const.dart';
 
 class Circle extends StatefulWidget {
-  final String doses;
   final String schedule;
 
-  Circle({Key key, this.doses, this.schedule}) : super(key: key);
+  Circle({Key key, this.schedule}) : super(key: key);
 
   _CircleState createState() => _CircleState();
 }
 
+//TODO: learn flutter animations and dispose animationcontrollers properly
 class _CircleState extends State<Circle> with TickerProviderStateMixin {
   AnimationController controller;
 
@@ -38,7 +38,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
       if (hoursLeft > 19) hoursLeft -= 24;
       if (hoursLeft < -5) hoursLeft += 24;
       double animationStart = (hoursLeft * 60 + minutesLeft) / (24 * 60);
-      print(animationStart);
+      print('start: $animationStart');
       return animationStart;
     }
 

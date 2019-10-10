@@ -13,6 +13,22 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
 
   CircleTimerBloc({@required this.medTile});
 
+  getAnimationStart() {
+    intl.DateFormat dateFormat = new intl.DateFormat.Hm();
+    DateTime takeTime = dateFormat.parse(medTile.schedule);
+    DateTime now = DateTime.now();
+    var hoursLeft = takeTime.hour - now.hour;
+    var minutesLeft = takeTime.minute - now.minute;
+    if (minutesLeft < 0) {
+      hoursLeft -= 1;
+      minutesLeft += 60;
+    }
+    if (hoursLeft > 19) hoursLeft -= 24;
+    if (hoursLeft < -5) hoursLeft += 24;
+    double animationStart = (hoursLeft * 60 + minutesLeft) / (24 * 60);
+    return animationStart;
+  }
+
   @override
   CircleTimerState get initialState => CircleTimerLoading();
 
@@ -31,21 +47,9 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
 
   Stream<CircleTimerState> _mapLoadCircleTimerToState() async* {
     try{
-        intl.DateFormat dateFormat = new intl.DateFormat.Hm();
-        DateTime takeTime = dateFormat.parse(medTile.schedule);
-        DateTime now = DateTime.now();
-        var hoursLeft = takeTime.hour - now.hour;
-        var minutesLeft = takeTime.minute - now.minute;
-        if (minutesLeft < 0) {
-          hoursLeft -= 1;
-          minutesLeft += 60;
-        }
-        if (hoursLeft > 19) hoursLeft -= 24;
-        if (hoursLeft < -5) hoursLeft += 24;
-        double animationStart = (hoursLeft * 60 + minutesLeft) / (24 * 60);
-        yield CircleTimerLoaded(animationStart);
+      yield CircleTimerLoaded(getAnimationStart());
     } catch(_) {
-        yield CircleTimerNotLoaded();
+      yield CircleTimerNotLoaded();
     }
   }
 
