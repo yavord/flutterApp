@@ -8,12 +8,16 @@ abstract class CircleTimerEvent extends Equatable {
   CircleTimerEvent([List props = const[]]) : super(props);
 }
 
-class LoadCircleTimer extends CircleTimerEvent {}
+class LoadCircleTimer extends CircleTimerEvent {
+  final double nextIntake;
+
+  LoadCircleTimer({@required this.nextIntake}) : super([nextIntake]);
+}
 
 class UpdateCircleTimer extends CircleTimerEvent {
-  final List<MedTile> medTile;
+  final double nextIntake;
 
-  UpdateCircleTimer(this.medTile) : super([medTile]);
+  UpdateCircleTimer({@required this.nextIntake}) : super([nextIntake]);
 }
 
 class ZeroCircleTimer extends CircleTimerEvent {}
