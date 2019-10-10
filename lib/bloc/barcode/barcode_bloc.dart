@@ -6,8 +6,12 @@ import 'package:hmss/models/models.dart';
 
 
 class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
+  // final MedTile medTile;
+
+  // BarcodeBloc({this.medTile});
+
   @override
-  BarcodeState get initialState => BarcodeInitial();
+  BarcodeState get initialState => BarcodeLoading();
 
   @override
   Stream<BarcodeState> mapEventToState(BarcodeEvent event) async* {

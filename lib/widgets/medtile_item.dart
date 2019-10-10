@@ -130,7 +130,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                   child: BlocBuilder(
                     bloc: BlocProvider.of<BarcodeBloc>(context),
                     builder: (BuildContext context, BarcodeState state) {
-                      if(state is BarcodeInitial) {
+                      if(state is BarcodeLoading) {
                         return buildInitialInput();
                       } else if (state is BarcodeLoaded) {
                         return buildLoaded();

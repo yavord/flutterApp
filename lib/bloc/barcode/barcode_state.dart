@@ -9,7 +9,7 @@ abstract class BarcodeState extends Equatable {
   BarcodeState([List props = const[]]) : super(props);
 }
 
-class BarcodeInitial extends BarcodeState {}
+class BarcodeLoading extends BarcodeState {}
 
 class BarcodeLoaded extends BarcodeState {
   final Barcode barcode;
