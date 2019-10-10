@@ -9,9 +9,9 @@ abstract class CircleTimerEvent extends Equatable {
 }
 
 class LoadCircleTimer extends CircleTimerEvent {
-  final double nextIntake;
+  // final double nextIntake;
 
-  LoadCircleTimer({@required this.nextIntake}) : super([nextIntake]);
+  // LoadCircleTimer({@required this.nextIntake}) : super([nextIntake]);
 }
 
 class UpdateCircleTimer extends CircleTimerEvent {
