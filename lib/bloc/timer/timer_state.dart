@@ -16,3 +16,5 @@ class CircleTimerLoaded extends CircleTimerState {
 }
 
 class CircleTimerZero extends CircleTimerState {}
+
+class CircleTimerNotLoaded extends CircleTimerState{}

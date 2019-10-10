@@ -13,7 +13,7 @@ class MedTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final medTileBloc = BlocProvider.of<MedTileBloc>(context);
+    // final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     //TODO: add localizations
 
     return BlocBuilder<MedTileBloc, MedTileState>(
@@ -22,25 +22,28 @@ class MedTiles extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         } else if (state is MedTilesLoaded) {
           final medTiles = state.medtiles;
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider<BarcodeBloc>(
-                builder: (context) => BarcodeBloc(),
-              ),
-              BlocProvider<NfcBloc>(
-                builder: (context) => NfcBloc(),
-              ),
-            ],
-            child: ListView.builder(
-              key: TherapyKeys.medTileList,
-              itemCount: medTiles.length,
-              itemBuilder: (BuildContext context, int index) {
-                final medTile = medTiles[index];
-                return MedTileItem(
+          return ListView.builder(
+            key: TherapyKeys.medTileList,
+            itemCount: medTiles.length,
+            itemBuilder: (BuildContext context, int index) {
+              final medTile = medTiles[index];
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider<BarcodeBloc>(
+                    builder: (context) => BarcodeBloc(),
+                  ),
+                  BlocProvider<NfcBloc>(
+                    builder: (context) => NfcBloc(),
+                  ),
+                  BlocProvider<CircleTimerBloc>(
+                    builder: (context) => CircleTimerBloc(medTile: medTile),
+                    )
+                ],
+                child: MedTileItem(
                   medTile: medTile,
-                );
-              },
-            ),
+                ),
+              );
+            },
           );
         } else {
           return Container(key: TherapyKeys.medTileEmptyContainer);

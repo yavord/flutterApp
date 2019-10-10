@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:hmss/util/const.dart';
 
 class Circle extends StatefulWidget {
@@ -26,7 +26,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
     super.initState();
 
     nextIntakeTime() {
-      DateFormat dateFormat = new DateFormat.Hm();
+      intl.DateFormat dateFormat = new intl.DateFormat.Hm();
       DateTime takeTime = dateFormat.parse(widget.schedule);
       DateTime now = DateTime.now();
       var hoursLeft = takeTime.hour - now.hour;

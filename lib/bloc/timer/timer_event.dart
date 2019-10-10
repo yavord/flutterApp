@@ -17,5 +17,3 @@ class UpdateCircleTimer extends CircleTimerEvent {
 }
 
 class ZeroCircleTimer extends CircleTimerEvent {}
-
-//TODO: add events for notifications to remind user to take pills based on user settings
