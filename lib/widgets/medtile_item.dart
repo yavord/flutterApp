@@ -10,7 +10,7 @@ import 'package:hmss/bloc/blocs.dart';
 import 'package:hmss/localization.dart';
 
 
-class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
+class MedTileItem extends StatelessWidget with NfcWidget{
   final MedTile medTile;
   final GestureTapCallback takeNow;
   final GestureTapCallback qr;
@@ -121,24 +121,28 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
-                BlocListener(
-                  bloc: BlocProvider.of<BarcodeBloc>(context),
-                  listener: (BuildContext context, BarcodeState state) {
-                    if (state is BarcodeLoaded) {
-                      print('Loaded: ${state.barcode}');
-                    }
-                  },
-                  child: BlocBuilder(
-                    bloc: BlocProvider.of<BarcodeBloc>(context),
-                    builder: (BuildContext context, BarcodeState state) {
-                      if(state is BarcodeLoading) {
-                        return buildInitialInput();
-                      } else if (state is BarcodeLoaded) {
-                        return buildLoaded();
-                      }
-                    }, //TODO: make this logic more abstract
-                  ),
+                BarcodeButton(
+                  medTile: medTile,
+                  onSave: null,
                 ),
+                // BlocListener(
+                //   bloc: BlocProvider.of<BarcodeBloc>(context),
+                //   listener: (BuildContext context, BarcodeState state) {
+                //     if (state is BarcodeLoaded) {
+                //       print('Loaded: ${state.barcode}');
+                //     }
+                //   },
+                //   child: BlocBuilder(
+                //     bloc: BlocProvider.of<BarcodeBloc>(context),
+                //     builder: (BuildContext context, BarcodeState state) {
+                //       if(state is BarcodeLoading) {
+                //         return buildInitialInput();
+                //       } else if (state is BarcodeLoaded) {
+                //         return buildLoaded();
+                //       }
+                //     }, //TODO: make this logic more abstract
+                //   ),
+                // ),
                 BlocListener(
                   bloc: BlocProvider.of<NfcBloc>(context),
                   listener: (BuildContext context, NfcState state) {
