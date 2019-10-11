@@ -25,7 +25,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       yield* _mapAddMedTileToState(currentState, event);
     } else if(event is UpdateMedTile) {
       yield* _mapUpdateMedTileToState(currentState, event);
-    } else if(event is MedTile) {
+    } else if(event is DeleteMedTile) {
       yield* _mapDeleteMedTileToState(currentState, event);
     }
   }

@@ -24,6 +24,8 @@ class AppLocalizations {
   String get takeNow => 'Take now';
 
   String get takeAfter => 'Take after';
+
+  String get qR => 'QR ';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

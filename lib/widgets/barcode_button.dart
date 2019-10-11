@@ -1,47 +1,42 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:hmss/bloc/blocs.dart';
-import 'package:hmss/models/models.dart';
 import 'package:hmss/keys.dart';
+import 'package:hmss/models/models.dart';
+import 'package:hmss/localization.dart';
 
 
-class BarcodeButton extends StatelessWidget {
-  final bool taken;
+typedef OnSaveCallBack = Function(bool complete);
 
-  BarcodeButton({this.taken, Key key}) : super(key: key);
+class BarcodeButton extends StatefulWidget {
+  final OnSaveCallBack onSave;
+  final MedTile medTile;
+
+  BarcodeButton({
+    Key key,
+    @required this.onSave,
+    @required this.medTile,
+  }) : super(key : key ?? TherapyKeys.barcodeButton);
 
   @override
-  Widget build(BuildContext context) {
-    final MedTileBloc medTileBloc = BlocProvider.of(context);
-
-    return BlocBuilder<MedTileBloc, MedTileState>(
-      builder: (context, state) {
-        final button = _Button;
-      },
-    );
-  }
+  _BarcodeButtonState createState() => _BarcodeButtonState();
 }
 
-class _Button extends StatelessWidget {
-  const _Button({
-    Key key,
-    @required this.onPress,
-  }) : super(key: key);
+class _BarcodeButtonState extends State<BarcodeButton> {
+  //TODO: add a globalkey?
 
-  final VoidCallback onPress;
+  bool _complete;   
 
   @override
   Widget build(BuildContext context) {
     return OutlineButton(
-      key: TherapyKeys.barcodeButton,
       shape: RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(5.0),
       ),
-      onPressed: onPress,
+
+      onPressed: getBarcode,
       child: Row(
         children: <Widget>[
-          Text("QR "),
+          Text(AppLocalizations().qR),
           Image.asset(
             "assets/img/qr.png",
             width: 30.0,
