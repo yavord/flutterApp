@@ -7,9 +7,6 @@ import 'barcode.dart';
 
 
 class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
-  // final MedTile medTile;
-
-  // BarcodeBloc({this.medTile});
 
   @override
   BarcodeState get initialState => BarcodeLoading();
