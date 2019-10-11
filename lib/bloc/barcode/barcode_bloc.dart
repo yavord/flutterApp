@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 import 'barcode.dart';
-import 'package:hmss/models/models.dart';
+//TODO: make barcode model that is more than just a string
+// import 'package:hmss/models/models.dart';
 
 
 class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
@@ -16,19 +17,17 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
   @override
   Stream<BarcodeState> mapEventToState(BarcodeEvent event) async* {
     if(event is GetBarcode) {
-      final _barcode = await _getBarcode();
-      yield BarcodeLoaded(_barcode);
+      yield* _mapBarcodeToState();
     }
   }
 
-  _getBarcode() async {
-    String barcode;
+  Stream<BarcodeState> _mapBarcodeToState() async* {
     try{
-      barcode =
-      await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true);
-    } on Exception{
-      barcode = 'Unable to complete scan.';
+      final barcode =
+        await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true);
+      yield BarcodeLoaded(barcode);
+    } catch(_) {
+      yield BarcodeNotLoaded();
     }
-    return Barcode(barcode: barcode);
   }
 }

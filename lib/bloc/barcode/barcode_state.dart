@@ -12,7 +12,9 @@ abstract class BarcodeState extends Equatable {
 class BarcodeLoading extends BarcodeState {}
 
 class BarcodeLoaded extends BarcodeState {
-  final Barcode barcode;
+  final String barcode;
 
   BarcodeLoaded(this.barcode) : super([barcode]);
 }
+
+class BarcodeNotLoaded extends BarcodeState {}

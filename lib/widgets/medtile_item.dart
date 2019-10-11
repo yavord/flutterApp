@@ -124,7 +124,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                   bloc: BlocProvider.of<BarcodeBloc>(context),
                   listener: (BuildContext context, BarcodeState state) {
                     if (state is BarcodeLoaded) {
-                      print('Loaded: ${state.barcode.barcode}');
+                      print('Loaded: ${state.barcode}');
                     }
                   },
                   child: BlocBuilder(
