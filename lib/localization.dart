@@ -11,11 +11,19 @@ class AppLocalizations {
       );
   }
 
-  String get appTitle => 'HMSS';
+  String get appTitle => 'My Therapy';
 
   String get medId => 'Medical ID';
 
   String get nextIntake => 'Next Intake';
+
+  String get takeDose => 'Take ';
+
+  String get formLeft => 's left';
+
+  String get takeNow => 'Take now';
+
+  String get takeAfter => 'Take after';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

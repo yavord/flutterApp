@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
               backgroundColor: Colors.transparent,
-              // title: (Text(AppLocalizations.of(context).appTitle)),
+              title: (Text(AppLocalizations.of(context).appTitle)),
               // actions: <Widget>[
               //   SidebarDrawer()
               // ],

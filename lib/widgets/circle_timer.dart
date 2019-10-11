@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:intl/intl.dart' as intl;
 import 'package:hmss/util/const.dart';
+import 'package:hmss/localization.dart';
 
 class Circle extends StatefulWidget {
   final String schedule;
@@ -81,7 +82,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "Take after",
+                          AppLocalizations().takeAfter,
                         ),
                         AnimatedBuilder(
                             animation: controller,

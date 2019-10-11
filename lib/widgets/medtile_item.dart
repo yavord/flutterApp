@@ -7,6 +7,7 @@ import 'package:hmss/keys.dart';
 import 'package:hmss/models/models.dart';
 import 'package:hmss/widgets/widgets.dart';
 import 'package:hmss/bloc/blocs.dart';
+import 'package:hmss/localization.dart';
 
 
 class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
@@ -62,7 +63,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                   Row(
                     children: <Widget>[
                     Text(
-                      'Take ${medTile.dose}',
+                      '${AppLocalizations().takeDose}'+'${medTile.dose}',
                       key: TherapyKeys.medTileItemDose(medTile.id),
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
@@ -88,7 +89,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                     style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
                   ),
                   Text(
-                    ' ${medTile.form}s left',
+                    ' ${medTile.form}'+'${AppLocalizations().formLeft}',
                     key: TherapyKeys.medTileItemForm(medTile.id),
                     style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
                   ),
@@ -116,7 +117,7 @@ class MedTileItem extends StatelessWidget with BarcodeWidget, NfcWidget{
                       borderRadius: new BorderRadius.circular(5.0)),
                   onPressed: () {},
                   child: Text(
-                    "Take now",
+                    AppLocalizations().takeNow,
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
