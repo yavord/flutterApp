@@ -19,4 +19,6 @@ class TherapyKeys {
   static final medTileTab = const Key('__medTileTabs__');
   static final medIdTab = const Key('__medId');
 
+  //MedTile Buttons
+  static final barcodeButton = const Key('__barcodeButton__');
 }
