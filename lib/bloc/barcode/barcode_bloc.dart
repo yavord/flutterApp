@@ -3,6 +3,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 import 'barcode.dart';
 //TODO: make barcode model that is more than just a string
+//TODO: add method to convert string to barcode model
 // import 'package:hmss/models/models.dart';
 
 
