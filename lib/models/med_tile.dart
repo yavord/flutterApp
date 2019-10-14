@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:hmss/util/uuid.dart';
+import 'package:proba123/util/uuid.dart';
 
 
 @immutable

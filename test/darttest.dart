@@ -1,5 +1,5 @@
-import 'package:hmss/models/models.dart';
-import 'package:hmss/bloc/med_tile/med_tile.dart';
+import 'package:proba123/models/models.dart';
+import 'package:proba123/bloc/med_tile/med_tile.dart';
 import 'dart:math';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';

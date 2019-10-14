@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 
 import 'med_tile.dart';
-import 'package:hmss/models/models.dart';
-import 'package:hmss/util/data.dart'; //TODO: replace this with server/api
+import 'package:proba123/models/models.dart';
+import 'package:proba123/util/data.dart'; //TODO: replace this with server/api
 
 
 class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {

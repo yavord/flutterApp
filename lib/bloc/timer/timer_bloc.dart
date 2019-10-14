@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'timer.dart';
-import 'package:hmss/models/models.dart';
+import 'package:proba123/models/models.dart';
 
 
 class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:hmss/bloc/blocs.dart';
-import 'package:hmss/screens/medtiles.dart';
-import 'package:hmss/widgets/widgets.dart';
-import 'package:hmss/models/models.dart';
-import 'package:hmss/screens/screens.dart';
-import 'package:hmss/localization.dart';
+import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/screens/medtiles.dart';
+import 'package:proba123/widgets/widgets.dart';
+import 'package:proba123/models/models.dart';
+import 'package:proba123/screens/screens.dart';
+import 'package:proba123/localization.dart';
 
 
 class Home extends StatelessWidget {

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:hmss/keys.dart';
-import 'package:hmss/models/models.dart';
-import 'package:hmss/widgets/widgets.dart';
-import 'package:hmss/bloc/blocs.dart';
-import 'package:hmss/localization.dart';
+import 'package:proba123/keys.dart';
+import 'package:proba123/models/models.dart';
+import 'package:proba123/widgets/widgets.dart';
+import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/localization.dart';
 
 
 class MedTileItem extends StatelessWidget with NfcWidget{

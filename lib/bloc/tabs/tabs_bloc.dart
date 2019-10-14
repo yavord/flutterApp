@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 
-import 'package:hmss/bloc/blocs.dart';
-import 'package:hmss/models/models.dart';
+import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/models/models.dart';
 
 
 class TabsBloc extends Bloc<TabEvent, AppTab> {

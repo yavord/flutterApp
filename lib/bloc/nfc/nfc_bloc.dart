@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
 
 import 'nfc.dart';
-import 'package:hmss/models/models.dart';
+import 'package:proba123/models/models.dart';
 
 
 class NfcBloc extends Bloc<NfcEvent, NfcState> {

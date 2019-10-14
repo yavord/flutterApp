@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:intl/intl.dart' as intl;
-import 'package:hmss/util/const.dart';
-import 'package:hmss/localization.dart';
+import 'package:proba123/util/const.dart';
+import 'package:proba123/localization.dart';
 
 class Circle extends StatefulWidget {
   final String schedule;

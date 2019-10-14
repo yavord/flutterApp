@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:hmss/bloc/blocs.dart';
-import 'package:hmss/keys.dart';
-import 'package:hmss/widgets/widgets.dart';
+import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/keys.dart';
+import 'package:proba123/widgets/widgets.dart';
 
 
 class MedTiles extends StatelessWidget {

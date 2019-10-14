@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:hmss/bloc/barcode/barcode.dart';
+import 'package:proba123/bloc/barcode/barcode.dart';
 
 
 class BarcodeWidget {
