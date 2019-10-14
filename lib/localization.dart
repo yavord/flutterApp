@@ -21,7 +21,7 @@ class AppLocalizations {
 
   String get formLeft => 's left';
 
-  String get takeNow => 'Take now';
+  String get takeNow => 'Edit MedTile';
 
   String get takeAfter => 'Take after';
 
