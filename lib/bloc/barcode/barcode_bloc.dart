@@ -15,17 +15,28 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
   @override
   Stream<BarcodeState> mapEventToState(BarcodeEvent event) async* {
     if(event is GetBarcode) {
-      yield* _mapBarcodeToState();
+      yield* _mapGetBarcodeToState();
+    } else if(event is BarcodeClosed) {
+      yield* _mapCloseBarcodeToState(currentState, event);
     }
   }
 
-  Stream<BarcodeState> _mapBarcodeToState() async* {
+  Stream<BarcodeState> _mapGetBarcodeToState() async* {
     try{
       final barcode =
         await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true);
       yield BarcodeLoaded(barcode);
     } catch(_) {
       yield BarcodeNotLoaded();
+    }
+  }
+
+  Stream<BarcodeState> _mapCloseBarcodeToState(
+    BarcodeState currentState,
+    BarcodeEvent event,
+  ) async* {
+    if(currentState is BarcodeLoaded) {
+      
     }
   }
 }

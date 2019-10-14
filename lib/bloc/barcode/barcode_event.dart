@@ -8,3 +8,5 @@ abstract class BarcodeEvent extends Equatable {
 }
 
 class GetBarcode extends BarcodeEvent {}
+
+class BarcodeClosed extends BarcodeEvent {}
