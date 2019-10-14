@@ -1,4 +1,4 @@
-package com.example.proba123;
+package com.test.proba123;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
