@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:proba123/keys.dart';
 import 'package:proba123/models/models.dart';
+import 'package:proba123/screens/medtile_edit.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/localization.dart';
@@ -115,10 +116,21 @@ class MedTileItem extends StatelessWidget with NfcWidget{
                   color: Color(0xff00cf55),
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(5.0)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return EditScreen(
+                            medTile: medTile,
+                            onSave: null,
+                          );
+                        }
+                        )
+                    );
+                  },
                   child: Text(
-                    AppLocalizations().takeNow,
-                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                    AppLocalizations().editMedTile,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0)
                   ),
                 ),
                 BarcodeButton(
