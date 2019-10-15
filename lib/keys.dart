@@ -21,4 +21,7 @@ class TherapyKeys {
 
   //MedTile Buttons
   static final barcodeButton = const Key('__barcodeButton__');
+
+  //Screens
+  static final editScreen = const Key('__editScreen__');
 }
