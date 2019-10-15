@@ -6,16 +6,13 @@ import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
 
-typedef OnSaveCallback = Function(bool complete);
 
 class BarcodeButton extends StatelessWidget {
-  final MedTile medTile;
-  final OnSaveCallback onSave;
+  // final MedTile medTile;
 
   BarcodeButton({
     Key key,
-    @required this.medTile,
-    @required this.onSave,
+    // @required this.medTile,
     }) : super(key: key);
 
   @override

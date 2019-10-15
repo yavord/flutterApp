@@ -1,4 +1,4 @@
-export 'barcode_button.dart';
+export 'barcode.dart';
 export 'circle_timer.dart';
 export 'medtile_item.dart';
 export 'nfc.dart';

@@ -8,10 +8,6 @@ abstract class BarcodeEvent extends Equatable {
   BarcodeEvent([List props = const[]]) : super(props);
 }
 
-class GetBarcode extends BarcodeEvent {}
+class GetBarcode extends BarcodeEvent {
 
-// class CloseBarcode extends BarcodeEvent {
-//   final MedTile medTile;
-
-//   CloseBarcode(this.medTile) : super([medTile]);
-// }
+}

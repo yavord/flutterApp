@@ -122,8 +122,7 @@ class MedTileItem extends StatelessWidget with NfcWidget{
                   ),
                 ),
                 BarcodeButton(
-                  medTile: medTile,
-                  onSave: null,
+                  id: medTile.id,
                 ),
                 BlocListener(
                   bloc: BlocProvider.of<NfcBloc>(context),
