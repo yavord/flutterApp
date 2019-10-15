@@ -13,7 +13,6 @@ class MedTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     //TODO: add localizations
 
     return BlocBuilder<MedTileBloc, MedTileState>(

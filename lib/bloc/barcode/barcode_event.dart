@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:proba123/models/models.dart';
 
 
 @immutable
@@ -9,6 +10,8 @@ abstract class BarcodeEvent extends Equatable {
 
 class GetBarcode extends BarcodeEvent {}
 
-class BarcodeClosed extends BarcodeEvent {
-  
-}
+// class CloseBarcode extends BarcodeEvent {
+//   final MedTile medTile;
+
+//   CloseBarcode(this.medTile) : super([medTile]);
+// }

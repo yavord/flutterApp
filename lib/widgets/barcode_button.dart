@@ -21,14 +21,16 @@ class BarcodeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BarcodeBloc barcodeBloc = BlocProvider.of<BarcodeBloc>(context);
-    return BlocBuilder<MedTileBloc, MedTileState>(
+    return BlocBuilder<BarcodeBloc, BarcodeState>(
       builder: (context, state) {
         return OutlineButton(
           key: TherapyKeys.barcodeButton,
           shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
           ),
-          onPressed: () {barcodeBloc.dispatch(GetBarcode());},
+          onPressed: () {
+            barcodeBloc.dispatch(GetBarcode());
+            },
           child: Row(
             children: <Widget>[
               Text(AppLocalizations().qR),

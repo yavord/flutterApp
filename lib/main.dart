@@ -41,7 +41,7 @@ class TherapyApp extends StatelessWidget {
               BlocProvider<TabsBloc>(
                 builder: (context) => TabsBloc(),
               ),
-              //TODO: add other widgets
+              //TODO: add other widgets to main page?
             ],
             child: Home(),
           );

@@ -1,6 +1,9 @@
+import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
+import 'package:proba123/bloc/blocs.dart';
 import 'barcode.dart';
 //TODO: make barcode model that is more than just a string
 //TODO: add method to convert string to barcode model
@@ -8,6 +11,9 @@ import 'barcode.dart';
 
 
 class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
+  // final MedTileBloc medTileBloc;
+
+  // BarcodeBloc({@required this.medTileBloc});
 
   @override
   BarcodeState get initialState => BarcodeLoading();
@@ -16,9 +22,10 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
   Stream<BarcodeState> mapEventToState(BarcodeEvent event) async* {
     if(event is GetBarcode) {
       yield* _mapGetBarcodeToState();
-    } else if(event is BarcodeClosed) {
-      yield* _mapCloseBarcodeToState(currentState, event);
-    }
+    } 
+    // else if(event is CloseBarcode) {
+    //   yield* _mapCloseBarcodeToState(currentState, event);
+    // }
   }
 
   Stream<BarcodeState> _mapGetBarcodeToState() async* {
@@ -31,12 +38,12 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
     }
   }
 
-  Stream<BarcodeState> _mapCloseBarcodeToState(
-    BarcodeState currentState,
-    BarcodeEvent event,
-  ) async* {
-    if(currentState is BarcodeLoaded) {
+  // Stream<BarcodeState> _mapCloseBarcodeToState(
+  //   BarcodeState currentState,
+  //   BarcodeEvent event,
+  // ) async* {
+  //   if(currentState is BarcodeLoaded) {
       
-    }
-  }
+  //   }
+  // }
 }

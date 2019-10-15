@@ -26,6 +26,19 @@ class MedTile extends Equatable {
         this.id = id ?? Uuid().generateV4(),
         super([complete, name, dose, form, doses, schedule]);
 
+  MedTile copyWith({bool complete, String id, String name, 
+    String dose, String form, String doses, String schedule,}) {
+    return MedTile(
+      complete: complete ?? this.complete,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      dose: dose ?? this.dose,
+      form: form ?? this.form,
+      doses: doses ?? this.doses,
+      schedule: schedule ?? this.schedule,
+    );
+  }
+
   //TODO: fit to API
   Map<String, Object> toEntity() {
     return {
