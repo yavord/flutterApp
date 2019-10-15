@@ -8,7 +8,7 @@ import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/screens/screens.dart';
 import 'package:proba123/util/const.dart';
-import 'package:proba123/util/data.dart';
+import 'package:proba123/util/data/data.dart';
 import 'package:proba123/routes.dart';
 
 
