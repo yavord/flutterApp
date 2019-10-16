@@ -31,10 +31,10 @@ class BarcodeButton extends StatelessWidget {
           borderRadius: new BorderRadius.circular(5.0),
             ),
           onPressed: () async {
-            final barcode = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true);
+            final barcode = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
             if(barcode == medTile.name) {
                 int nextDose = int.parse(medTile.doses) - 1;
-                medTileBloc.dispatch(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
+                medTileBloc.add(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
               }
             },
           child: Row(

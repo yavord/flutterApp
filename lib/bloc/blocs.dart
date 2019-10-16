@@ -4,3 +4,4 @@ export 'med_tile/med_tile.dart';
 export 'tabs/tabs.dart';
 export 'bloc_delegate.dart';
 export 'timer/timer.dart';
+export 'authentication/auth.dart';

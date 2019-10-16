@@ -26,7 +26,7 @@ class BarcodeButton extends StatelessWidget {
             borderRadius: new BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            barcodeBloc.dispatch(GetBarcode());
+            barcodeBloc.add(GetBarcode());
             },
           child: Row(
             children: <Widget>[

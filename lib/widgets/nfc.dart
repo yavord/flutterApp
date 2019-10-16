@@ -54,6 +54,6 @@ class _NfcButtonState extends State<NfcButton> {
 
   void getNfc() {
     final nfcBloc = BlocProvider.of<NfcBloc>(context);
-    nfcBloc.dispatch(GetNfc());
+    nfcBloc.add(GetNfc());
   }
 }

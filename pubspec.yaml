@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  user_repository:
+    path: user_repository
+
   #ui
   charts_flutter: ^0.8.0
   font_awesome_flutter: ^8.5.0
@@ -19,7 +22,7 @@ dependencies:
 
   #bloc
   equatable: ^0.5.1
-  flutter_bloc: ^0.21.0
+  flutter_bloc: ^0.22.0
 
   #services
   flutter_barcode_scanner: ^0.1.5+1

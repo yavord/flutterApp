@@ -19,7 +19,7 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
   // {
   //   medTileSubscription = medTileBloc.state.listen((state){
   //     if(state is MedTilesLoaded) {
-  //       dispatch(UpdateTodo)
+  //       add(UpdateTodo)
   //     }
   //   });
   // }

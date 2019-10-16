@@ -22,11 +22,11 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
     if(event is LoadMedTiles) {
       yield* _mapLoadMedTileToState();
     } else if(event is AddMedTile) {
-      yield* _mapAddMedTileToState(currentState, event);
+      yield* _mapAddMedTileToState(event);
     } else if(event is UpdateMedTile) {
-      yield* _mapUpdateMedTileToState(currentState, event);
+      yield* _mapUpdateMedTileToState(event);
     } else if(event is DeleteMedTile) {
-      yield* _mapDeleteMedTileToState(currentState, event);
+      yield* _mapDeleteMedTileToState(event);
     }
   }
 
@@ -44,11 +44,10 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   }
 
   Stream<MedTileState> _mapAddMedTileToState(
-      MedTileState currentState,
       AddMedTile event,
       ) async* {
-      if(currentState is MedTilesLoaded) {
-        final List<MedTile> updatedMedTiles = List.from(currentState.medtiles)
+      if(state is MedTilesLoaded) {
+        final List<MedTile> updatedMedTiles = List.from((state as MedTilesLoaded).medtiles)
             ..add(event.medtile);
         yield MedTilesLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
@@ -56,26 +55,23 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   }
 
   Stream<MedTileState> _mapUpdateMedTileToState(
-      MedTileState currentState,
       UpdateMedTile event,
       ) async* {
-      if(currentState is MedTilesLoaded) {
-        final List<MedTile> updatedMedTiles = currentState.medtiles.map((medtile) {
+      if(state is MedTilesLoaded) {
+        final List<MedTile> updatedMedTiles = (state as MedTilesLoaded).medtiles.map((medtile) {
           return medtile.id == event.updatedMedTile.id ? event.updatedMedTile : medtile;
-        }).toList(); //TODO: redo this and understand what it does better
+        }).toList();
         yield MedTilesLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
       }
   }
 
   Stream<MedTileState> _mapDeleteMedTileToState(
-      MedTileState currentState,
       DeleteMedTile event,
       ) async* {
-      if(currentState is MedTilesLoaded) {
+      if(state is MedTilesLoaded) {
         final updatedMedTiles =
-            currentState.medtiles.where((medtile) => medtile.id != event.medtile.id).toList();
-        //TODO: redo/understand this better
+            (state as MedTilesLoaded).medtiles.where((medtile) => medtile.id != event.medtile.id).toList();
         yield MedTilesLoaded(updatedMedTiles);
         _saveMedTiles(updatedMedTiles);
       }

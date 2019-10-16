@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
           //TODO: add AddMedtile "ghost button"
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
-            onTabSelected: (tab) => tabsBloc.dispatch(UpdateTab(tab)),
+            onTabSelected: (tab) => tabsBloc.add(UpdateTab(tab)),
           ),
         );
       },

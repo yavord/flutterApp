@@ -39,7 +39,7 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
     if(event is LoadCircleTimer) {
       yield* _mapLoadCircleTimerToState();
     } else if(event is UpdateCircleTimer) {
-      yield* _mapUpdateCircleTimerToState(currentState, event);
+      yield* _mapUpdateCircleTimerToState(event);
     } else if(event is ZeroCircleTimer) {
       yield* _mapZeroCircleTimeToState();
     }
@@ -54,7 +54,6 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
   }
 
   Stream<CircleTimerState> _mapUpdateCircleTimerToState(
-    CircleTimerState currentState,
     CircleTimerEvent event,
     ) async* {
     
