@@ -1,0 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:user_repository/auth_repo.dart';
+
+
+class FireBaseAuthRepo implements AuthRepo {
+  final FirebaseAuth _firebaseAuth;
+
+  FireBaseAuthRepo ({FirebaseAuth firebaseAuth})
+    : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+
+  Future<bool> isAuthenticated() async {
+    final currentUser = await _firebaseAuth.currentUser();
+    return currentUser != null;
+  }
+
+  Future<void> authenticate() {
+    return _firebaseAuth.signInAnonymously();
+  }
+
+  Future<String> getUserId() async {
+    return (await _firebaseAuth.currentUser()).uid;
+  }
+}
