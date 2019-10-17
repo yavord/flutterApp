@@ -1,6 +1,6 @@
-export 'barcode.dart';
-export 'circle_timer.dart';
-export 'medtile_item.dart';
-export 'nfc.dart';
+export 'medtile/barcode.dart';
+export 'medtile/circle_timer.dart';
+export 'medtile/medtile_item.dart';
+export 'medtile/nfc.dart';
 export 'sidebar_drawer.dart';
 export 'tab_selector.dart';
