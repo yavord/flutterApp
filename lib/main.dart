@@ -19,6 +19,8 @@ void main() {
 }
 
 class TherapyApp extends StatelessWidget {
+  final FireBaseAuthRepo _fireBaseAuthRepo = FireBaseAuthRepo();
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -26,7 +28,7 @@ class TherapyApp extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(
           builder: (context) {
             return AuthenticationBloc(
-              authRepository: FireBaseAuthRepo(),
+              authRepository: _fireBaseAuthRepo,
             )..add(AppStarted());
           },
         ),
@@ -57,7 +59,7 @@ class TherapyApp extends StatelessWidget {
                       BlocProvider<TabsBloc>(
                         builder: (context) => TabsBloc(),
                       ),
-                      //TODO: add other widgets to main page?
+                      //TODO: add other widgets to main page
                     ],
                     child: Home(),
                    );
