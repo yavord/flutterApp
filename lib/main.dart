@@ -39,26 +39,35 @@ class TherapyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppLocalizations().appTitle,
-      theme: Constants.lightTheme,
-      localizationsDelegates: [
-        AppLocalizationsDelegate(),
-      ],
-      routes: {
-        TherapyAppRoutes.home: (context) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider<TabsBloc>(
-                builder: (context) => TabsBloc(),
-              ),
-              //TODO: add other widgets to main page?
-            ],
-            child: Home(),
-          );
-        }
-      },
-    ),
+        debugShowCheckedModeBanner: false,
+        title: AppLocalizations().appTitle,
+        theme: Constants.lightTheme,
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+        ],
+        routes: {
+          TherapyAppRoutes.home: (context) {
+            return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+              builder: (context, state) {
+                if(state is Authenticated) {
+                  return MultiBlocProvider(
+                  providers: [
+                    BlocProvider<TabsBloc>(
+                      builder: (context) => TabsBloc(),
+                    ),
+                    //TODO: add other widgets to main page?
+                  ],
+                  child: Home(),
+                );
+              } else if(state is Unauthenticated) {
+                return Center(child: Text('Could not authenticate user.'),);
+              }
+              return Center(child: CircularProgressIndicator());
+              },
+            );
+          }
+        },
+      ),
     );
   }
 }
