@@ -3,13 +3,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:user_repository/auth_repo.dart';
 
 
-class FireBaseAuthRepo implements AuthRepo {
+class FireBaseAuthRepo {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  FireBaseAuthRepo ({FirebaseAuth firebaseAuth, GoogleSignIn googleSignin})
-    : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-      _googleSignIn = googleSignin ?? GoogleSignIn();
+  FireBaseAuthRepo({FirebaseAuth firebaseAuth, GoogleSignIn googleSignin})
+      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        _googleSignIn = googleSignin ?? GoogleSignIn();
 
   Future<FirebaseUser> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -23,16 +23,33 @@ class FireBaseAuthRepo implements AuthRepo {
     return _firebaseAuth.currentUser();
   }
 
-  Future<bool> isAuthenticated() async {
+  Future<void> signInWithCredentials(String email, String password) {
+    return _firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<void> signUp({String email, String password}) async {
+    return await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<void> signOut() async {
+    return Future.wait([
+      _firebaseAuth.signOut(),
+      _googleSignIn.signOut(),
+    ]);
+  }
+
+  Future<bool> isSignedIn() async {
     final currentUser = await _firebaseAuth.currentUser();
     return currentUser != null;
   }
 
-  Future<void> authenticate() {
-    return _firebaseAuth.signInAnonymously();
-  }
-
-  Future<String> getUserId() async {
-    return (await _firebaseAuth.currentUser()).uid;
+  Future<String> getUser() async {
+    return (await _firebaseAuth.currentUser()).email;
   }
 }
