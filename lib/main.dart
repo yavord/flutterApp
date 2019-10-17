@@ -49,19 +49,19 @@ class TherapyApp extends StatelessWidget {
           TherapyAppRoutes.home: (context) {
             return BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
-                if(state is Authenticated) {
+                if(state is Unauthenticated) {
+                  return Center(child: Text('Could not authenticate user.'),);
+              } else if(state is Authenticated) {
                   return MultiBlocProvider(
-                  providers: [
-                    BlocProvider<TabsBloc>(
-                      builder: (context) => TabsBloc(),
-                    ),
-                    //TODO: add other widgets to main page?
-                  ],
-                  child: Home(),
-                );
-              } else if(state is Unauthenticated) {
-                return Center(child: Text('Could not authenticate user.'),);
-              }
+                    providers: [
+                      BlocProvider<TabsBloc>(
+                        builder: (context) => TabsBloc(),
+                      ),
+                      //TODO: add other widgets to main page?
+                    ],
+                    child: Home(),
+                   );
+                  }
               return Center(child: CircularProgressIndicator());
               },
             );
