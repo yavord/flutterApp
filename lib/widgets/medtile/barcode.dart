@@ -7,6 +7,7 @@ import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/widgets/widgets.dart';
 
 
 class BarcodeButton extends StatelessWidget {
@@ -35,6 +36,15 @@ class BarcodeButton extends StatelessWidget {
             if(barcode == medTile.name) {
                 int nextDose = int.parse(medTile.doses) - 1;
                 medTileBloc.add(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
+                Scaffold.of(context).showSnackBar(MedTileSnackBar(
+                  medTile: medTile,
+                  action: AppLocalizations().updated,
+                ));
+              } else {
+                Scaffold.of(context).showSnackBar(MedTileSnackBar(
+                  medTile: medTile,
+                  action: AppLocalizations().unsuccessful,
+                ));
               }
             },
           child: Row(

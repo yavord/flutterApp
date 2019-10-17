@@ -26,6 +26,10 @@ class AppLocalizations {
   String get takeAfter => 'Take after';
 
   String get qR => 'QR ';
+
+  String get updated => 'Updated ';
+
+  String get unsuccessful => 'Scan unsuccessful: ';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
