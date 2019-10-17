@@ -20,7 +20,6 @@ class BarcodeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final medTileBloc = BlocProvider.of<MedTileBloc>(context);
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
         final medTile = (state as MedTilesLoaded)
@@ -32,10 +31,12 @@ class BarcodeButton extends StatelessWidget {
           borderRadius: new BorderRadius.circular(5.0),
             ),
           onPressed: () async {
-            final barcode = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
+            final barcode = await FlutterBarcodeScanner
+              .scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
             if(barcode == medTile.name) {
                 int nextDose = int.parse(medTile.doses) - 1;
-                medTileBloc.add(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
+                BlocProvider.of<MedTileBloc>(context)
+                  .add(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
                 Scaffold.of(context).showSnackBar(MedTileSnackBar(
                   medTile: medTile,
                   action: AppLocalizations().updated,

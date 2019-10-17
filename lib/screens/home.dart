@@ -12,22 +12,18 @@ import 'package:proba123/localization.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final tabsBloc = BlocProvider.of<TabsBloc>(context);
     return BlocBuilder<TabsBloc, AppTab>(
       builder: (context, activeTab) {
         return Scaffold(
           appBar: AppBar(
               backgroundColor: Colors.transparent,
               title: (Text(AppLocalizations.of(context).appTitle)),
-              // actions: <Widget>[
-              //   SidebarDrawer()
-              // ],
           ),
           body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
           //TODO: add AddMedtile "ghost button"
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
-            onTabSelected: (tab) => tabsBloc.add(UpdateTab(tab)),
+            onTabSelected: (tab) => BlocProvider.of<TabsBloc>(context).add(UpdateTab(tab)),
           ),
         );
       },
