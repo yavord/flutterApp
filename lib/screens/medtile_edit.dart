@@ -96,16 +96,16 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 key: isEditing ? TherapyKeys.saveMedTile : TherapyKeys.saveNewMedTile,
                 shape: RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0)),
-
-                onPressed: null,
-                  // if (_formKey.currentState.validate()) {
-                  //   _formKey.currentState.save();
-                  //   widget.onSave(_name, _form);
-                  //   Navigator.pop(context);
-                  // }
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    _formKey.currentState.save();
+                    widget.onSave(_name, _form);
+                    Navigator.pop(context);
+                  }
+                },
                 child: Text(
-                  AppLocalizations().saveMedTile,
-                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  '${AppLocalizations().saveMedTile} (currently not working)',
+                  style: TextStyle(color: Colors.white, fontSize: 15.0)
                 ),
               )
             ],
