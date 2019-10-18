@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:intl/intl.dart' as intl;
 import 'package:proba123/util/const.dart';
 import 'package:proba123/localization.dart';
+//TODO: create auto_size_text groupings
 import 'package:auto_size_text/auto_size_text.dart';
 
 class Circle extends StatefulWidget {
