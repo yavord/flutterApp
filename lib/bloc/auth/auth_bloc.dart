@@ -6,11 +6,11 @@ import 'auth.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final FireBaseAuthRepo _authRepository;
+  final FireBaseAuthRepo _authRepo;
 
-  AuthenticationBloc({@required FireBaseAuthRepo authRepository})
-      : assert(authRepository != null),
-        _authRepository = authRepository;
+  AuthenticationBloc({@required FireBaseAuthRepo authRepo})
+      : assert(authRepo != null),
+        _authRepo = authRepo;
 
   @override
   AuthenticationState get initialState => Uninitialized();
@@ -30,9 +30,9 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapAppStartedToState() async* {
     try {
-      final isSignedIn = await _authRepository.isSignedIn();
+      final isSignedIn = await _authRepo.isSignedIn();
       if (isSignedIn) {
-        final name = await _authRepository.getUser();
+        final name = await _authRepo.getUser();
         yield Authenticated(name);
       } else {
         yield Unauthenticated();
@@ -43,11 +43,11 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> _mapLoggedInToState() async* {
-    yield Authenticated(await _authRepository.getUser());
+    yield Authenticated(await _authRepo.getUser());
   }
 
   Stream<AuthenticationState> _mapLoggedOutToState() async* {
     yield Unauthenticated();
-    _authRepository.signOut();
+    _authRepo.signOut();
   }
 }

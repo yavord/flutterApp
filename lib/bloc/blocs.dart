@@ -6,3 +6,4 @@ export 'bloc_delegate.dart';
 export 'timer/timer.dart';
 export 'auth/auth.dart';
 export 'login/login.dart';
+export 'register/register.dart';

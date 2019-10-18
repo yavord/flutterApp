@@ -19,7 +19,9 @@ void main() {
 }
 
 class TherapyApp extends StatelessWidget {
-  final FireBaseAuthRepo _fireBaseAuthRepo = FireBaseAuthRepo();
+  final FireBaseAuthRepo _authRepo = FireBaseAuthRepo();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class TherapyApp extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(
           builder: (context) {
             return AuthenticationBloc(
-              authRepository: _fireBaseAuthRepo,
+              authRepo: _authRepo,
             )..add(AppStarted());
           },
         ),
@@ -52,8 +54,9 @@ class TherapyApp extends StatelessWidget {
             return BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
                 if(state is Unauthenticated) {
-                  return Center(child: Text('Could not authenticate user.'),);
-              } else if(state is Authenticated) {
+                  return LoginScreen(authRepo: _authRepo,);
+                } 
+                if(state is Authenticated) {
                   return MultiBlocProvider(
                     providers: [
                       BlocProvider<TabsBloc>(
@@ -64,7 +67,7 @@ class TherapyApp extends StatelessWidget {
                     child: Home(),
                    );
                   }
-              return Center(child: CircularProgressIndicator());
+                return Center(child: CircularProgressIndicator());
               },
             );
           }
