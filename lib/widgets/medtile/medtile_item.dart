@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/screens/medtile_edit.dart';
+import 'package:proba123/util/data/data.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/localization.dart';
@@ -32,7 +33,7 @@ class MedTileItem extends StatelessWidget with NfcWidget{
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
       child: Card(
         elevation: 0,
-         color: Theme.of(context).cardColor,
+        color: Theme.of(context).cardColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(11),
@@ -120,9 +121,14 @@ class MedTileItem extends StatelessWidget with NfcWidget{
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return EditScreen(
+                          return AddEditScreen(
                             medTile: medTile,
-                            onSave: null,
+                            onSave: (name, form) {
+                              BlocProvider.of<MedTileBloc>(context).add(
+                                UpdateMedTile(medTile.copyWith(name: name, form: form))
+                              );
+                            },
+                            isEditing: true,
                           );
                         }
                         )
