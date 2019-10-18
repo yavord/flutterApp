@@ -18,6 +18,17 @@ class Home extends StatelessWidget {
           appBar: AppBar(
               backgroundColor: Colors.transparent,
               title: (Text(AppLocalizations.of(context).appTitle)),
+              actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.exit_to_app),
+                tooltip: 'Sign out',
+                onPressed: () {
+                  BlocProvider.of<AuthenticationBloc>(context).add(
+                    LoggedOut(),
+                  );
+                },
+              )
+            ],
           ),
           body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
           //TODO: add AddMedtile "ghost button"

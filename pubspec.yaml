@@ -1,7 +1,7 @@
 name: proba123
 description: A new Flutter project.
 
-version: 1.0.0+2
+version: 1.0.0+3
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -19,7 +19,7 @@ dependencies:
   intl: ^0.15.8
   path_provider: ^1.3.0
   cupertino_icons: ^0.1.2
-  flutter_launcher_icons: ^0.7.3
+  auto_size_text: ^2.1.0
 
   #bloc
   equatable: ^0.5.1
@@ -28,6 +28,7 @@ dependencies:
   #services
   flutter_barcode_scanner: ^0.1.5+1
   flutter_nfc_reader: ^0.0.23
+  flutter_launcher_icons: ^0.7.3
 
 
 dev_dependencies:

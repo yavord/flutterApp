@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "323072667715-2361tah7bib8pjvr9b8e2krbdm7g07rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.proba123",
+            "certificate_hash": "d9b917491740ccfc080ea764220ab9a75d3bfc53"
+          }
+        },
+        {
           "client_id": "323072667715-gni0pglj7m4f8b4tv4ptcpod94ae7bqs.apps.googleusercontent.com",
           "client_type": 3
         }
