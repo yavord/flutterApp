@@ -19,6 +19,7 @@ dependencies:
   intl: ^0.15.8
   path_provider: ^1.3.0
   cupertino_icons: ^0.1.2
+  flutter_launcher_icons: ^0.7.3
 
   #bloc
   equatable: ^0.5.1
@@ -28,22 +29,19 @@ dependencies:
   flutter_barcode_scanner: ^0.1.5+1
   flutter_nfc_reader: ^0.0.23
 
-  #firebase
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  image_path: 'assets/img/main.png'
+  android: true
+  ios: true
 
 flutter:
 
   uses-material-design: true
 
   assets:
-    - assets/img/avatar.jpg
-    - assets/img/gradient.png
-    - assets/img/sky.jpg
-    - assets/img/nfc.png
-    - assets/img/qr.png
-    - assets/img/main.png
+    - assets/img/
