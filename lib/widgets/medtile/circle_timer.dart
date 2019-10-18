@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:intl/intl.dart' as intl;
 import 'package:proba123/util/const.dart';
 import 'package:proba123/localization.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Circle extends StatefulWidget {
   final String schedule;
@@ -76,7 +77,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
                 Align(
                   alignment: FractionalOffset.center,
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,8 +88,12 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
                         AnimatedBuilder(
                             animation: controller,
                             builder: (BuildContext context, Widget child) {
-                              return new Text(timerString,
-                                  style: TextStyle(fontSize: 24.0));
+                              return new AutoSizeText(
+                                timerString,
+                                maxLines: 1,
+                                stepGranularity: 8,
+                                minFontSize: 16,
+                                style: TextStyle(fontSize: 24.0));
                             })
                       ],
                     ),
