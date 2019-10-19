@@ -106,6 +106,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         ? _onFormRegisterSubmitted
                         : null,
                   ),
+                  Text('Password must be 6 characters and have at least 1 number'),
                 ],
               ),
             ),
