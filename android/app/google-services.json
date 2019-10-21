@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "323072667715",
-    "firebase_url": "https://therapy-v1.firebaseio.com",
-    "project_id": "therapy-v1",
-    "storage_bucket": "therapy-v1.appspot.com"
+    "project_number": "958199754044",
+    "firebase_url": "https://mytherapy-v2.firebaseio.com",
+    "project_id": "mytherapy-v2",
+    "storage_bucket": "mytherapy-v2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:323072667715:android:67f34296ce475eb640a4f6",
+        "mobilesdk_app_id": "1:958199754044:android:831d5902d2fab21f2b8239",
         "android_client_info": {
           "package_name": "com.test.proba123"
         }
       },
       "oauth_client": [
         {
-          "client_id": "323072667715-99i2e8hbecpjd44rjodge2pd5m7mmjpb.apps.googleusercontent.com",
+          "client_id": "958199754044-8l82sq1p1djjegentf7t06r7pgrmbgn2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.test.proba123",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "323072667715-gni0pglj7m4f8b4tv4ptcpod94ae7bqs.apps.googleusercontent.com",
+          "client_id": "958199754044-t66nbh87uk4dcpa6rk7lsavh00tshaga.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBCdKRDjNCvy6xsk2XSdKXqzrYLevyVUB0"
+          "current_key": "AIzaSyDWhZP7VgwsonU5lnLIuoeLjNqqD40vZBI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "323072667715-gni0pglj7m4f8b4tv4ptcpod94ae7bqs.apps.googleusercontent.com",
+              "client_id": "958199754044-t66nbh87uk4dcpa6rk7lsavh00tshaga.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
