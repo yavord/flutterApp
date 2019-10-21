@@ -1,21 +1,37 @@
 {
   "project_info": {
-    "project_number": "958199754044",
-    "firebase_url": "https://mytherapy-v2.firebaseio.com",
-    "project_id": "mytherapy-v2",
-    "storage_bucket": "mytherapy-v2.appspot.com"
+    "project_number": "831455002138",
+    "firebase_url": "https://mytherapy-3.firebaseio.com",
+    "project_id": "mytherapy-3",
+    "storage_bucket": "mytherapy-3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:958199754044:android:831d5902d2fab21f2b8239",
+        "mobilesdk_app_id": "1:831455002138:android:b649f6ce61f16712679ba3",
         "android_client_info": {
           "package_name": "com.test.proba123"
         }
       },
       "oauth_client": [
         {
-          "client_id": "958199754044-8l82sq1p1djjegentf7t06r7pgrmbgn2.apps.googleusercontent.com",
+          "client_id": "831455002138-vc9k0sfvsbkn7s47dm19gai86h38hq0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.proba123",
+            "certificate_hash": "a77df310981d9bd5ce550a7f0567da38e6a3cc1a"
+          }
+        },
+        {
+          "client_id": "831455002138-93su1n8mftkbepr086799n7sijj08en1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.proba123",
+            "certificate_hash": "f74e9b69025f421d1c1511c619c85a9e86da2934"
+          }
+        },
+        {
+          "client_id": "831455002138-b48giv0li4275vmds2h8tub2t9337let.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.test.proba123",
@@ -23,20 +39,20 @@
           }
         },
         {
-          "client_id": "958199754044-t66nbh87uk4dcpa6rk7lsavh00tshaga.apps.googleusercontent.com",
+          "client_id": "831455002138-qdqnobvoimn3unhu6l2m7cojmo124f63.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDWhZP7VgwsonU5lnLIuoeLjNqqD40vZBI"
+          "current_key": "AIzaSyBteFWdGDHDwBSzP34kM6i95s866L8e4tk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "958199754044-t66nbh87uk4dcpa6rk7lsavh00tshaga.apps.googleusercontent.com",
+              "client_id": "831455002138-qdqnobvoimn3unhu6l2m7cojmo124f63.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
