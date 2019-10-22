@@ -6,17 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/screens/medtile_edit.dart';
-import 'package:proba123/util/data/data.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/localization.dart';
 
 
-class MedTileItem extends StatelessWidget with NfcWidget{
+class MedTileItem extends StatelessWidget{
   final MedTile medTile;
   final GestureTapCallback takeNow;
   final GestureTapCallback qr;
-  final GestureTapCallback nfc;
+  // final GestureTapCallback nfc;
 
   MedTileItem({
     Key key,
@@ -24,7 +23,7 @@ class MedTileItem extends StatelessWidget with NfcWidget{
     @required this.medTile,
     this.takeNow,
     this.qr,
-    this.nfc,
+    // this.nfc,
   }) : super(key: key);
 
   @override
@@ -113,31 +112,8 @@ class MedTileItem extends StatelessWidget with NfcWidget{
               alignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                FlatButton(
-                  color: Color(0xff00cf55),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(5.0)),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return AddEditScreen(
-                            medTile: medTile,
-                            onSave: (name, form) {
-                              BlocProvider.of<MedTileBloc>(context).add(
-                                UpdateMedTile(medTile.copyWith(name: name, form: form))
-                              );
-                            },
-                            isEditing: true,
-                          );
-                        }
-                        )
-                    );
-                  },
-                  child: Text(
-                    AppLocalizations().editMedTile,
-                    style: TextStyle(color: Colors.white, fontSize: 15.0)
-                  ),
+                EditButton(
+                  id: medTile.id,
                 ),
                 BarcodeButton(
                   id: medTile.id,

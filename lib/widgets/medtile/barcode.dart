@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:async';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 import 'package:proba123/bloc/blocs.dart';
-import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
 import 'package:proba123/widgets/widgets.dart';
@@ -23,8 +21,7 @@ class BarcodeButton extends StatelessWidget {
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
         final medTile = (state as MedTilesLoaded)
-          .medtiles
-          .firstWhere((medTile) => medTile.id == id, orElse: () => null);
+          .medtiles .firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return OutlineButton(
           key: TherapyKeys.barcodeButton,
           shape: RoundedRectangleBorder(

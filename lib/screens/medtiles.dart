@@ -28,9 +28,6 @@ class MedTiles extends StatelessWidget {
               final medTile = medTiles[index];
               return MultiBlocProvider(
                 providers: [
-                  // BlocProvider<BarcodeBloc>(
-                  //   builder: (context) => BarcodeBloc(),
-                  // ),
                   BlocProvider<NfcBloc>(
                     builder: (context) => NfcBloc(),
                   ),
