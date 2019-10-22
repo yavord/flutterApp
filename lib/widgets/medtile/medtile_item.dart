@@ -142,26 +142,7 @@ class MedTileItem extends StatelessWidget with NfcWidget{
                 BarcodeButton(
                   id: medTile.id,
                 ),
-                BlocListener(
-                  bloc: BlocProvider.of<NfcBloc>(context),
-                  listener: (BuildContext context, NfcState state) {
-                    if(state is NfcLoaded) {
-                      print('Loaded: ${state.nfc.nfc}');
-                    }
-                  },
-                  child: BlocBuilder(
-                    bloc:  BlocProvider.of<NfcBloc>(context),
-                    builder: (BuildContext context, NfcState state) {
-                      if(state is NfcInitial) {
-                        return buildInitialInputNfc();
-                      } else if (state is NfcLoading) {
-                        return buildLoadingNfc();
-                      } else if (state is NfcLoaded) {
-                        return buildLoadedNfc();
-                      }
-                    },
-                  ),
-                ),
+                NfcButton(),
               ],
             ),
           ],

@@ -41,7 +41,7 @@ class _NfcButtonState extends State<NfcButton> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-        onPressed: getNfc,
+        onPressed: null,
         child: Row(children: <Widget>[
           Text("NFC"),
           Image.asset(
@@ -52,8 +52,8 @@ class _NfcButtonState extends State<NfcButton> {
         ]));
   }
 
-  void getNfc() {
-    final nfcBloc = BlocProvider.of<NfcBloc>(context);
-    nfcBloc.add(GetNfc());
-  }
+  // void getNfc() {
+  //   final nfcBloc = BlocProvider.of<NfcBloc>(context);
+  //   nfcBloc.add(GetNfc());
+  // }
 }
