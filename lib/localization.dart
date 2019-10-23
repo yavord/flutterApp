@@ -26,7 +26,7 @@ class AppLocalizations {
   String get formHint => 'Method of intake';
   String get doseHint => 'Dose per sitting';
   String get dosesHint => 'Total amount of doses in package';
-  String get scheduleHint => 'Next intake time in 24hr format';
+  String get scheduleHint => 'Next intake time in "hh:mm" 24h format';
   String get saveMedTile => 'Save MedTile';
   String get deleteMedTile => 'MedTile deleted: ';
   String get undo => 'Undo';
