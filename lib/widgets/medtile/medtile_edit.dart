@@ -38,9 +38,15 @@ class EditButton extends StatelessWidget {
                   builder: (context) {
                     return AddEditScreen(
                       key: TherapyKeys.editScreen,
-                      onSave: (name, form) {
+                      onSave: (name, form, dose, doses, schedule) {
                         BlocProvider.of<MedTileBloc>(context).add(
-                          UpdateMedTile(medTile.copyWith(name: name, form: form))
+                          UpdateMedTile(medTile.copyWith(
+                            name: name,
+                            form: form,
+                            dose: dose,
+                            doses: doses, 
+                            schedule: schedule,
+                          ))
                         );
                       },
                       isEditing: true,

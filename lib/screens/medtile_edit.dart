@@ -6,7 +6,13 @@ import 'package:proba123/localization.dart';
 import 'package:proba123/widgets/widgets.dart';
 
 
-typedef OnSaveCallBack = Function(String task, String note);
+typedef OnSaveCallBack = Function(
+  String task, 
+  String note,
+  String dose,
+  String doses,
+  String schedule,
+  );
 
 class AddEditScreen extends StatefulWidget {
   final bool isEditing;
@@ -106,7 +112,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    widget.onSave(_name, _form);
+                    widget.onSave(_name, _form, _dose, _doses, _schedule);
                     Navigator.pop(context);
                   }
                 },
