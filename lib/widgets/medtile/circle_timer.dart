@@ -41,7 +41,7 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
       if (hoursLeft > 19) hoursLeft -= 24;
       if (hoursLeft < -5) hoursLeft += 24;
       double animationStart = (hoursLeft * 60 + minutesLeft) / (24 * 60);
-      print('start: $animationStart');
+      // print('start: $animationStart');
       return animationStart;
     }
 
