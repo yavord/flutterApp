@@ -34,14 +34,20 @@ class BarcodeButton extends StatelessWidget {
                 BlocProvider.of<MedTileBloc>(context).add(
                   UpdateMedTile(medTile.copyWith(doses: nextDose.toString()))
                   );
-                Scaffold.of(context).showSnackBar(MedTileSnackBar(
-                  medTile: medTile,
-                  action: AppLocalizations().updated,
-                ));
+                Scaffold.of(context).showSnackBar(
+                  MedTileSnackBar(
+                    medTile: medTile,
+                    content: AppLocalizations().updated,
+                    onUndo: () => 
+                      BlocProvider.of<MedTileBloc>(context).add(
+                        UpdateMedTile(medTile.copyWith(doses: medTile.doses)),
+                )));
               } else {
-                Scaffold.of(context).showSnackBar(MedTileSnackBar(
-                  medTile: medTile,
-                  action: AppLocalizations().unsuccessful,
+                Scaffold.of(context).showSnackBar(
+                  MedTileSnackBar(
+                    key: TherapyKeys.snackbar,
+                    medTile: medTile,
+                    content: AppLocalizations().unsuccessful,
                 ));
               }
             },

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
-import 'package:proba123/localization.dart';
 import 'package:proba123/widgets/widgets.dart';
+import 'package:proba123/localization.dart';
 
 
 class DeleteMedTileButton extends StatelessWidget {
@@ -28,6 +28,13 @@ class DeleteMedTileButton extends StatelessWidget {
           child: Icon(Icons.delete),
           onPressed: () {
             BlocProvider.of<MedTileBloc>(context).add(DeleteMedTile(medTile));
+            Scaffold.of(context).showSnackBar(
+              MedTileSnackBar(
+                key: TherapyKeys.snackbar,
+                medTile: medTile,
+                content: AppLocalizations().deleteMedTile,),
+                
+                );
           },
         );
       },

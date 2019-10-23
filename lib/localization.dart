@@ -25,6 +25,8 @@ class AppLocalizations {
   String get emptyError => 'Please enter some text';
   String get formHint => 'Enter medication method of intake here';
   String get saveMedTile => 'Save MedTile';
+  String get deleteMedTile => 'MedTile deleted: ';
+  String get undo => 'Undo';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

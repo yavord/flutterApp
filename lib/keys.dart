@@ -26,6 +26,7 @@ class TherapyKeys {
 
   //Screens
   static final editScreen = const Key('__editScreen__');
+  static final snackbar = const Key('__snackbar__');
 
   //Add/Edit Screen
   static final nameField = const Key('__nameField__');
