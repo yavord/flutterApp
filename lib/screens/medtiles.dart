@@ -13,7 +13,6 @@ class MedTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: add localizations
 
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
@@ -26,18 +25,8 @@ class MedTiles extends StatelessWidget {
             itemCount: medTiles.length,
             itemBuilder: (BuildContext context, int index) {
               final medTile = medTiles[index];
-              return MultiBlocProvider(
-                providers: [
-                  BlocProvider<NfcBloc>(
-                    builder: (context) => NfcBloc(),
-                  ),
-                  BlocProvider<CircleTimerBloc>(
-                    builder: (context) => CircleTimerBloc(medTile: medTile),
-                    )
-                ],
-                child: MedTileItem(
-                  medTile: medTile,
-                ),
+              return MedTileItem(
+                medTile: medTile,
               );
             },
           );

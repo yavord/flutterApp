@@ -14,7 +14,7 @@ class EditButton extends StatelessWidget {
   EditButton({
     Key key, 
     @required this.id,
-  }) : super(key: key);
+  }) : super(key: key ?? TherapyKeys.editButton);
 
   @override
   Widget build(BuildContext context) {
@@ -27,27 +27,29 @@ class EditButton extends StatelessWidget {
           color: Color(0xff00cf55),
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(5.0)),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return AddEditScreen(
-                    medTile: medTile,
-                    onSave: (name, form) {
-                      BlocProvider.of<MedTileBloc>(context).add(
-                        UpdateMedTile(medTile.copyWith(name: name, form: form))
-                      );
-                    },
-                    isEditing: true,
-                  );
-                }
-              )
-            );
-          },
           child: Text(
             AppLocalizations().editMedTile,
             style: TextStyle(color: Colors.white, fontSize: 15.0)
           ),
+          onPressed: medTile == null ? null
+            : () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return AddEditScreen(
+                      key: TherapyKeys.editScreen,
+                      onSave: (name, form) {
+                        BlocProvider.of<MedTileBloc>(context).add(
+                          UpdateMedTile(medTile.copyWith(name: name, form: form))
+                        );
+                      },
+                      isEditing: true,
+                      medTile: medTile,
+                    );
+                  }
+                )
+              );
+          },
         );
       },
     );

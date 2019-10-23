@@ -14,14 +14,14 @@ class BarcodeButton extends StatelessWidget {
   BarcodeButton({
     Key key,
     @required this.id,
-    }) : super(key: key);
+    }) : super(key: key ?? TherapyKeys.barcodeButton);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
         final medTile = (state as MedTilesLoaded)
-          .medtiles .firstWhere((medTile) => medTile.id == id, orElse: () => null);
+          .medtiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return OutlineButton(
           key: TherapyKeys.barcodeButton,
           shape: RoundedRectangleBorder(
