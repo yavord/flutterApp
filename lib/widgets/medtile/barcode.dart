@@ -23,7 +23,6 @@ class BarcodeButton extends StatelessWidget {
         final medTile = (state as MedTilesLoaded)
           .medtiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return OutlineButton(
-          key: TherapyKeys.barcodeButton,
           shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(5.0),
             ),

@@ -113,7 +113,9 @@ class MedTileItem extends StatelessWidget{
                     BarcodeButton(
                       id: medTile.id,
                     ),
-                    NfcButton(),
+                    DeleteMedTileButton(
+                      id: medTile.id,
+                    ),
                   ],
                 ),
               ],

@@ -28,7 +28,7 @@ class EditButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(5.0)),
           child: Text(
-            AppLocalizations().editMedTile,
+            'Edit',
             style: TextStyle(color: Colors.white, fontSize: 15.0)
           ),
           onPressed: medTile == null ? null
