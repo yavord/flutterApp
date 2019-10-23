@@ -31,6 +31,9 @@ class TherapyKeys {
   //Add/Edit Screen
   static final nameField = const Key('__nameField__');
   static final formField = const Key('__formField__');
+  static final doseField = const Key('__doseField__');
+  static final dosesField = const Key('__dosesField__');
+  static final scheduleField = const Key('__scheduleField__');
   static final saveMedTile = const Key('__saveMedTile__');
   static final saveNewMedTile = const Key('__saveNewMedTile__');
 }

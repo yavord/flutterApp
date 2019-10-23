@@ -33,7 +33,6 @@ class DeleteMedTileButton extends StatelessWidget {
                 key: TherapyKeys.snackbar,
                 medTile: medTile,
                 content: AppLocalizations().deleteMedTile,),
-                
                 );
           },
         );
@@ -41,5 +40,3 @@ class DeleteMedTileButton extends StatelessWidget {
     );
   }
 }
-
-// BlocProvider.of<TodosBloc>(context).add(DeleteTodo(todo));

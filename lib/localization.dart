@@ -21,9 +21,12 @@ class AppLocalizations {
   String get updated => 'Updated ';
   String get unsuccessful => 'Scan unsuccessful: ';
   String get addMedTile => 'Add MedTile';
-  String get nameHint => 'Enter medication name here';
+  String get nameHint => 'Medication name';
   String get emptyError => 'Please enter some text';
-  String get formHint => 'Enter medication method of intake here';
+  String get formHint => 'Method of intake';
+  String get doseHint => 'Dose per sitting';
+  String get dosesHint => 'Total amount of doses in package';
+  String get scheduleHint => 'Next intake time in 24hr format';
   String get saveMedTile => 'Save MedTile';
   String get deleteMedTile => 'MedTile deleted: ';
   String get undo => 'Undo';

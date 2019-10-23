@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/widgets/widgets.dart';
 
 
 typedef OnSaveCallBack = Function(String task, String note);
@@ -59,35 +60,41 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    TextFormField(
-                      initialValue: isEditing ? widget.medTile.name : '',
+                    MedTileTextFormField(
                       key: TherapyKeys.nameField,
-                      autofocus: !isEditing,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().nameHint,
-                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent))
-                      ),
-                      validator: (val) {
-                        return val.trim().isEmpty
-                          ? AppLocalizations().emptyError
-                          : null;
-                      },
-                      onSaved: (value) => _name = value,
+                      isEditing: isEditing,
+                      editing: widget.medTile.name,
+                      hint: AppLocalizations().nameHint,
+                      save: _name,
                     ),
-                    TextFormField(
-                      initialValue: isEditing ? widget.medTile.form : '',
+                    MedTileTextFormField(
                       key: TherapyKeys.formField,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().formHint,
-                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent))
-                        ),
-                      validator: (val) {
-                        return val.trim().isEmpty
-                          ? AppLocalizations().emptyError
-                          : null;
-                      },
-                      onSaved: (value) => _form = value,
-                    )
+                      isEditing: isEditing,
+                      editing: widget.medTile.form,
+                      hint: AppLocalizations().formHint,
+                      save: _form,
+                    ),
+                    MedTileTextFormField(
+                      key: TherapyKeys.doseField,
+                      isEditing: isEditing,
+                      editing: widget.medTile.dose,
+                      hint: AppLocalizations().doseHint,
+                      save: _dose,
+                    ),
+                    MedTileTextFormField(
+                      key: TherapyKeys.dosesField,
+                      isEditing: isEditing,
+                      editing: widget.medTile.doses,
+                      hint: AppLocalizations().dosesHint,
+                      save: _doses,
+                    ),
+                    MedTileTextFormField(
+                      key: TherapyKeys.scheduleField,
+                      isEditing: isEditing,
+                      editing: widget.medTile.schedule,
+                      hint: AppLocalizations().scheduleHint,
+                      save: _schedule,
+                    ),
                   ],
                 ),
               ),
