@@ -6,7 +6,7 @@ class TherapyKeys {
 
   //MedTiles
   static final medTileList = const Key('__medTileList__');
-  static final medTileItem = (String id) => Key('MedTileItem__${id}');
+  static final medTileItem = (String id) => Key('MedTileItem__$id');
   static final medTileEmptyContainer = const Key('__medTileEmptyContainer__');
   static final medTileItemName = (String id) => Key('MedTileItem__${id}__Name');
   static final medTileItemDose = (String id) => Key('MedTileItem__${id}__Dose');
