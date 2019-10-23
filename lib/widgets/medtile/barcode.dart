@@ -32,8 +32,9 @@ class BarcodeButton extends StatelessWidget {
               .scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
             if(barcode == medTile.name) {
                 int nextDose = int.parse(medTile.doses) - 1;
-                BlocProvider.of<MedTileBloc>(context)
-                  .add(UpdateMedTile(medTile.copyWith(doses: nextDose.toString())));
+                BlocProvider.of<MedTileBloc>(context).add(
+                  UpdateMedTile(medTile.copyWith(doses: nextDose.toString()))
+                  );
                 Scaffold.of(context).showSnackBar(MedTileSnackBar(
                   medTile: medTile,
                   action: AppLocalizations().updated,
