@@ -1,11 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'package:proba123/localization.dart';
 import 'package:proba123/bloc/blocs.dart';
-import 'package:proba123/models/models.dart';
 import 'package:proba123/screens/screens.dart';
 import 'package:proba123/util/const.dart';
 import 'package:proba123/util/data/data.dart';
