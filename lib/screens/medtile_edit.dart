@@ -66,19 +66,6 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    // TextFormField(
-                    //   initialValue: isEditing ? editing : '',
-                    //   decoration: InputDecoration(
-                    //     hintText: hint,
-                    //     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent))
-                    //    ),
-                    //    validator: (val) {
-                    //     return val.trim().isEmpty
-                    //       ? AppLocalizations().emptyError
-                    //       : null;
-                    //       },
-                    //   onSaved: (value) => save = value,
-                    // ),
                     MedTileTextFormField(
                       key: TherapyKeys.nameField,
                       isEditing: isEditing,
