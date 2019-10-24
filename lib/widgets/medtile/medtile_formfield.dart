@@ -15,7 +15,7 @@ class MedTileTextFormField extends TextFormField {
           initialValue: isEditing ? editing : '',
           decoration: InputDecoration(
             hintText: hint,
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent))
+            border: InputBorder.none,
             ),
           validator: (val) {
               return val.trim().isEmpty

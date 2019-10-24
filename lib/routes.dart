@@ -1,4 +1,4 @@
 class TherapyAppRoutes {
   static final home = '/';
-  static final editScreen = '/editScreen';
+  static final addMedTile = '/addMedTile';
 }

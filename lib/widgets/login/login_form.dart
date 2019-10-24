@@ -88,6 +88,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Image.asset('assets/img/main.png', height: 150),
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.email),

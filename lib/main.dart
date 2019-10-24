@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:proba123/keys.dart';
 
 import 'package:proba123/localization.dart';
 import 'package:proba123/bloc/blocs.dart';
@@ -9,6 +10,7 @@ import 'package:proba123/util/const.dart';
 import 'package:proba123/util/data/data.dart';
 import 'package:proba123/routes.dart';
 import 'package:user_repository/auth_repo.dart';
+import 'package:proba123/models/models.dart';
 
 
 void main() {
@@ -70,7 +72,24 @@ class TherapyApp extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             },
           );
-        }
+        },
+        TherapyAppRoutes.addMedTile: (context) {
+          return AddEditScreen(
+            key: TherapyKeys.addMedTileScreen,
+            onSave: (name, form, dose, doses, schedule) {
+              BlocProvider.of<MedTileBloc>(context).add(
+                AddMedTile(MedTile(
+                    name: name,
+                    form: form,
+                    dose: dose,
+                    doses: doses,
+                    schedule: schedule,
+                ))
+              );
+            },
+            isEditing: false,
+          );
+        },
       },
     );
   }

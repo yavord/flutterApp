@@ -7,8 +7,8 @@ import 'package:proba123/widgets/widgets.dart';
 
 
 typedef OnSaveCallBack = Function(
-  String task, 
-  String note,
+  String name, 
+  String form,
   String dose,
   String doses,
   String schedule,
@@ -24,7 +24,7 @@ class AddEditScreen extends StatefulWidget {
     @required this.isEditing,
     @required this.onSave,
     this.medTile,
-  }) : super(key: key ?? TherapyKeys.editScreen);
+  }) : super(key: key ?? TherapyKeys.addMedTileScreen);
 
   @override
   _AddEditScreenState createState() => _AddEditScreenState();
@@ -66,38 +66,51 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
+                    // TextFormField(
+                    //   initialValue: isEditing ? editing : '',
+                    //   decoration: InputDecoration(
+                    //     hintText: hint,
+                    //     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent))
+                    //    ),
+                    //    validator: (val) {
+                    //     return val.trim().isEmpty
+                    //       ? AppLocalizations().emptyError
+                    //       : null;
+                    //       },
+                    //   onSaved: (value) => save = value,
+                    // ),
                     MedTileTextFormField(
                       key: TherapyKeys.nameField,
                       isEditing: isEditing,
-                      editing: widget.medTile.name,
+                      editing: isEditing  ? widget.medTile.name : '',
                       hint: AppLocalizations().nameHint,
                       save: _name,
                     ),
                     MedTileTextFormField(
                       key: TherapyKeys.formField,
                       isEditing: isEditing,
-                      editing: widget.medTile.form,
+                      editing: isEditing ? widget.medTile.form : '',
                       hint: AppLocalizations().formHint,
                       save: _form,
                     ),
                     MedTileTextFormField(
                       key: TherapyKeys.doseField,
                       isEditing: isEditing,
-                      editing: widget.medTile.dose,
+                      editing: isEditing ? widget.medTile.dose : '',
                       hint: AppLocalizations().doseHint,
                       save: _dose,
                     ),
                     MedTileTextFormField(
                       key: TherapyKeys.dosesField,
                       isEditing: isEditing,
-                      editing: widget.medTile.doses,
+                      editing: isEditing ? widget.medTile.doses : '',
                       hint: AppLocalizations().dosesHint,
                       save: _doses,
                     ),
                     MedTileTextFormField(
                       key: TherapyKeys.scheduleField,
                       isEditing: isEditing,
-                      editing: widget.medTile.schedule,
+                      editing: isEditing ? widget.medTile.schedule : '',
                       hint: AppLocalizations().scheduleHint,
                       save: _schedule,
                     ),

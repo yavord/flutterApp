@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/routes.dart';
 import 'package:proba123/screens/medtiles.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/models/models.dart';
@@ -20,6 +21,13 @@ class Home extends StatelessWidget {
               title: (Text(AppLocalizations.of(context).appTitle)),
               actions: <Widget>[
               IconButton(
+                icon: Icon(Icons.add),
+                tooltip: 'Add new MedTile',
+                onPressed: () {
+                  Navigator.pushNamed(context, TherapyAppRoutes.addMedTile);
+                },
+              ),
+              IconButton(
                 icon: Icon(Icons.exit_to_app),
                 tooltip: 'Sign out',
                 onPressed: () {
@@ -27,7 +35,7 @@ class Home extends StatelessWidget {
                     LoggedOut(),
                   );
                 },
-              )
+              ),
             ],
           ),
           body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 

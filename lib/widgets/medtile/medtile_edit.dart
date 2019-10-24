@@ -7,19 +7,19 @@ import 'package:proba123/screens/screens.dart';
 
 
 class EditButton extends StatelessWidget {
-  final String id;
+  // final String id;
+  final GestureTapCallback onTap;
 
   EditButton({
     Key key, 
-    @required this.id,
+    // @required this.id,
+    @required this.onTap,
   }) : super(key: key ?? TherapyKeys.editButton);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MedTileBloc, MedTileState>(
-      builder: (context, state) {
-        final medTile = (state as MedTilesLoaded)
-          .medtiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
+        // final medTile = (state as MedTilesLoaded)
+        //   .medtiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return FlatButton(
           color: Color(0xff00cf55),
           shape: RoundedRectangleBorder(
@@ -28,33 +28,32 @@ class EditButton extends StatelessWidget {
             'Edit',
             style: TextStyle(color: Colors.white, fontSize: 15.0)
           ),
-          onPressed: medTile == null ? null
-            : () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return AddEditScreen(
-                      key: TherapyKeys.editScreen,
-                      onSave: (name, form, dose, doses, schedule) {
-                        BlocProvider.of<MedTileBloc>(context).add(
-                          UpdateMedTile(medTile.copyWith(
-                            name: name,
-                            form: form,
-                            dose: dose,
-                            doses: doses, 
-                            schedule: schedule,
-                          ))
-                        );
-                      },
-                      isEditing: true,
-                      medTile: medTile,
-                    );
-                  }
-                )
-              );
-          },
+          onPressed: onTap,
+          // medTile == null ? null
+          //   : () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) {
+          //           return AddEditScreen(
+          //             key: TherapyKeys.editScreen,
+          //             onSave: (name, form, dose, doses, schedule) {
+          //               BlocProvider.of<MedTileBloc>(context).add(
+          //                 UpdateMedTile(medTile.copyWith(
+          //                   name: name,
+          //                   form: form,
+          //                   dose: dose,
+          //                   doses: doses, 
+          //                   schedule: schedule,
+          //                 ))
+          //               );
+          //             },
+          //             isEditing: true,
+          //             medTile: medTile,
+          //           );
+          //         }
+          //       )
+          //     );
+          // },
         );
-      },
-    );
   }
 }

@@ -77,6 +77,7 @@ class _RegisterFormState extends State<RegisterForm> {
               child: ListView(
                 children: <Widget>[
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.email),

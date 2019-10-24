@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/widgets/widgets.dart';
+import 'package:proba123/screens/screens.dart';
 
 
 class MedTiles extends StatelessWidget {
@@ -27,6 +28,30 @@ class MedTiles extends StatelessWidget {
               final medTile = medTiles[index];
               return MedTileItem(
                 medTile: medTile,
+                edit: () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return AddEditScreen(
+                            key: TherapyKeys.editMedTileScreen,
+                            onSave: (name, form, dose, doses, schedule) {
+                              BlocProvider.of<MedTileBloc>(context).add(
+                                UpdateMedTile(medTile.copyWith(
+                                  name: name,
+                                  form: form,
+                                  dose: dose,
+                                  doses: doses, 
+                                  schedule: schedule,
+                                ))
+                              );
+                            },
+                            isEditing: true,
+                            medTile: medTile,
+                          );
+                        }
+                      )
+                    );
+                },
               );
             },
           );
