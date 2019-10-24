@@ -69,7 +69,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                     MedTileTextFormField(
                       key: TherapyKeys.nameField,
                       isEditing: isEditing,
-                      editing: isEditing  ? widget.medTile.name : '',
+                      editing: isEditing  ? widget.medTile.name : '', //TODO: don't do this
                       hint: AppLocalizations().nameHint,
                       save: _name,
                     ),
