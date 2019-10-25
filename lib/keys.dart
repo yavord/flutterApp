@@ -4,6 +4,7 @@ class TherapyKeys {
   //Home
   static final home = const Key('__home__');
   static final snackbar = const Key('__snackbar__');
+  static final addMedTile = const Key('__addMedTile__');
 
   //MedTiles
   static final medTileList = const Key('__medTileList__');
