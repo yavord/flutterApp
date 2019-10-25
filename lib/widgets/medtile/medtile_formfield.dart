@@ -12,7 +12,7 @@ class MedTileTextFormField extends TextFormField {
     @required String save,
   }) : super(
           key: key,
-          initialValue: isEditing ? editing : '',
+          initialValue: isEditing ? editing : '11:11',
           decoration: InputDecoration(
             hintText: hint,
             border: InputBorder.none,
