@@ -7,6 +7,7 @@ import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/screens/screens.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/routes.dart';
 
 
 class Home extends StatelessWidget {
@@ -19,14 +20,13 @@ class Home extends StatelessWidget {
               backgroundColor: Colors.transparent,
               title: (Text(AppLocalizations.of(context).appTitle)),
               actions: <Widget>[
-              // IconButton(
-              //   icon: Icon(Icons.add),
-              //   iconSize: 42.0,
-              //   tooltip: 'Add new MedTile',
-              //   onPressed: () {
-              //     Navigator.pushNamed(context, TherapyAppRoutes.addMedTile);
-              //   },
-              // ),
+              IconButton(
+                icon: Icon(Icons.add),
+                tooltip: 'Add new MedTile',
+                onPressed: () {
+                  Navigator.pushNamed(context, TherapyAppRoutes.addMedTile);
+                },
+              ),
               IconButton(
                 icon: Icon(Icons.exit_to_app),
                 tooltip: 'Sign out',
