@@ -39,20 +39,11 @@ class MedTile extends Equatable {
     );
   }
 
-  //TODO: fit to API
-  Map<String, Object> toEntity() {
-    return {
-      "complete" : complete,
-      "name" : name,
-      "dose" : dose,
-      "form" : form,
-      "doses" : doses,
-      "schedule" : schedule,
-    };
-  }
+  @override
+  List<Object> get props => [complete, id, name, dose, form, doses, schedule];
 
-  //TODO: fit to API
-//  static MedTile fromEntity(Map<String, Object> entity) {
-//    return MedTile();
-//  }
+  @override
+  String toString() {
+    return 'MedTile { $name }';
+  }
 }

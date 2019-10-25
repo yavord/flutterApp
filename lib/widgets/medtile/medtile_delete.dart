@@ -25,7 +25,7 @@ class DeleteMedTileButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(5.0),
             ),
-          child: Icon(Icons.delete),
+          child: Icon(Icons.delete_outline),
           onPressed: () {
             BlocProvider.of<MedTileBloc>(context).add(DeleteMedTile(medTile));
             Scaffold.of(context).showSnackBar(

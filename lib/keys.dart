@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 class TherapyKeys {
   //Home
   static final home = const Key('__home__');
+  static final snackbar = const Key('__snackbar__');
 
   //MedTiles
   static final medTileList = const Key('__medTileList__');
@@ -23,18 +24,19 @@ class TherapyKeys {
   static final barcodeButton = const Key('__barcodeButton__');
   static final editButton = const Key('__editButton__');
   static final deleteButton = const Key('__deleteButton__');
-
-  //Screens
-  static final editMedTileScreen = const Key('__editScreen__');
-  static final snackbar = const Key('__snackbar__');
+  
+  //Add Screen
   static final addMedTileScreen = const Key('__addScreen__');
+  static final saveNewMedTile = const Key('__saveNewMedTile__');
 
-  //Add/Edit Screen
   static final nameField = const Key('__nameField__');
   static final formField = const Key('__formField__');
   static final doseField = const Key('__doseField__');
   static final dosesField = const Key('__dosesField__');
   static final scheduleField = const Key('__scheduleField__');
+
+
+  //Edit Screen
   static final saveMedTile = const Key('__saveMedTile__');
-  static final saveNewMedTile = const Key('__saveNewMedTile__');
+  static final editMedTileScreen = const Key('__editScreen__');
 }
