@@ -17,12 +17,22 @@ void main() {
   BlocSupervisor.delegate = NewBlocDelegate();
   final FireBaseAuthRepo authRepo = FireBaseAuthRepo();
   runApp(
-    BlocProvider(
-      builder: (context) =>
-        AuthenticationBloc(
-          authRepo: authRepo,
-        )..add(AppStarted()),
-        child: TherapyApp(authRepo: authRepo),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthenticationBloc>(
+          builder: (context) =>
+            AuthenticationBloc(
+              authRepo: authRepo,
+            )..add(AppStarted()),
+        ),
+        BlocProvider<MedTileBloc>(
+          builder: (context) =>
+            MedTileBloc(
+              data: medications
+            )..add(LoadMedTiles()),
+        ),
+      ],
+      child: TherapyApp(authRepo: authRepo),
     ),
   );
 }
@@ -54,13 +64,6 @@ class TherapyApp extends StatelessWidget {
               if(state is Authenticated) {
                 return MultiBlocProvider(
                   providers: [
-                    BlocProvider<MedTileBloc>(
-                      builder: (context) {
-                        return MedTileBloc(
-                          data: medications
-                        )..add(LoadMedTiles());
-                      },
-                    ),
                     BlocProvider<TabsBloc>(
                       builder: (context) => TabsBloc(),
                     ),

@@ -66,40 +66,79 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    MedTileTextFormField(
+                    TextFormField(
                       key: TherapyKeys.nameField,
-                      isEditing: isEditing,
-                      editing: isEditing  ? widget.medTile.name : '', //TODO: don't do this
-                      hint: AppLocalizations().nameHint,
-                      save: _name,
+                      initialValue: isEditing ? widget.medTile.name : '',
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().nameHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _name = value,
                     ),
-                    MedTileTextFormField(
+                    TextFormField(
                       key: TherapyKeys.formField,
-                      isEditing: isEditing,
-                      editing: isEditing ? widget.medTile.form : '',
-                      hint: AppLocalizations().formHint,
-                      save: _form,
+                      initialValue: isEditing ? widget.medTile.form : '',
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().formHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _form = value,
                     ),
-                    MedTileTextFormField(
+                    TextFormField(
                       key: TherapyKeys.doseField,
-                      isEditing: isEditing,
-                      editing: isEditing ? widget.medTile.dose : '',
-                      hint: AppLocalizations().doseHint,
-                      save: _dose,
+                      initialValue: isEditing ? widget.medTile.dose : '',
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().doseHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _dose = value,
                     ),
-                    MedTileTextFormField(
+                    TextFormField(
                       key: TherapyKeys.dosesField,
-                      isEditing: isEditing,
-                      editing: isEditing ? widget.medTile.doses : '',
-                      hint: AppLocalizations().dosesHint,
-                      save: _doses,
+                      initialValue: isEditing ? widget.medTile.doses : '',
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().dosesHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _doses = value,
                     ),
-                    MedTileTextFormField(
+                    TextFormField(
                       key: TherapyKeys.scheduleField,
-                      isEditing: isEditing,
-                      editing: isEditing ? widget.medTile.schedule : '',
-                      hint: AppLocalizations().scheduleHint,
-                      save: _schedule,
+                      initialValue: isEditing ? widget.medTile.schedule : '',
+                      keyboardType: TextInputType.datetime,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().scheduleHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _schedule = value,
                     ),
                   ],
                 ),
