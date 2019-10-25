@@ -156,7 +156,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                   }
                 },
                 child: Text(
-                  '${AppLocalizations().saveMedTile} (currently not working)',
+                  '${AppLocalizations().saveMedTile}',
                   style: TextStyle(color: Colors.white, fontSize: 15.0)
                 ),
               )
