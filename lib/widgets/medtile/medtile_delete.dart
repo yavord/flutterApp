@@ -20,7 +20,7 @@ class DeleteMedTileButton extends StatelessWidget {
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
         final medTile = (state as MedTilesLoaded)
-          .medtiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
+          .medTiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return OutlineButton(
           shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(5.0),

@@ -6,25 +6,37 @@ import 'package:proba123/models/models.dart';
 
 @immutable
 abstract class MedTileEvent extends Equatable {
-  MedTileEvent([List props = const[]]) : super(props);
+  const MedTileEvent();
+
+  @override
+  List<Object> get props => [];
 }
 
 class LoadMedTiles extends MedTileEvent {}
 
 class AddMedTile extends MedTileEvent {
-  final MedTile medtile;
+  final MedTile medTile;
 
-  AddMedTile(this.medtile) : super([medtile]);
+  const AddMedTile(this.medTile);
+
+  @override
+  List<Object> get props => [medTile];
 }
 
 class UpdateMedTile extends MedTileEvent {
   final MedTile updatedMedTile;
 
-  UpdateMedTile(this.updatedMedTile) : super([updatedMedTile]);
+  const UpdateMedTile(this.updatedMedTile);
+
+  @override
+  List<Object> get props => [updatedMedTile];
 }
 
 class DeleteMedTile extends MedTileEvent {
- final MedTile medtile;
+ final MedTile medTile;
 
- DeleteMedTile(this.medtile) : super([medtile]);
+ const DeleteMedTile(this.medTile);
+
+  @override 
+  List<Object> get props => [medTile];
 }
