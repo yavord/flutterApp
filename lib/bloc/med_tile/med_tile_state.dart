@@ -20,6 +20,11 @@ class MedTilesLoaded extends MedTileState {
   const MedTilesLoaded(this.medTiles);
 
   List<Object> get props => [medTiles];
+
+  @override
+  String toString() {
+    return 'MedTilesLoaded { medtiles: $medTiles }';
+  }
 }
 
 class MedTilesNotLoaded extends MedTileState {}
