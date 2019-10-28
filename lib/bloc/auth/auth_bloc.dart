@@ -6,9 +6,9 @@ import 'auth.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  AuthenticationBloc({@required FireBaseAuthRepo authRepo})
+  AuthenticationBloc({@required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo;
 

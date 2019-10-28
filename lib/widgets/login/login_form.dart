@@ -7,9 +7,9 @@ import 'package:proba123/widgets/widgets.dart';
 
 
 class LoginForm extends StatefulWidget {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  LoginForm({Key key, @required FireBaseAuthRepo authRepo})
+  LoginForm({Key key, @required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);
@@ -23,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
 
   LoginBloc _loginBloc;
 
-  FireBaseAuthRepo get _authRepo => widget._authRepo;
+  FirebaseRepo get _authRepo => widget._authRepo;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;

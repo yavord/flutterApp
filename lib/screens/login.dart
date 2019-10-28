@@ -6,9 +6,9 @@ import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
 
 class LoginScreen extends StatelessWidget {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  LoginScreen({Key key, @required FireBaseAuthRepo authRepo})
+  LoginScreen({Key key, @required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

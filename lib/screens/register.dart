@@ -7,9 +7,9 @@ import 'package:proba123/widgets/widgets.dart';
 
 
 class RegisterScreen extends StatelessWidget {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  RegisterScreen({Key key, @required FireBaseAuthRepo authRepo})
+  RegisterScreen({Key key, @required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

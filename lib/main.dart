@@ -15,7 +15,7 @@ import 'package:proba123/models/models.dart';
 
 void main() {
   BlocSupervisor.delegate = NewBlocDelegate();
-  final FireBaseAuthRepo authRepo = FireBaseAuthRepo();
+  final FirebaseRepo authRepo = FirebaseRepo();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -38,9 +38,9 @@ void main() {
 }
 
 class TherapyApp extends StatelessWidget {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  TherapyApp({Key key, @required FireBaseAuthRepo authRepo})
+  TherapyApp({Key key, @required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

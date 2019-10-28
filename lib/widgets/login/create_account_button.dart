@@ -3,9 +3,9 @@ import 'package:user_repository/auth_repo.dart';
 import 'package:proba123/screens/screens.dart';
 
 class CreateAccountButton extends StatelessWidget {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  CreateAccountButton({Key key, @required FireBaseAuthRepo authRepo})
+  CreateAccountButton({Key key, @required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

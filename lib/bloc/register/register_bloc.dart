@@ -7,9 +7,9 @@ import 'package:proba123/bloc/register/register.dart';
 import 'package:proba123/util/validators.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final FireBaseAuthRepo _authRepo;
+  final FirebaseRepo _authRepo;
 
-  RegisterBloc({@required FireBaseAuthRepo authRepo})
+  RegisterBloc({@required FirebaseRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo;
 
