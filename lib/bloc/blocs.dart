@@ -6,3 +6,4 @@ export 'timer/timer.dart';
 export 'auth/auth.dart';
 export 'login/login.dart';
 export 'register/register.dart';
+export 'messaging/messaging.dart';
