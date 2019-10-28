@@ -7,10 +7,16 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 class FirebaseRepo {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseMessaging _firebaseMessaging;
 
-  FirebaseRepo({FirebaseAuth firebaseAuth, GoogleSignIn googleSignin})
+  FirebaseRepo({
+    FirebaseAuth firebaseAuth,
+    GoogleSignIn googleSignin,
+    FirebaseMessaging firebaseMessaging,
+    })
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignin ?? GoogleSignIn();
+        _googleSignIn = googleSignin ?? GoogleSignIn(),
+        _firebaseMessaging = firebaseMessaging ?? FirebaseMessaging();
 
   Future<FirebaseUser> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn().catchError((onError){
