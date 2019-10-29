@@ -39,17 +39,27 @@ void main() {
             )..add(MessagingInit()),
         )
       ],
-      child: TherapyApp(authRepo: authRepo),
+      child: TherapyApp(
+        authRepo: authRepo,
+        messagingRepo: messagingRepo,
+      ),
     ),
   );
 }
 
 class TherapyApp extends StatelessWidget {
   final FirebaseAuthRepo _authRepo;
+  final FirebaseMessagingRepo _messagingRepo;
 
-  TherapyApp({Key key, @required FirebaseAuthRepo authRepo})
+  TherapyApp({
+    Key key, 
+    @required FirebaseAuthRepo authRepo, 
+    @required FirebaseMessagingRepo messagingRepo,
+    })
       : assert(authRepo != null),
+        assert(messagingRepo != null),
         _authRepo = authRepo,
+        _messagingRepo = messagingRepo,
         super(key: key);
 
   @override
@@ -69,14 +79,23 @@ class TherapyApp extends StatelessWidget {
                 return LoginScreen(authRepo: _authRepo,);
               } 
               if(state is Authenticated) {
-                return MultiBlocProvider(
-                  providers: [
-                    BlocProvider<TabsBloc>(
-                      builder: (context) => TabsBloc(),
-                    ),
-                  ],
-                  child: Home(),
-                 );
+                return BlocBuilder<MessagingBloc, MessagingState>(
+                  builder: (context, state) {
+                    if (state is MessagingUninitialized) {
+                      return Center(child: CircularProgressIndicator(),);
+                    } else if (state is MessagingInitlialized) {
+                      return MultiBlocProvider(
+                    providers: [
+                      BlocProvider<TabsBloc>(
+                        builder: (context) => TabsBloc(),
+                      ),
+                    ],
+                        child: Home(),
+                      );
+                    }
+                  return Center(child: CircularProgressIndicator(),); //TODO: less of this
+                  },
+                );
                 }
               return Center(child: CircularProgressIndicator());
             },
