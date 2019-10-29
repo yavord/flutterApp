@@ -141,7 +141,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                           context: context,
                           initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now())
                         );
-                        return DateTimeField.convert(time);      
+                        return DateTimeField.convert(time);
                       },
                       validator: (val) {
                         if (val == null) {
@@ -149,7 +149,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         }
                         return null;
                       },
-                      onSaved: (value) =>  print(value.toString()),
+                      onSaved: (value) => _schedule = value.hour.toString()+':'+value.minute.toString(),
                     ),
                   ],
                 ),
