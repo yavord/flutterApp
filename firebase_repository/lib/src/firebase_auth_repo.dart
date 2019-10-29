@@ -4,19 +4,17 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:user_repository/auth_repo.dart';
 
 
-class FirebaseRepo {
+class FirebaseAuthRepo {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  final FirebaseMessaging _firebaseMessaging;
 
-  FirebaseRepo({
+  FirebaseAuthRepo({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignin,
     FirebaseMessaging firebaseMessaging,
     })
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignin ?? GoogleSignIn(),
-        _firebaseMessaging = firebaseMessaging ?? FirebaseMessaging();
+        _googleSignIn = googleSignin ?? GoogleSignIn();
 
   Future<FirebaseUser> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn().catchError((onError){
@@ -62,33 +60,5 @@ class FirebaseRepo {
 
   Future<String> getUser() async {
     return (await _firebaseAuth.currentUser()).email;
-  }
-
-  Future<String> getToken() async {
-    final token = _firebaseMessaging.getToken();
-    print(token);
-    return token;
-  }
-
-  Future<void> setConfig() async {
-    return _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-      },
-    );
-  }
-
-  Future<void> subscribeToTopic(String topic) async {
-    _firebaseMessaging.subscribeToTopic(topic);
-  }
-
-  Future<void> unsubscribeToTopic(String topic) async {
-    _firebaseMessaging.unsubscribeFromTopic(topic);
   }
 }

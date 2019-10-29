@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  user_repository:
-    path: user_repository
+  firebase_repository:
+    path: firebase_repository
 
   #ui
   charts_flutter: ^0.8.0

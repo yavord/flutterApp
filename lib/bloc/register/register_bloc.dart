@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/register/register.dart';
 import 'package:proba123/util/validators.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  RegisterBloc({@required FirebaseRepo authRepo})
+  RegisterBloc({@required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo;
 

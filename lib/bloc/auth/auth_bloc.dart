@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'auth.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  AuthenticationBloc({@required FirebaseRepo authRepo})
+  AuthenticationBloc({@required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo;
 

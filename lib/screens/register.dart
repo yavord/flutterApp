@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/widgets/widgets.dart';
 
 
 class RegisterScreen extends StatelessWidget {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  RegisterScreen({Key key, @required FirebaseRepo authRepo})
+  RegisterScreen({Key key, @required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

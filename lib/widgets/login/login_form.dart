@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/widgets/widgets.dart';
 
 
 class LoginForm extends StatefulWidget {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  LoginForm({Key key, @required FirebaseRepo authRepo})
+  LoginForm({Key key, @required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);
@@ -23,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
 
   LoginBloc _loginBloc;
 
-  FirebaseRepo get _authRepo => widget._authRepo;
+  FirebaseAuthRepo get _authRepo => widget._authRepo;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;

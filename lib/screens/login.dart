@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/login/login.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
 
 class LoginScreen extends StatelessWidget {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  LoginScreen({Key key, @required FirebaseRepo authRepo})
+  LoginScreen({Key key, @required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

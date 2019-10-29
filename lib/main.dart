@@ -9,13 +9,13 @@ import 'package:proba123/screens/screens.dart';
 import 'package:proba123/util/const.dart';
 import 'package:proba123/util/data/data.dart';
 import 'package:proba123/routes.dart';
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/models/models.dart';
 
 
 void main() {
   BlocSupervisor.delegate = NewBlocDelegate();
-  final FirebaseRepo authRepo = FirebaseRepo();
+  final FirebaseAuthRepo authRepo = FirebaseAuthRepo();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -38,9 +38,9 @@ void main() {
 }
 
 class TherapyApp extends StatelessWidget {
-  final FirebaseRepo _authRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  TherapyApp({Key key, @required FirebaseRepo authRepo})
+  TherapyApp({Key key, @required FirebaseAuthRepo authRepo})
       : assert(authRepo != null),
         _authRepo = authRepo,
         super(key: key);

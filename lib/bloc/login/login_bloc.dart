@@ -3,14 +3,14 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:proba123/bloc/login/login.dart';
-import 'package:user_repository/auth_repo.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/util/validators.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  FirebaseRepo _authRepo;
+  FirebaseAuthRepo _authRepo;
 
   LoginBloc({
-    @required FirebaseRepo authRepo,
+    @required FirebaseAuthRepo authRepo,
   })  : assert(authRepo != null),
         _authRepo = authRepo;
 
