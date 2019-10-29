@@ -4,8 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:firebase_repository/firebase_repo.dart';
 import 'auth.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final FirebaseAuthRepo _authRepo;
 
   AuthenticationBloc({@required FirebaseAuthRepo authRepo})
