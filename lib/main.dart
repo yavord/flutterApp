@@ -29,7 +29,8 @@ void main() {
         BlocProvider<MedTileBloc>(
           builder: (context) =>
             MedTileBloc(
-              data: medications
+              data: medications,
+              messagingRepo: messagingRepo,
             )..add(LoadMedTiles()),
         ),
         BlocProvider<MessagingBloc>(

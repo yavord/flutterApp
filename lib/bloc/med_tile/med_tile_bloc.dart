@@ -4,13 +4,21 @@ import 'package:meta/meta.dart';
 
 import 'med_tile.dart';
 import 'package:proba123/models/models.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 // import 'package:proba123/util/data/data.dart'; //TODO: replace this with server/api
 
 
 class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   List<MedTile> data;
+  final FirebaseMessagingRepo _messagingRepo;
 
-  MedTileBloc({@required this.data});
+  MedTileBloc({
+    @required this.data,
+    @required FirebaseMessagingRepo messagingRepo,
+    })
+      : assert(messagingRepo != null),
+      _messagingRepo = messagingRepo; 
+
 
   @override
   MedTileState get initialState => MedTilesLoading();
