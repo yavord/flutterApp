@@ -58,5 +58,5 @@ class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
     }
   }
 
-  //TODO: generate topic with unique ID
+  //TODO: generate topic with unique ID to send to db
 }
