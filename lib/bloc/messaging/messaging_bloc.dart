@@ -31,21 +31,28 @@ class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
     try{
       await _messagingRepo.getToken();
       await _messagingRepo.setConfig();
-      yield(MessagingInitlialized());
+      yield MessagingInitlialized();
     } catch (e) {
       print(e);
     }
   }
 
   Stream<MessagingState> _mapMessagingSubscriptionToState(String topic) async* {
-    if (state is MessagingInitlialized) {
-
+    try{
+      if (state is MessagingInitlialized) {
+        await _messagingRepo.subscribeToTopic(topic);
+        yield MessagingInitlialized();
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
   Stream<MessagingState> _mapMessagingUnsubscriptionToState(String topic) async* {
     try{
-      
+      if (state is MessagingInitlialized) {
+        await _messagingRepo.subscribeToTopic(topic);
+      }
     } catch (e) {
       print(e);
     }
