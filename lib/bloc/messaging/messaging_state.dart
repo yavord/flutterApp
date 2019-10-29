@@ -8,10 +8,6 @@ abstract class MessagingState extends Equatable {
   List<Object> get props => [];
 }
 
-class MessagingUninitialized extends MessagingState {
+class MessagingUninitialized extends MessagingState {}
 
-}
-
-class MessagingInitlialized extends MessagingState {
-
-}
+class MessagingInitlialized extends MessagingState {}
