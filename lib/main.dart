@@ -30,7 +30,6 @@ void main() {
           builder: (context) =>
             MedTileBloc(
               data: medications,
-              messagingRepo: messagingRepo,
             )..add(LoadMedTiles()),
         ),
         BlocProvider<MessagingBloc>(
