@@ -24,7 +24,7 @@ void main() {
           builder: (context) =>
             AuthenticationBloc(
               authRepo: authRepo,
-            )..add(AppStarted()),
+            )..add(AuthInit()),
         ),
         BlocProvider<MedTileBloc>(
           builder: (context) =>
