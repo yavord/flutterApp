@@ -37,9 +37,7 @@ class UpdateMedTile extends MedTileEvent {
   List<Object> get props => [updatedMedTile];
 
   @override
-  String toString() {
-    return 'UpdateMedTile { updatedMedTile : $updatedMedTile }';
-  }
+  String toString() => 'UpdateMedTile { updatedMedTile : $updatedMedTile }';
 }
 
 class DeleteMedTile extends MedTileEvent {
@@ -50,7 +48,5 @@ class DeleteMedTile extends MedTileEvent {
   @override 
   List<Object> get props => [medTile];
 
-  String toString() {
-    return 'DeleteMedTile { medtile: $medTile }';
-  }
+  String toString() => 'DeleteMedTile { medtile: $medTile }';
 }
