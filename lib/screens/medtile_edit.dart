@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:intl/intl.dart';
+
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
@@ -39,6 +42,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   String _schedule;
 
   bool get isEditing => widget.isEditing;
+  final format = DateFormat.Hm();
 
   @override
   Widget build(BuildContext context) {
@@ -124,21 +128,22 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         },
                       onSaved: (value) => _doses = value,
                     ),
-                    TextFormField(
+                    DateTimeField(
                       key: TherapyKeys.scheduleField,
-                      initialValue: isEditing ? widget.medTile.schedule : '',
-                      keyboardType: TextInputType.datetime,
+                      format: format,
                       decoration: InputDecoration(
                         hintText: AppLocalizations().scheduleHint,
                         border: InputBorder.none,
-                        ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
-                        },
-                      onSaved: (value) => _schedule = value,
-                    ),
+                      ),
+                      onShowPicker: (context, currentValue) async {
+                        final time = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now())
+                        );
+                        return DateTimeField.convert(time);      
+                      },
+                      onSaved: (value) => _schedule = value.toString(),
+                    )
                   ],
                 ),
               ),
