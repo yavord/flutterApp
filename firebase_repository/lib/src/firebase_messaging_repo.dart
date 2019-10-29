@@ -8,8 +8,8 @@ class FirebaseMessagingRepo {
     : _firebaseMessaging = firebaseMessaging ?? FirebaseMessaging();
 
   Future<String> getToken() async {
-    final token = _firebaseMessaging.getToken();
-    print(token);
+    String token = await _firebaseMessaging.getToken();
+    print('FCM Token: $token');
     return token;
   }
 

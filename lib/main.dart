@@ -16,6 +16,7 @@ import 'package:proba123/models/models.dart';
 void main() {
   BlocSupervisor.delegate = NewBlocDelegate();
   final FirebaseAuthRepo authRepo = FirebaseAuthRepo();
+  final FirebaseMessagingRepo messagingRepo = FirebaseMessagingRepo();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -31,6 +32,12 @@ void main() {
               data: medications
             )..add(LoadMedTiles()),
         ),
+        BlocProvider<MessagingBloc>(
+          builder: (context) =>
+            MessagingBloc(
+              messagingRepo: messagingRepo
+            )..add(MessagingInit()),
+        )
       ],
       child: TherapyApp(authRepo: authRepo),
     ),
