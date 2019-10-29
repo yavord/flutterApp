@@ -22,7 +22,7 @@ class AppLocalizations {
   String get unsuccessful => 'Scan unsuccessful: ';
   String get addMedTile => 'Add MedTile';
   String get nameHint => 'Medication name';
-  String get emptyError => 'Please enter some text';
+  String get emptyError => 'Please enter a value';
   String get formHint => 'Method of intake';
   String get doseHint => 'Dose per sitting';
   String get dosesHint => 'Total amount of doses in package';

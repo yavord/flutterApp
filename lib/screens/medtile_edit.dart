@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/widgets/widgets.dart';
 
 
 typedef OnSaveCallBack = Function(
@@ -142,8 +143,14 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         );
                         return DateTimeField.convert(time);      
                       },
-                      onSaved: (value) => _schedule = value.toString(),
-                    )
+                      validator: (val) {
+                        if (val == null) {
+                          return AppLocalizations().emptyError;
+                        }
+                        return null;
+                      },
+                      onSaved: (value) =>  print(value.toString()),
+                    ),
                   ],
                 ),
               ),
