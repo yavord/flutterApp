@@ -25,5 +25,13 @@ class MessagingSubscription extends MessagingEvent {
 }
 
 class MessagingUnsubscription extends MessagingEvent {
+  final String topic;
 
+  const MessagingUnsubscription(this.topic);
+  
+  @override
+  List<Object> get props => [topic];
+
+  @override
+  String toString() => 'Unsubscriped: { topic: $topic }';
 }
