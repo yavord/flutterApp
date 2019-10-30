@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_repository/firebase_repo.dart';
 import 'dart:async';
 import 'package:meta/meta.dart';
 
@@ -9,8 +10,15 @@ import 'package:proba123/models/models.dart';
 
 class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   List<MedTile> data;
+  final FirebaseMessagingRepo _messagingRepo;
+  //TODO: add notification methods that depend on user settings
 
-  MedTileBloc({@required this.data});
+  MedTileBloc({
+    @required this.data,
+    @required FirebaseMessagingRepo messagingRepo,
+    })
+      : assert(messagingRepo != null),
+      _messagingRepo = messagingRepo;
 
   @override
   MedTileState get initialState => MedTilesLoading();
