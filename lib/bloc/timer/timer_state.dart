@@ -4,7 +4,10 @@ import 'package:meta/meta.dart';
 
 @immutable
 abstract class CircleTimerState extends Equatable {
-  CircleTimerState([List props = const[]]) : super(props);
+  const CircleTimerState();
+
+  @override
+  List<Object> get props => [];
 }
 
 class CircleTimerLoading extends CircleTimerState {}
@@ -12,13 +15,19 @@ class CircleTimerLoading extends CircleTimerState {}
 class CircleTimerLoaded extends CircleTimerState {
   final double nextIntake;
 
-  CircleTimerLoaded(this.nextIntake) : super([nextIntake]);
+  const CircleTimerLoaded(this.nextIntake);
+
+  @override
+  List<Object> get props => [nextIntake];
 }
 
 class CircleTimerZero extends CircleTimerState {
   final double nextIntake;
 
-  CircleTimerZero(this.nextIntake) : super([nextIntake]);
+  const CircleTimerZero(this.nextIntake);
+
+  @override
+  List<Object> get props => [nextIntake];
 }
 
 class CircleTimerNotLoaded extends CircleTimerState{}
