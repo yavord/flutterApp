@@ -6,7 +6,10 @@ import 'package:proba123/models/models.dart';
 
 @immutable
 abstract class NfcState extends Equatable {
-  NfcState([List props = const[]]) : super(props);
+  const NfcState();
+
+  @override
+  
 }
 
 class NfcInitial extends NfcState {}

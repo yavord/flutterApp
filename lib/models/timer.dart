@@ -7,6 +7,8 @@ import 'package:meta/meta.dart';
 class CircleTimer extends Equatable {
   final String time;
 
-  CircleTimer({@required this.time}) :
-      super([time]);
+  CircleTimer({@required this.time});
+
+  @override
+  List<Object> get props => [time];
 }

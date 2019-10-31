@@ -17,6 +17,7 @@ void main() {
   BlocSupervisor.delegate = NewBlocDelegate();
   final FirebaseAuthRepo authRepo = FirebaseAuthRepo();
   final FirebaseMessagingRepo messagingRepo = FirebaseMessagingRepo();
+  final FirebaseFirestoreRepo firestoreRepo = FirebaseFirestoreRepo();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -33,16 +34,11 @@ void main() {
               data: medications,
             )..add(LoadMedTiles()),
         ),
-        BlocProvider<MessagingBloc>(
-          builder: (context) =>
-            MessagingBloc(
-              messagingRepo: messagingRepo
-            )..add(MessagingInit()),
-        )
       ],
       child: TherapyApp(
         authRepo: authRepo,
         messagingRepo: messagingRepo,
+        firestoreRepo: firestoreRepo,
       ),
     ),
   );
@@ -51,14 +47,18 @@ void main() {
 class TherapyApp extends StatelessWidget {
   final FirebaseAuthRepo _authRepo;
   final FirebaseMessagingRepo _messagingRepo;
+  final FirebaseFirestoreRepo _firestoreRepo;
 
   TherapyApp({
     Key key, 
     @required FirebaseAuthRepo authRepo, 
     @required FirebaseMessagingRepo messagingRepo,
+    @required FirebaseFirestoreRepo firestoreRepo,
     })
       : assert(authRepo != null),
         assert(messagingRepo != null),
+        assert(firestoreRepo != null),
+        _firestoreRepo = firestoreRepo,
         _authRepo = authRepo,
         _messagingRepo = messagingRepo,
         super(key: key);
@@ -90,6 +90,13 @@ class TherapyApp extends StatelessWidget {
                       BlocProvider<TabsBloc>(
                         builder: (context) => TabsBloc(),
                       ),
+                      BlocProvider<MessagingBloc>(
+                        builder: (context) => MessagingBloc(
+                          authRepo: _authRepo,
+                          firestoreRepo: _firestoreRepo,
+                          messagingRepo: _messagingRepo,
+                        )..add(MessagingInit()),
+                      )
                     ],
                         child: Home(),
                       );

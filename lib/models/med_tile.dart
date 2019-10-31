@@ -23,8 +23,7 @@ class MedTile extends Equatable {
     @required this.doses,
     @required this.schedule,
   }) :
-        this.id = id ?? Uuid().generateV4(),
-        super([complete, name, dose, form, doses, schedule]);
+      this.id = id ?? Uuid().generateV4();
 
   MedTile copyWith({bool complete, String id, String name, 
     String dose, String form, String doses, String schedule,}) {

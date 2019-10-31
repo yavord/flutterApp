@@ -16,6 +16,8 @@ class MedId extends Equatable {
     @required this.doctorName,
     @required this.doctorNumber,
   }) : 
-        this.id = id ?? Uuid().generateV4(),
-        super([patientName, doctorName, doctorNumber]);
+        this.id = id ?? Uuid().generateV4();
+
+  @override
+  List<Object> get props => [id, patientName, doctorName, doctorNumber];
 }

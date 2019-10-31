@@ -7,9 +7,19 @@ import 'messaging.dart';
 
 class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
   final FirebaseMessagingRepo _messagingRepo;
+  final FirebaseFirestoreRepo _firestoreRepo;
+  final FirebaseAuthRepo _authRepo;
 
-  MessagingBloc({@required FirebaseMessagingRepo messagingRepo})
+  MessagingBloc({
+    @required FirebaseMessagingRepo messagingRepo,
+    @required FirebaseFirestoreRepo firestoreRepo,
+    @required FirebaseAuthRepo authRepo,
+    })
     : assert(messagingRepo != null),
+      assert(firestoreRepo != null),
+      assert(authRepo != null),
+      _authRepo = authRepo,
+      _firestoreRepo = firestoreRepo,
       _messagingRepo = messagingRepo;
 
   @override
@@ -29,8 +39,10 @@ class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
 
   Stream<MessagingState> _mapMessagingInitToState() async* {
     try{
-      await _messagingRepo.getToken();
+      final token = await _messagingRepo.getToken();
+      final user = await _authRepo.getUser();
       await _messagingRepo.setConfig();
+      await _firestoreRepo.addToken(TokenEntity(token, user));
       yield MessagingInitlialized();
     } catch (e) {
       print(e);

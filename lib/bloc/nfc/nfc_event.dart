@@ -4,7 +4,10 @@ import 'package:meta/meta.dart';
 
 @immutable
 abstract class NfcEvent extends Equatable {
-  NfcEvent([List props = const[]]) : super(props);
+  const NfcEvent();
+
+  @override
+  List<Object> get props => [];
 }
 
 class GetNfc extends NfcEvent {}
