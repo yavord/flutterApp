@@ -80,30 +80,21 @@ class TherapyApp extends StatelessWidget {
                 return LoginScreen(authRepo: _authRepo,);
               } 
               if(state is Authenticated) {
-                return BlocBuilder<MessagingBloc, MessagingState>(
-                  builder: (context, state) {
-                    if (state is MessagingUninitialized) {
-                      return Center(child: CircularProgressIndicator(),);
-                    } else if (state is MessagingInitlialized) {
-                      return MultiBlocProvider(
-                    providers: [
-                      BlocProvider<TabsBloc>(
-                        builder: (context) => TabsBloc(),
-                      ),
-                      BlocProvider<MessagingBloc>(
-                        builder: (context) => MessagingBloc(
-                          authRepo: _authRepo,
-                          firestoreRepo: _firestoreRepo,
-                          messagingRepo: _messagingRepo,
-                        )..add(MessagingInit()),
-                      )
-                    ],
-                        child: Home(),
-                      );
-                    }
-                  return Center(child: CircularProgressIndicator(),); //TODO: less of this
-                  },
-                );
+                return MultiBlocProvider(
+                  providers: [
+                    BlocProvider<TabsBloc>(
+                      builder: (context) => TabsBloc(),
+                    ),
+                    BlocProvider<MessagingBloc>(
+                      builder: (context) => MessagingBloc(
+                        authRepo: _authRepo,
+                        firestoreRepo: _firestoreRepo,
+                        messagingRepo: _messagingRepo,
+                      )..add(MessagingInit()),
+                    )
+                  ],
+                  child: Home(),
+                  );
                 }
               return Center(child: CircularProgressIndicator());
             },
