@@ -17,9 +17,6 @@ class StartTimer extends TimerEvent {
 
   @override
   List<Object> get props => [];
-
-  @override
-  String toString() => 'StartTimer: { $nextIntake }';
 }
 
 class UpdateTimer extends TimerEvent {
@@ -29,9 +26,6 @@ class UpdateTimer extends TimerEvent {
 
   @override
   List<Object> get props => [nextIntake];
-
-  @override
-  String toString() => 'UpdateTimer: { $nextIntake }';
 }
 
 class ZeroTimer extends TimerEvent {}
