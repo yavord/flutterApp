@@ -31,8 +31,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       yield* _mapTickToState(event);
     } else if(event is ResetTimer) {
       yield* _mapResetTimerToState(event);
-    } else if(event is ZeroTimer) {
-      yield* _mapZeroTimerToState(event);
     }
   }
 
@@ -55,10 +53,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   Stream<TimerState> _mapResetTimerToState(ResetTimer reset) async* {
-    
-  }
-
-  Stream<TimerState> _mapZeroTimerToState(ZeroTimer zero) async* {
-    
+    _tickerSubscription?.cancel();
+    yield TimerReady(nextIntake);
   }
 }
