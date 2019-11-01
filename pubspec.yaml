@@ -39,7 +39,7 @@ flutter_icons:
   #flutter pub pub run flutter_launcher_icons:main
   image_path: 'assets/img/main.png'
   android: true
-  ios: true
+  ios: false
 
 flutter:
   uses-material-design: true
