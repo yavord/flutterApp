@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 @immutable
 abstract class TimerState extends Equatable {
-  final double nextIntake;
+  final int nextIntake;
 
   const TimerState(this.nextIntake);
 
@@ -13,7 +13,7 @@ abstract class TimerState extends Equatable {
 }
 
 class TimerReady extends TimerState {
-  final double nextIntake;
+  final int nextIntake;
 
   const TimerReady(this.nextIntake) : super(nextIntake);
 
@@ -22,7 +22,7 @@ class TimerReady extends TimerState {
 }
 
 class TimerRunning extends TimerState{
-  final double nextIntake;
+  final int nextIntake;
 
   const TimerRunning(this.nextIntake) : super(nextIntake);
 }

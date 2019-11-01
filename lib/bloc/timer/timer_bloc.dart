@@ -8,7 +8,7 @@ import 'package:proba123/util/ticker.dart';
 
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  final double nextIntake;
+  final int nextIntake;
   final Ticker _ticker;
 
   StreamSubscription<int> _tickerSubscription;
@@ -43,7 +43,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   Stream<TimerState> _mapStartTimerToState(StartTimer start) async* {
-
+    yield TimerRunning(start.nextIntake);
+    _tickerSubscription?.cancel();
+    _tickerSubscription = _ticker
+      .tick(ticks: start.nextIntake)
+        .listen((duration) => add(Tick(duration: duration)));
   }
 
   Stream<TimerState> _mapTickToState(Tick tick) async* {
