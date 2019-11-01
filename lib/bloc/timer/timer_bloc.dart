@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 
 import 'timer.dart';
 import 'package:proba123/util/ticker.dart';
-import 'package:proba123/util/timer_painter.dart';
 
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
