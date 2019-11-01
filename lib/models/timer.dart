@@ -4,10 +4,10 @@ import 'package:meta/meta.dart';
 
 //this class is most likely unnecessary
 @immutable
-class CircleTimer extends Equatable {
+class Timer extends Equatable {
   final String time;
 
-  CircleTimer({@required this.time});
+  Timer({@required this.time});
 
   @override
   List<Object> get props => [time];

@@ -4,26 +4,26 @@ import 'package:meta/meta.dart';
 
 
 @immutable
-abstract class CircleTimerEvent extends Equatable {
-  const CircleTimerEvent();
+abstract class TimerEvent extends Equatable {
+  const TimerEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LoadCircleTimer extends CircleTimerEvent {
+class LoadTimer extends TimerEvent {
   // final double nextIntake;
 
-  // LoadCircleTimer({@required this.nextIntake}) : super([nextIntake]);
+  // LoadTimer({@required this.nextIntake}) : super([nextIntake]);
 }
 
-class UpdateCircleTimer extends CircleTimerEvent {
+class UpdateTimer extends TimerEvent {
   final double nextIntake;
 
-  const UpdateCircleTimer(this.nextIntake);
+  const UpdateTimer(this.nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
 }
 
-class ZeroCircleTimer extends CircleTimerEvent {}
+class ZeroTimer extends TimerEvent {}

@@ -8,10 +8,10 @@ import 'timer.dart';
 import 'package:proba123/models/models.dart';
 
 
-class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
+class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final MedTile medTile;
 
-  CircleTimerBloc({@required this.medTile});
+  TimerBloc({@required this.medTile});
 
   getAnimationStart() {
     intl.DateFormat dateFormat = new intl.DateFormat.Hm();
@@ -30,36 +30,36 @@ class CircleTimerBloc extends Bloc<CircleTimerEvent, CircleTimerState> {
   }
 
   @override
-  CircleTimerState get initialState => CircleTimerLoading();
+  TimerState get initialState => TimerLoading();
 
   @override
-  Stream<CircleTimerState> mapEventToState(
-    CircleTimerEvent event,
+  Stream<TimerState> mapEventToState(
+    TimerEvent event,
     ) async* {
-    if(event is LoadCircleTimer) {
-      yield* _mapLoadCircleTimerToState();
-    } else if(event is UpdateCircleTimer) {
-      yield* _mapUpdateCircleTimerToState(event);
-    } else if(event is ZeroCircleTimer) {
+    if(event is LoadTimer) {
+      yield* _mapLoadTimerToState();
+    } else if(event is UpdateTimer) {
+      yield* _mapUpdateTimerToState(event);
+    } else if(event is ZeroTimer) {
       yield* _mapZeroCircleTimeToState();
     }
   }
 
-  Stream<CircleTimerState> _mapLoadCircleTimerToState() async* {
+  Stream<TimerState> _mapLoadTimerToState() async* {
     try{
-      yield CircleTimerLoaded(getAnimationStart());
+      yield TimerLoaded(getAnimationStart());
     } catch(_) {
-      yield CircleTimerNotLoaded();
+      yield TimerNotLoaded();
     }
   }
 
-  Stream<CircleTimerState> _mapUpdateCircleTimerToState(
-    CircleTimerEvent event,
+  Stream<TimerState> _mapUpdateTimerToState(
+    TimerEvent event,
     ) async* {
     
   }
 
-  Stream<CircleTimerState> _mapZeroCircleTimeToState() async* {
+  Stream<TimerState> _mapZeroCircleTimeToState() async* {
     
   }
 }

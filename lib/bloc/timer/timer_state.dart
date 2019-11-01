@@ -3,31 +3,31 @@ import 'package:meta/meta.dart';
 
 
 @immutable
-abstract class CircleTimerState extends Equatable {
-  const CircleTimerState();
+abstract class TimerState extends Equatable {
+  const TimerState();
 
   @override
   List<Object> get props => [];
 }
 
-class CircleTimerLoading extends CircleTimerState {}
+class TimerLoading extends TimerState {}
 
-class CircleTimerLoaded extends CircleTimerState {
+class TimerLoaded extends TimerState {
   final double nextIntake;
 
-  const CircleTimerLoaded(this.nextIntake);
+  const TimerLoaded(this.nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
 }
 
-class CircleTimerZero extends CircleTimerState {
+class TimerZero extends TimerState {
   final double nextIntake;
 
-  const CircleTimerZero(this.nextIntake);
+  const TimerZero(this.nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
 }
 
-class CircleTimerNotLoaded extends CircleTimerState{}
+class TimerNotLoaded extends TimerState{}
