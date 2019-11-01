@@ -36,7 +36,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   Stream<TimerState> mapEventToState(
     TimerEvent event,
     ) async* {
-    if(event is LoadTimer) {
+    if(event is StartTimer) {
       yield* _mapLoadTimerToState();
     } else if(event is UpdateTimer) {
       yield* _mapUpdateTimerToState(event);

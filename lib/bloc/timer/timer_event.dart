@@ -11,10 +11,16 @@ abstract class TimerEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadTimer extends TimerEvent {
-  // final double nextIntake;
+class StartTimer extends TimerEvent {
+  final double nextIntake;
 
-  // LoadTimer({@required this.nextIntake}) : super([nextIntake]);
+  const StartTimer(this.nextIntake);
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  String toString() => 'StartTimer: { $nextIntake }';
 }
 
 class UpdateTimer extends TimerEvent {
@@ -24,6 +30,9 @@ class UpdateTimer extends TimerEvent {
 
   @override
   List<Object> get props => [nextIntake];
+
+  @override
+  String toString() => 'UpdateTimer: { $nextIntake }';
 }
 
 class ZeroTimer extends TimerEvent {}
