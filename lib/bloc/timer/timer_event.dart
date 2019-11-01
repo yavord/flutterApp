@@ -28,4 +28,6 @@ class UpdateTimer extends TimerEvent {
   List<Object> get props => [nextIntake];
 }
 
+class ResetTimer extends TimerEvent{}
+
 class ZeroTimer extends TimerEvent {}
