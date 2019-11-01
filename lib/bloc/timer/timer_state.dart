@@ -12,7 +12,6 @@ abstract class TimerState extends Equatable {
   List<Object> get props => [];
 }
 
-
 class TimerReady extends TimerState {
   final double nextIntake;
 
@@ -29,10 +28,5 @@ class TimerRunning extends TimerState{
 }
 
 class TimerZero extends TimerState {
-  final double nextIntake;
-
-  const TimerZero(this.nextIntake) : super(nextIntake);
-
-  @override
-  List<Object> get props => [nextIntake];
+  const TimerZero() : super(0);
 }

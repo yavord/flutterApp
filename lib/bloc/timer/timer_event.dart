@@ -19,10 +19,10 @@ class StartTimer extends TimerEvent {
   List<Object> get props => [];
 }
 
-class UpdateTimer extends TimerEvent {
+class Tick extends TimerEvent {
   final double nextIntake;
 
-  const UpdateTimer(this.nextIntake);
+  const Tick(this.nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
