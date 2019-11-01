@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-// import 'package:proba123/models/models.dart';
 import 'package:meta/meta.dart';
 
 

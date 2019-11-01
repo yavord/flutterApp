@@ -4,30 +4,35 @@ import 'package:meta/meta.dart';
 
 @immutable
 abstract class TimerState extends Equatable {
-  const TimerState();
+  final double nextIntake;
+
+  const TimerState(this.nextIntake);
 
   @override
   List<Object> get props => [];
 }
 
-class TimerLoading extends TimerState {}
 
-class TimerLoaded extends TimerState {
+class TimerReady extends TimerState {
   final double nextIntake;
 
-  const TimerLoaded(this.nextIntake);
+  const TimerReady(this.nextIntake) : super(nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
+}
+
+class TimerRunning extends TimerState{
+  final double nextIntake;
+
+  const TimerRunning(this.nextIntake) : super(nextIntake);
 }
 
 class TimerZero extends TimerState {
   final double nextIntake;
 
-  const TimerZero(this.nextIntake);
+  const TimerZero(this.nextIntake) : super(nextIntake);
 
   @override
   List<Object> get props => [nextIntake];
 }
-
-class TimerNotLoaded extends TimerState{}
