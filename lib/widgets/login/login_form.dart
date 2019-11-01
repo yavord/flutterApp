@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/widgets/widgets.dart';
+import 'package:proba123/localization.dart';
 
 
 class LoginForm extends StatefulWidget {
@@ -51,7 +52,7 @@ class _LoginFormState extends State<LoginForm> {
               SnackBar(
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('Login Failure'), Icon(Icons.error)],
+                  children: [Text(AppLocalizations().loginFail), Icon(Icons.error)],
                 ),
                 backgroundColor: Colors.red,
               ),

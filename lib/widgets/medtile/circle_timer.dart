@@ -52,6 +52,12 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Align(

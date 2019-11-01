@@ -30,6 +30,7 @@ class AppLocalizations {
   String get saveMedTile => 'Save MedTile';
   String get deleteMedTile => 'MedTile deleted: ';
   String get undo => 'Undo';
+  String get loginFail => 'Login Failed';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

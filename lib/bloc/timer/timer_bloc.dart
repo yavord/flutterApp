@@ -7,10 +7,10 @@ import 'timer.dart';
 import 'package:proba123/util/ticker.dart';
 
 
-class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  final double _nextIntake;
-  final Ticker _ticker;
-  final AnimationController _controller;
+// class TimerBloc extends Bloc<TimerEvent, TimerState> {
+//   final double _nextIntake;
+//   final Ticker _ticker;
+//   final AnimationController _controller;
   
-  
-}
+
+// }
