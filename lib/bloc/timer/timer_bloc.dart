@@ -47,11 +47,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
       .tick(ticks: start.nextIntake)
-        .listen((duration) => add(Tick(duration: duration)));
+        .listen((nextIntake) => add(Tick(nextIntake)));
   }
 
   Stream<TimerState> _mapTickToState(Tick tick) async* {
-    
+    yield tick.nextIntake > 0 ? TimerRunning(tick.nextIntake) : TimerZero();
   }
 
   Stream<TimerState> _mapResetTimerToState(ResetTimer reset) async* {
