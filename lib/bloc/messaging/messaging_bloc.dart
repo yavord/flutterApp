@@ -39,10 +39,11 @@ class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
 
   Stream<MessagingState> _mapMessagingInitToState() async* {
     try{
-      final token = await _messagingRepo.getToken();
-      final user = await _authRepo.getUser();
+      // final token = await _messagingRepo.getToken();
+      // final user = await _authRepo.getUser();
+      await _messagingRepo.getToken();
       await _messagingRepo.setConfig();
-      await _firestoreRepo.addToken(TokenEntity(token, user));
+      // await _firestoreRepo.addToken(TokenEntity(token, user));
       yield MessagingInitlialized();
     } catch (e) {
       print(e);
