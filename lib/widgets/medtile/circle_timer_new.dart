@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'dart:math' as math;
 
 import 'package:proba123/bloc/timer/timer.dart';
-import 'package:proba123/util/ticker.dart';
-import 'package:proba123/util/timer_painter.dart';
 import 'package:proba123/util/const.dart';
 import 'package:proba123/localization.dart';
-
-
-  // var string = '8:30';
-  
-  // var take = DateFormat.Hm().parse(string);
-
-  // print(take.minute + take.hour*60);
 
 
 class CircleTimer extends StatelessWidget {
@@ -29,7 +21,17 @@ class CircleTimer extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Positioned.fill(
-                  child: null,
+                  child: BlocBuilder<TimerBloc, TimerState>(
+                    builder: (context, state) {
+                      return CustomPaint(
+                        painter: TimerPainter(
+                          nextIntake: state.nextIntake/(24*60),
+                          backgroundColor: Colors.transparent,
+                          color: Constants.myBlue,
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Align(
                   alignment: FractionalOffset.center,
@@ -70,5 +72,38 @@ class CircleTimer extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class TimerPainter extends CustomPainter {
+  TimerPainter({
+    this.nextIntake,
+    this.backgroundColor,
+    this.color,
+  });
+
+  final double nextIntake;
+  final Color backgroundColor, color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = backgroundColor
+      ..strokeWidth = 5.0
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ;
+
+    canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
+    paint.color = color;
+    double progress = (1.0 - nextIntake) * 2 * math.pi;
+    canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
+  }
+
+  @override
+  bool shouldRepaint(TimerPainter old) {
+    return nextIntake != old.nextIntake ||
+        color != old.color ||
+        backgroundColor != old.backgroundColor;
   }
 }

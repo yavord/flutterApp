@@ -15,7 +15,6 @@ class Circle extends StatefulWidget {
   _CircleState createState() => _CircleState();
 }
 
-//TODO: learn flutter animations and dispose animationcontrollers properly
 class _CircleState extends State<Circle> with TickerProviderStateMixin {
   AnimationController controller;
 
