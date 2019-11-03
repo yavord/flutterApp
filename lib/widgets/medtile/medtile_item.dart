@@ -1,11 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 import 'package:proba123/keys.dart';
 import 'package:proba123/models/models.dart';
+import 'package:proba123/util/ticker.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/bloc/timer/timer_bloc.dart';
 
 
 class MedTileItem extends StatelessWidget{
@@ -95,10 +99,12 @@ class MedTileItem extends StatelessWidget{
               padding: const EdgeInsets.symmetric(horizontal: 125.0),
               child: Row(
                 children: <Widget>[
-                  Circle(
-                    schedule: medTile.schedule,
-                    key: TherapyKeys.medTileItemSchedule(medTile.id),
-                  ),
+                  BlocProvider(
+                    builder: (context) => TimerBloc(
+                      ticker: Ticker(),
+                      nextIntake: DateFormat.Hm().parse(medTile.schedule)
+                      ),
+                  )
                 ],
               ),
             ),

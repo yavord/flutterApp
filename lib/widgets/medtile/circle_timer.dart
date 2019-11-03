@@ -1,61 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'dart:math' as math;
 
-import 'package:intl/intl.dart' as intl;
+import 'package:proba123/bloc/timer/timer.dart';
 import 'package:proba123/util/const.dart';
 import 'package:proba123/localization.dart';
-//TODO: create auto_size_text groupings
-import 'package:auto_size_text/auto_size_text.dart';
 
-class Circle extends StatefulWidget {
-  final String schedule;
 
-  Circle({Key key, this.schedule}) : super(key: key);
-
-  _CircleState createState() => _CircleState();
-}
-
-class _CircleState extends State<Circle> with TickerProviderStateMixin {
-  AnimationController controller;
-
-  String get timerString {
-    Duration duration = controller.duration * controller.value;
-    return '${duration.inHours}:${(duration.inMinutes % 60).toString().padLeft(2, '0')} h';
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    nextIntakeTime() {
-      intl.DateFormat dateFormat = new intl.DateFormat.Hm();
-      DateTime takeTime = dateFormat.parse(widget.schedule);
-      DateTime now = DateTime.now();
-      var hoursLeft = takeTime.hour - now.hour;
-      var minutesLeft = takeTime.minute - now.minute;
-      if (minutesLeft < 0) {
-        hoursLeft -= 1;
-        minutesLeft += 60;
-      }
-      if (hoursLeft > 19) hoursLeft -= 24;
-      if (hoursLeft < -5) hoursLeft += 24;
-      double animationStart = (hoursLeft * 60 + minutesLeft) / (24 * 60);
-      // print('start: $animationStart');
-      return animationStart;
-    }
-
-    controller =
-        AnimationController(vsync: this, duration: Duration(hours: 24));
-    controller.value = nextIntakeTime();
-    controller.reverse(from: controller.value);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
+class CircleTimer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -68,14 +21,14 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
             child: Stack(
               children: <Widget>[
                 Positioned.fill(
-                  child: AnimatedBuilder(
-                    animation: controller,
-                    builder: (BuildContext context, Widget child) {
-                      return new CustomPaint(
+                  child: BlocBuilder<TimerBloc, TimerState>(
+                    builder: (context, state) {
+                      return CustomPaint(
                         painter: TimerPainter(
-                            animation: controller,
-                            backgroundColor: Colors.transparent,
-                            color: Constants.myBlue),
+                          nextIntake: state.nextIntake/(24*60),
+                          backgroundColor: Colors.transparent,
+                          color: Constants.myBlue,
+                        ),
                       );
                     },
                   ),
@@ -91,20 +44,28 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
                         Text(
                           AppLocalizations().takeAfter,
                         ),
-                        AnimatedBuilder(
-                            animation: controller,
-                            builder: (BuildContext context, Widget child) {
-                              return new AutoSizeText(
-                                timerString,
+                        BlocBuilder<TimerBloc, TimerState>(
+                          builder: (context, state) {
+                            final String hourStr = ((state.nextIntake / 60) % 60)
+                              .floor()
+                              .toString()
+                              .padLeft(2,'0');
+                            final String minStr = (state.nextIntake % 60)
+                              .floor()
+                              .toString()
+                              .padLeft(2,'0');
+                            return new AutoSizeText(
+                                '$hourStr:$minStr',
                                 maxLines: 1,
                                 stepGranularity: 8,
                                 minFontSize: 16,
                                 style: TextStyle(fontSize: 24.0));
-                            })
+                          },
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -116,12 +77,12 @@ class _CircleState extends State<Circle> with TickerProviderStateMixin {
 
 class TimerPainter extends CustomPainter {
   TimerPainter({
-    this.animation,
+    this.nextIntake,
     this.backgroundColor,
     this.color,
-  }) : super(repaint: animation);
+  });
 
-  final Animation<double> animation;
+  final double nextIntake;
   final Color backgroundColor, color;
 
   @override
@@ -135,13 +96,13 @@ class TimerPainter extends CustomPainter {
 
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = color;
-    double progress = (1.0 - animation.value) * 2 * math.pi;
+    double progress = (1.0 - nextIntake) * 2 * math.pi;
     canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
   }
 
   @override
   bool shouldRepaint(TimerPainter old) {
-    return animation.value != old.animation.value ||
+    return nextIntake != old.nextIntake ||
         color != old.color ||
         backgroundColor != old.backgroundColor;
   }
