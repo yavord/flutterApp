@@ -102,7 +102,7 @@ class MedTileItem extends StatelessWidget{
                   BlocProvider(
                     builder: (context) => TimerBloc(
                       ticker: Ticker(),
-                      nextIntake: DateFormat.Hm().parse(medTile.schedule)
+                      nextIntake: DateFormat.Hm().parse(medTile.schedule),
                       ),
                   )
                 ],
