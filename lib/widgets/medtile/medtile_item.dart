@@ -107,6 +107,7 @@ class MedTileItem extends StatelessWidget{
                         start: medTile.start,
                         ),
                       ),
+                      child: CircleTimer(),
                   )
                 ],
               ),

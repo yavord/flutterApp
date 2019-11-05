@@ -25,7 +25,7 @@ class CircleTimer extends StatelessWidget {
                     builder: (context, state) {
                       return CustomPaint(
                         painter: TimerPainter(
-                          nextIntake: state.nextIntake.toInt()/(24*60),
+                          nextIntake: state.nextIntake/(24*60),
                           backgroundColor: Colors.transparent,
                           color: Constants.myBlue,
                         ),
