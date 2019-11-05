@@ -18,8 +18,11 @@ class NextIntake extends Equatable {
 
   int toMinutes() {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
+    DateTime future = new DateTime.utc(start.year, start.month, start.day+frequency, 
+      toDateTime.hour, toDateTime.minute);
     DateTime now = new DateTime.now();
-
     
+    Duration durationFuture = future.difference(now);
+    return durationFuture.inMinutes;
   }
 }
