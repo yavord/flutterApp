@@ -18,7 +18,7 @@ class NextIntake extends Equatable {
 
   int toMinutes() {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
-    DateTime now = DateTime.now();
+    DateTime now = new DateTime.now();
 
     
   }
