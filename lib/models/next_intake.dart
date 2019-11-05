@@ -23,6 +23,7 @@ class NextIntake extends Equatable {
     DateTime now = new DateTime.now();
     
     Duration durationFuture = future.difference(now);
+    assert(durationFuture.inMinutes>=0);
     return durationFuture.inMinutes;
   }
 }
