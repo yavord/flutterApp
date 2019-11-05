@@ -46,11 +46,11 @@ class CircleTimer extends StatelessWidget {
                         ),
                         BlocBuilder<TimerBloc, TimerState>(
                           builder: (context, state) {
-                            final String hourStr = ((state.nextIntake.toInt() / 60) % 60)
+                            final String hourStr = ((state.nextIntake / 60) % 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');
-                            final String minStr = (state.nextIntake.toInt() % 60)
+                            final String minStr = (state.nextIntake % 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');

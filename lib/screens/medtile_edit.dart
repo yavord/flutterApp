@@ -47,7 +47,6 @@ class _AddEditScreenState extends State<AddEditScreen> {
   DateTime _start;
 
   bool get isEditing => widget.isEditing;
-  final format = DateFormat.Hm();
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +134,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                     ),
                     DateTimeField(
                       key: TherapyKeys.scheduleField,
-                      format: format,
+                      format: DateFormat.Hm(),
                       decoration: InputDecoration(
                         hintText: AppLocalizations().scheduleHint,
                         border: InputBorder.none,

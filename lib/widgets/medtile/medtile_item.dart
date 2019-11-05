@@ -15,7 +15,6 @@ import 'package:proba123/bloc/timer/timer_bloc.dart';
 class MedTileItem extends StatelessWidget{
   final MedTile medTile;
   final GestureTapCallback edit;
-  //todo: add timer bloc
 
   MedTileItem({
     Key key,
@@ -105,6 +104,7 @@ class MedTileItem extends StatelessWidget{
                       nextIntake: NextIntake(
                         frequency: medTile.frequency,
                         schedule: medTile.schedule,
+                        start: medTile.start,
                         ),
                       ),
                   )
