@@ -22,7 +22,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _ticker = ticker;
 
   @override
-  TimerState get initialState => TimerReady(nextIntake.toInt());
+  TimerState get initialState => TimerReady(nextIntake.toMinutes());
 
   @override
   Stream<TimerState> mapEventToState(TimerEvent event) async* {
@@ -55,6 +55,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   Stream<TimerState> _mapResetTimerToState(ResetTimer reset) async* {
     _tickerSubscription?.cancel();
-    yield TimerReady(nextIntake.toInt());
+    yield TimerReady(nextIntake.toMinutes());
   }
 }
