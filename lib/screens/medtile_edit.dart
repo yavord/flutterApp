@@ -16,6 +16,7 @@ typedef OnSaveCallBack = Function(
   String doses,
   String schedule,
   int frequency,
+  DateTime start,
   );
 
 class AddEditScreen extends StatefulWidget {
@@ -43,6 +44,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   String _doses;
   String _schedule;
   int _frequency;
+  DateTime _start;
 
   bool get isEditing => widget.isEditing;
   final format = DateFormat.Hm();
@@ -179,7 +181,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    widget.onSave(_name, _form, _dose, _doses, _schedule, _frequency);
+                    widget.onSave(_name, _form, _dose, _doses, _schedule, _frequency, _start);
                     Navigator.pop(context);
                   }
                 },

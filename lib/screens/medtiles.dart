@@ -35,7 +35,7 @@ class MedTiles extends StatelessWidget {
                         builder: (context) {
                           return AddEditScreen(
                             key: TherapyKeys.editMedTileScreen,
-                            onSave: (name, form, dose, doses, schedule, frequency) {
+                            onSave: (name, form, dose, doses, schedule, frequency, start) {
                               BlocProvider.of<MedTileBloc>(context).add(
                                 UpdateMedTile(medTile.copyWith(
                                   name: name,
@@ -44,6 +44,7 @@ class MedTiles extends StatelessWidget {
                                   doses: doses, 
                                   schedule: schedule,
                                   frequency: frequency,
+                                  start: DateTime.now(),
                                 ))
                               );
                             },

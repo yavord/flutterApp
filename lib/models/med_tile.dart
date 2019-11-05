@@ -13,6 +13,7 @@ class MedTile extends Equatable {
   final String doses;
   final String schedule;
   final int frequency;
+  final DateTime start;
 
   //TODO: Edit constructors to fit database input/output
   MedTile({
@@ -24,11 +25,12 @@ class MedTile extends Equatable {
     @required this.doses,
     @required this.schedule,
     @required this.frequency,
+    @required this.start,
   }) :
       this.id = id ?? Uuid().generateV4();
 
   MedTile copyWith({bool complete, String id, String name, 
-    String dose, String form, String doses, String schedule, int frequency}) {
+    String dose, String form, String doses, String schedule, int frequency, DateTime start}) {
     return MedTile(
       complete: complete ?? this.complete,
       id: id ?? this.id,
@@ -38,6 +40,7 @@ class MedTile extends Equatable {
       doses: doses ?? this.doses,
       schedule: schedule ?? this.schedule,
       frequency: frequency ?? this.frequency,
+      start: start ?? this.start,
     );
   }
 
