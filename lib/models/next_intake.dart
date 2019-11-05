@@ -20,11 +20,6 @@ class NextIntake extends Equatable {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
     DateTime now = DateTime.now();
 
-    int nextIntakeDuration = toDateTime.hour*60+toDateTime.minute;
-    int nowDuration = now.hour*60+now.minute;
-
-    if(nextIntakeDuration > nowDuration) {
-      return nextIntakeDuration - nowDuration;
-    }
+    
   }
 }
