@@ -5,10 +5,11 @@ import 'package:meta/meta.dart';
 
 import 'timer.dart';
 import 'package:proba123/util/ticker.dart';
+import 'package:proba123/models/models.dart';
 
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  final int nextIntake;
+  final NextIntake nextIntake;
   final Ticker _ticker;
 
   StreamSubscription<int> _tickerSubscription;
@@ -21,7 +22,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _ticker = ticker;
 
   @override
-  TimerState get initialState => TimerReady(nextIntake);
+  TimerState get initialState => TimerReady(nextIntake.toInt());
 
   @override
   Stream<TimerState> mapEventToState(TimerEvent event) async* {
@@ -54,6 +55,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   Stream<TimerState> _mapResetTimerToState(ResetTimer reset) async* {
     _tickerSubscription?.cancel();
-    yield TimerReady(nextIntake);
+    yield TimerReady(nextIntake.toInt());
   }
 }

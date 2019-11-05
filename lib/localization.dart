@@ -27,6 +27,7 @@ class AppLocalizations {
   String get doseHint => 'Dose per sitting';
   String get dosesHint => 'Total amount of doses in package';
   String get scheduleHint => 'Next daily intake time';
+  String get frequencyHint => 'Number of days between intakes';
   String get saveMedTile => 'Save MedTile';
   String get deleteMedTile => 'MedTile deleted: ';
   String get undo => 'Undo';

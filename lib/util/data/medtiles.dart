@@ -26,6 +26,7 @@ List<MedTile> medications = [
     dose: "1",
     doses: "6",
     schedule: "7:00",
+    frequency: 3
   ),
   MedTile(
     complete: false,
@@ -35,6 +36,7 @@ List<MedTile> medications = [
     dose: "1",
     doses: "10",
     schedule: "20:30",
+    frequency: 2,
   ),
   MedTile(
     complete: false,
@@ -44,6 +46,7 @@ List<MedTile> medications = [
     dose: '2',
     doses: '20',
     schedule: '14:20',
+    frequency: 1,
   ),
 ];
 

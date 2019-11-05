@@ -35,6 +35,7 @@ class TherapyKeys {
   static final doseField = const Key('__doseField__');
   static final dosesField = const Key('__dosesField__');
   static final scheduleField = const Key('__scheduleField__');
+  static final frequencyField = const Key('__frequencyField__');
 
 
   //Edit Screen

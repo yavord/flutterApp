@@ -7,6 +7,7 @@ import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/screens/screens.dart';
+import 'package:proba123/models/models.dart';
 
 
 class MedTiles extends StatelessWidget {
@@ -25,7 +26,7 @@ class MedTiles extends StatelessWidget {
             key: TherapyKeys.medTileList,
             itemCount: medTiles.length,
             itemBuilder: (BuildContext context, int index) {
-              final medTile = medTiles[index];
+              final MedTile medTile = medTiles[index];
               return MedTileItem(
                 medTile: medTile,
                 edit: () async {
@@ -34,7 +35,7 @@ class MedTiles extends StatelessWidget {
                         builder: (context) {
                           return AddEditScreen(
                             key: TherapyKeys.editMedTileScreen,
-                            onSave: (name, form, dose, doses, schedule) {
+                            onSave: (name, form, dose, doses, schedule, frequency) {
                               BlocProvider.of<MedTileBloc>(context).add(
                                 UpdateMedTile(medTile.copyWith(
                                   name: name,
@@ -42,6 +43,7 @@ class MedTiles extends StatelessWidget {
                                   dose: dose,
                                   doses: doses, 
                                   schedule: schedule,
+                                  frequency: frequency,
                                 ))
                               );
                             },

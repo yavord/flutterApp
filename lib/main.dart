@@ -103,7 +103,7 @@ class TherapyApp extends StatelessWidget {
         TherapyAppRoutes.addMedTile: (context) {
           return AddEditScreen(
             key: TherapyKeys.addMedTileScreen,
-            onSave: (name, form, dose, doses, schedule) {
+            onSave: (name, form, dose, doses, schedule, frequency) {
               BlocProvider.of<MedTileBloc>(context).add(
                 AddMedTile(MedTile(
                     name: name,
@@ -111,6 +111,7 @@ class TherapyApp extends StatelessWidget {
                     dose: dose,
                     doses: doses,
                     schedule: schedule,
+                    frequency: frequency,
                 ))
               );
             },

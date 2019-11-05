@@ -15,6 +15,7 @@ typedef OnSaveCallBack = Function(
   String dose,
   String doses,
   String schedule,
+  int frequency,
   );
 
 class AddEditScreen extends StatefulWidget {
@@ -41,6 +42,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   String _form;
   String _doses;
   String _schedule;
+  int _frequency;
 
   bool get isEditing => widget.isEditing;
   final format = DateFormat.Hm();
@@ -151,6 +153,21 @@ class _AddEditScreenState extends State<AddEditScreen> {
                       },
                       onSaved: (value) => _schedule = value.hour.toString()+':'+value.minute.toString(),
                     ),
+                    TextFormField(
+                      key: TherapyKeys.frequencyField,
+                      initialValue: isEditing ? widget.medTile.doses : '',
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations().frequencyHint,
+                        border: InputBorder.none,
+                        ),
+                      validator: (val) {
+                          return val.trim().isEmpty
+                            ? AppLocalizations().emptyError
+                            : null;
+                        },
+                      onSaved: (value) => _frequency = int.parse(value),
+                    ),
                   ],
                 ),
               ),
@@ -162,7 +179,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    widget.onSave(_name, _form, _dose, _doses, _schedule);
+                    widget.onSave(_name, _form, _dose, _doses, _schedule, _frequency);
                     Navigator.pop(context);
                   }
                 },
