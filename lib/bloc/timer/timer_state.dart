@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:proba123/models/models.dart';
 
 @immutable
 abstract class TimerState extends Equatable {
-  final int nextIntake;
+  final NextIntake nextIntake;
 
   const TimerState(this.nextIntake);
 
@@ -12,7 +13,7 @@ abstract class TimerState extends Equatable {
 }
 
 class TimerReady extends TimerState {
-  final int nextIntake;
+  final NextIntake nextIntake;
 
   const TimerReady(this.nextIntake) : super(nextIntake);
 
@@ -21,11 +22,13 @@ class TimerReady extends TimerState {
 }
 
 class TimerRunning extends TimerState{
-  final int nextIntake;
+  final NextIntake nextIntake;
 
   const TimerRunning(this.nextIntake) : super(nextIntake);
 }
 
 class TimerZero extends TimerState {
-  const TimerZero() : super(0);
+  const TimerZero() : super(NextIntake(
+    
+  ));
 }

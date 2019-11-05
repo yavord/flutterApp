@@ -22,7 +22,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _ticker = ticker;
 
   @override
-  TimerState get initialState => TimerReady(nextIntake.toMinutes());
+  TimerState get initialState => TimerReady(nextIntake);
 
   @override
   Stream<TimerState> mapEventToState(TimerEvent event) async* {
@@ -45,16 +45,16 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     yield TimerRunning(start.nextIntake);
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
-      .tick(ticks: start.nextIntake)
-        .listen((nextIntake) => add(Tick(nextIntake)));
+      .tick(ticks: start.nextIntake.toMinutes())
+        .listen((tick) => add(Tick(nextIntake)));
   }
 
   Stream<TimerState> _mapTickToState(Tick tick) async* {
-    yield tick.nextIntake > 0 ? TimerRunning(tick.nextIntake) : TimerZero();
+    yield tick.nextIntake.toMinutes() > 0 ? TimerRunning(tick.nextIntake) : TimerZero();
   }
 
   Stream<TimerState> _mapResetTimerToState(ResetTimer reset) async* {
     _tickerSubscription?.cancel();
-    yield TimerReady(nextIntake.toMinutes());
+    yield TimerReady(nextIntake);
   }
 }

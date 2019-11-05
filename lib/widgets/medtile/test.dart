@@ -4,8 +4,9 @@ main() {
   var string = '8:30';
   
   var x = new DateTime.utc(1980, 4, 30);
-  var y = new DateTime.utc(1980, 4, x.day+4);
+  var y = new DateTime.utc(1980, 4, x.day-4);
   
   Duration yx = y.difference(x);
-  assert(yx.isNegative);
+  assert(1==2);
+  print(3);
 }

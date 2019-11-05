@@ -12,7 +12,7 @@ abstract class TimerEvent extends Equatable {
 }
 
 class StartTimer extends TimerEvent {
-  final int nextIntake;
+  final NextIntake nextIntake;
 
   const StartTimer(this.nextIntake);
 
@@ -21,7 +21,7 @@ class StartTimer extends TimerEvent {
 }
 
 class Tick extends TimerEvent {
-  final int nextIntake;
+  final NextIntake nextIntake;
 
   const Tick(this.nextIntake);
 
