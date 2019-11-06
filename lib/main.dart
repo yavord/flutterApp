@@ -96,7 +96,7 @@ class TherapyApp extends StatelessWidget {
                   child: Home(),
                   );
                 }
-              return Center(child: CircularProgressIndicator());
+              return Center(child: SplashScreen());
             },
           );
         },

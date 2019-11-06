@@ -5,6 +5,7 @@ import 'package:firebase_repository/firebase_repo.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/screens/screens.dart';
 
 
 class LoginForm extends StatefulWidget {
@@ -67,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Logging In...'),
-                    CircularProgressIndicator(),
+                    SplashScreen(),
                   ],
                 ),
               ),
