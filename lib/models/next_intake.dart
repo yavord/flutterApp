@@ -28,7 +28,6 @@ class NextIntake extends Equatable {
     DateTime now = new DateTime.now();
     
     Duration durationRemaining = future.difference(now);
-    print(durationRemaining.inMinutes);
     assert(durationRemaining.inMinutes>=0);
     return durationRemaining.inMinutes;
   }
@@ -37,7 +36,6 @@ class NextIntake extends Equatable {
     DateTime future = this.getFutureDateTime();
 
     Duration durationTotal = future.difference(start);
-    print(durationTotal.inMinutes);
     assert(durationTotal.inMinutes>=0);
     return durationTotal.inMinutes;
   }

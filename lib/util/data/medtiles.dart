@@ -14,7 +14,7 @@ List<MedTile> medications = [
     doses: "6",
     schedule: "7:00",
     frequency: 3,
-    start: new DateTime.utc(now.year, now.month, now.day-2, now.hour, now.minute),
+    start: new DateTime.utc(now.year, now.month, now.day-1, now.hour, now.minute),
   ),
   MedTile(
     complete: false,

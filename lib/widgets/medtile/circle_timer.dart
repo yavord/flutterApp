@@ -98,7 +98,6 @@ class TimerPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ;
 
-    print(percentRemaining);
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = color;
     double progress = (1.0 - percentRemaining) * 2 * math.pi;
