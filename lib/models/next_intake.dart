@@ -16,14 +16,29 @@ class NextIntake extends Equatable {
 
   List<Object> get props => [schedule, frequency, start];
 
-  int minsRemaining() {
+  DateTime getFutureDateTime() {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
     DateTime future = new DateTime.utc(start.year, start.month, start.day+frequency, 
       toDateTime.hour, toDateTime.minute);
+    return future;
+  }
+
+  int minsRemaining() {
+    DateTime future = this.getFutureDateTime();
     DateTime now = new DateTime.now();
     
-    Duration durationFuture = future.difference(now);
-    assert(durationFuture.inMinutes>=0);
-    return durationFuture.inMinutes;
+    Duration durationRemaining = future.difference(now);
+    print(durationRemaining.inMinutes);
+    assert(durationRemaining.inMinutes>=0);
+    return durationRemaining.inMinutes;
+  }
+
+  int minsTotal() {
+    DateTime future = this.getFutureDateTime();
+
+    Duration durationTotal = future.difference(start);
+    print(durationTotal.inMinutes);
+    assert(durationTotal.inMinutes>=0);
+    return durationTotal.inMinutes;
   }
 }

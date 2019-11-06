@@ -25,7 +25,7 @@ class CircleTimer extends StatelessWidget {
                     builder: (context, state) {
                       return CustomPaint(
                         painter: TimerPainter(
-                          nextIntake: state.nextIntake.minsRemaining()/(24*60*state.nextIntake.frequency),
+                          percentRemaining: state.nextIntake.minsRemaining()/(state.nextIntake.minsTotal()),
                           backgroundColor: Colors.transparent,
                           color: Constants.myBlue,
                         ),
@@ -81,12 +81,12 @@ class CircleTimer extends StatelessWidget {
 
 class TimerPainter extends CustomPainter {
   TimerPainter({
-    this.nextIntake,
+    this.percentRemaining,
     this.backgroundColor,
     this.color,
   });
 
-  final double nextIntake;
+  final double percentRemaining;
   final Color backgroundColor, color;
 
   @override
@@ -98,16 +98,16 @@ class TimerPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ;
 
-    print(nextIntake);
+    print(percentRemaining);
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = color;
-    double progress = (1.0 - nextIntake) * 2 * math.pi;
+    double progress = (1.0 - percentRemaining) * 2 * math.pi;
     canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
   }
 
   @override
   bool shouldRepaint(TimerPainter old) {
-    return nextIntake != old.nextIntake ||
+    return percentRemaining != old.percentRemaining ||
         color != old.color ||
         backgroundColor != old.backgroundColor;
   }
