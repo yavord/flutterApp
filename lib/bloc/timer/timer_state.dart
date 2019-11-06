@@ -28,7 +28,5 @@ class TimerRunning extends TimerState{
 }
 
 class TimerZero extends TimerState {
-  const TimerZero() : super(NextIntake(
-    
-  ));
+  const TimerZero() : super(null);
 }

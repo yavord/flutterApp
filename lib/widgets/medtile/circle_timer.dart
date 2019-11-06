@@ -25,7 +25,7 @@ class CircleTimer extends StatelessWidget {
                     builder: (context, state) {
                       return CustomPaint(
                         painter: TimerPainter(
-                          nextIntake: state.nextIntake/(24*60),
+                          nextIntake: state.nextIntake.toMinutes()/(24*60*state.nextIntake.frequency),
                           backgroundColor: Colors.transparent,
                           color: Constants.myBlue,
                         ),
@@ -46,11 +46,11 @@ class CircleTimer extends StatelessWidget {
                         ),
                         BlocBuilder<TimerBloc, TimerState>(
                           builder: (context, state) {
-                            final String hourStr = ((state.nextIntake / 60) % 60)
+                            final String hourStr = ((state.nextIntake.toMinutes() / 60) % 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');
-                            final String minStr = (state.nextIntake % 60)
+                            final String minStr = (state.nextIntake.toMinutes() % 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');
