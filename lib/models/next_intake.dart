@@ -16,7 +16,7 @@ class NextIntake extends Equatable {
 
   List<Object> get props => [schedule, frequency, start];
 
-  int toMinutes() {
+  int minsRemaining() {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
     DateTime future = new DateTime.utc(start.year, start.month, start.day+frequency, 
       toDateTime.hour, toDateTime.minute);

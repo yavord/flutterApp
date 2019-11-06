@@ -25,7 +25,7 @@ class CircleTimer extends StatelessWidget {
                     builder: (context, state) {
                       return CustomPaint(
                         painter: TimerPainter(
-                          nextIntake: state.nextIntake.toMinutes()/(24*60*state.nextIntake.frequency),
+                          nextIntake: state.nextIntake.minsRemaining()/(24*60*state.nextIntake.frequency),
                           backgroundColor: Colors.transparent,
                           color: Constants.myBlue,
                         ),
@@ -36,7 +36,7 @@ class CircleTimer extends StatelessWidget {
                 Align(
                   alignment: FractionalOffset.center,
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,16 +46,20 @@ class CircleTimer extends StatelessWidget {
                         ),
                         BlocBuilder<TimerBloc, TimerState>(
                           builder: (context, state) {
-                            final String hourStr = ((state.nextIntake.toMinutes() / 60) % 60)
+                            final String dayStr = (state.nextIntake.minsRemaining() / 1440)
+                              .floor()
+                              .toString()
+                              .padLeft(1,'0');
+                            final String hourStr = ((state.nextIntake.minsRemaining() % 1440) / 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');
-                            final String minStr = (state.nextIntake.toMinutes() % 60)
+                            final String minStr = (state.nextIntake.minsRemaining() % 60)
                               .floor()
                               .toString()
                               .padLeft(2,'0');
                             return new AutoSizeText(
-                                '$hourStr:$minStr',
+                                '${dayStr}d:${hourStr}h:${minStr}m',
                                 maxLines: 1,
                                 stepGranularity: 8,
                                 minFontSize: 16,
@@ -89,11 +93,12 @@ class TimerPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..color = backgroundColor
-      ..strokeWidth = 5.0
+      ..strokeWidth = 5.5
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ;
 
+    print(nextIntake);
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = color;
     double progress = (1.0 - nextIntake) * 2 * math.pi;
