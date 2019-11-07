@@ -73,20 +73,35 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    TextFormField(
-                      key: TherapyKeys.nameField,
-                      initialValue: isEditing ? widget.medTile.name : '',
-                      autofocus: true,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().nameHint,
-                        border: InputBorder.none,
-                        ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
-                        },
-                      onSaved: (value) => _name = value,
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 20, 120, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'test:',
+                          ),
+                          Container(
+                            child: SizedBox(
+                              width: 150,
+                              child: TextFormField(
+                                key: TherapyKeys.nameField,
+                                initialValue: isEditing ? widget.medTile.name : '',
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations().nameHint,
+                                  // border: InputBorder.none,
+                                  ),
+                                validator: (val) {
+                                    return val.trim().isEmpty
+                                      ? AppLocalizations().emptyError
+                                      : null;
+                                  },
+                                onSaved: (value) => _name = value,
+                              ),
+                            ),
+                          ),
+                        ] 
+                      ),
                     ),
                     TextFormField(
                       key: TherapyKeys.formField,
