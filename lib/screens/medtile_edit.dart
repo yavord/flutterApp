@@ -47,7 +47,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   DateTime _start;
 
   bool get isEditing => widget.isEditing;
-  TextStyle style = TextStyle(fontWeight: FontWeight.bold, );
+  TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +80,8 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Medication:',
-
+                            AppLocalizations().name,
+                            style: style,
                           ),
                           Container(
                             child: SizedBox(
