@@ -125,7 +125,6 @@ class MedTileItem extends StatelessWidget{
                 BarcodeButton(
                   id: medTile.id,
                 ),
-                
               ],
             ),
             Padding(

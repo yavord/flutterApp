@@ -25,22 +25,23 @@ class TakeNowButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(5.0),
             ),
+          child: Text(AppLocalizations().takeNowButton),
           onPressed: () async {
             int nextDose = int.parse(medTile.doses) - 1;
             BlocProvider.of<MedTileBloc>(context).add(
               UpdateMedTile(medTile.copyWith(doses: nextDose.toString(), start: DateTime.now()))
               );
             Scaffold.of(context).showSnackBar(
-                  MedTileSnackBar(
-                    medTile: medTile,
-                    undo: true,
-                    content: AppLocalizations().updated,
-                    onUndo: () => 
-                      BlocProvider.of<MedTileBloc>(context).add(
-                        UpdateMedTile(medTile.copyWith(doses: medTile.doses)),
-              )));
+              MedTileSnackBar(
+                medTile: medTile,
+                undo: true,
+                content: AppLocalizations().updated,
+                onUndo: () => 
+                  BlocProvider.of<MedTileBloc>(context).add(
+                    // AddMedTile(medTile),
+                    UpdateMedTile(medTile.copyWith(doses: medTile.doses)),
+                )));
           },
-          child: Text(AppLocalizations().takeNowButton),
         );
       },
     );

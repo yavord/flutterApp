@@ -27,19 +27,20 @@ class DeleteMedTileButton extends StatelessWidget {
             ),
           child: Icon(Icons.delete_outline, color: Colors.white,),
           color: Colors.redAccent,
-          onPressed: () {
-            BlocProvider.of<MedTileBloc>(context).add(DeleteMedTile(medTile));
+          onPressed: () async {
+            BlocProvider.of<MedTileBloc>(context).add(
+              DeleteMedTile(medTile)
+              );
             Scaffold.of(context).showSnackBar(
               MedTileSnackBar(
-                key: TherapyKeys.snackbar,
-                undo: false,
+                undo: true,
                 medTile: medTile,
                 content: AppLocalizations().deleteMedTile,
                 //TODO: add undo functionality
-                // onUndo: () =>
-                //   BlocProvider.of<MedTileBloc>(context).add(
-                //     AddMedTile(medTile)
-                //   ),
+                onUndo: () =>
+                  BlocProvider.of<MedTileBloc>(context).add(
+                    AddMedTile(medTile)
+                  ),
                 ));
           },
         );

@@ -41,7 +41,7 @@ class MedTiles extends StatelessWidget {
                                   name: name,
                                   form: form,
                                   dose: dose,
-                                  doses: doses, 
+                                  doses: doses,
                                   schedule: schedule,
                                   frequency: frequency,
                                   start: medTile.start,
