@@ -75,13 +75,16 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    PaddingRow(
+                    PaddingRowTop(
                       localization: AppLocalizations().name,
-                      textFormField: TextFormField(
+                      formField: TextFormField(
                         key: TherapyKeys.nameField,
                         initialValue: isEditing ? widget.medTile.name : '',
                         decoration: InputDecoration(
                           hintText: AppLocalizations().nameHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                            ),
                           ),
                         validator: (val) {
                             return val.trim().isEmpty
@@ -91,133 +94,111 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         onSaved: (value) => _name = value,
                       ),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: <Widget>[
-                    //       Text(
-                    //         AppLocalizations().name,
-                    //         style: style,
-                    //       ),
-                    //       Container(
-                    //         child: SizedBox(
-                    //           width: 150,
-                    //           child: TextFormField(
-                    //             key: TherapyKeys.nameField,
-                    //             initialValue: isEditing ? widget.medTile.name : '',
-                    //             decoration: InputDecoration(
-                    //               hintText: AppLocalizations().nameHint,
-                    //               ),
-                    //             validator: (val) {
-                    //                 return val.trim().isEmpty
-                    //                   ? AppLocalizations().emptyError
-                    //                   : null;
-                    //               },
-                    //             onSaved: (value) => _name = value,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ] 
-                    //   ),
-                    // ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children : <Widget>[
-                          Text(
-                            AppLocalizations().intakeType,
-                            style: style,
-                          ),
-                          Container(
-                          child: SizedBox(
-                            width: 150,
-                            child: TextFormField(
-                              key: TherapyKeys.formField,
-                              initialValue: isEditing ? widget.medTile.form : '',
-                              decoration: InputDecoration(
-                                hintText: AppLocalizations().formHint,
-                                border: InputBorder.none,
-                                ),
-                              validator: (val) {
-                                  return val.trim().isEmpty
-                                    ? AppLocalizations().emptyError
-                                    : null;
-                                },
-                              onSaved: (value) => _form = value,
+                    PaddingRowTop(
+                      localization: AppLocalizations().intakeType,
+                      formField: TextFormField(
+                        key: TherapyKeys.formField,
+                        initialValue: isEditing ? widget.medTile.form : '',
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().formHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
                             ),
                           ),
-                        ),
-                        ] 
+                        validator: (val) {
+                            return val.trim().isEmpty
+                              ? AppLocalizations().emptyError
+                              : null;
+                          },
+                        onSaved: (value) => _form = value,
                       ),
                     ),
-                    TextFormField(
-                      key: TherapyKeys.doseField,
-                      initialValue: isEditing ? widget.medTile.dose : '',
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().doseHint,
-                        border: InputBorder.none,
-                        ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
-                        },
-                      onSaved: (value) => _dose = value,
-                    ),
-                    TextFormField(
-                      key: TherapyKeys.dosesField,
-                      initialValue: isEditing ? widget.medTile.doses : '',
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().dosesHint,
-                        border: InputBorder.none,
-                        ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
-                        },
-                      onSaved: (value) => _doses = value,
-                    ),
-                    DateTimeField(
-                      key: TherapyKeys.scheduleField,
-                      format: DateFormat.Hm(),
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().scheduleHint,
-                        border: InputBorder.none,
+                    PaddingRowTop(
+                      localization: AppLocalizations().dose,
+                      formField: TextFormField(
+                        key: TherapyKeys.doseField,
+                        initialValue: isEditing ? widget.medTile.dose : '',
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().doseHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                            ),
+                          ),
+                        validator: (val) {
+                            return val.trim().isEmpty
+                              ? AppLocalizations().emptyError
+                              : null;
+                          },
+                        onSaved: (value) => _dose = value,
                       ),
-                      onShowPicker: (context, currentValue) async {
-                        final time = await showTimePicker(
-                          context: context,
-                          initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now())
-                        );
-                        return DateTimeField.convert(time);
-                      },
-                      validator: (val) {
-                        if (val == null) {
-                          return AppLocalizations().emptyError;
-                        }
-                        return null;
-                      },
-                      onSaved: (value) => _schedule = value.hour.toString()+':'+value.minute.toString(),
                     ),
-                    TextFormField(
-                      key: TherapyKeys.frequencyField,
-                      initialValue: isEditing ? widget.medTile.doses : '',
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().frequencyHint,
-                        border: InputBorder.none,
+                    PaddingRowTop(
+                      localization: AppLocalizations().dose,
+                      formField: TextFormField(
+                        key: TherapyKeys.dosesField,
+                        initialValue: isEditing ? widget.medTile.doses : '',
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().dosesHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                            ),
+                          ),
+                        validator: (val) {
+                            return val.trim().isEmpty
+                              ? AppLocalizations().emptyError
+                              : null;
+                          },
+                        onSaved: (value) => _doses = value,
+                      ),
+                    ),
+                    PaddingRowTop(
+                      localization: AppLocalizations().nextIntakeTime,
+                      formField: DateTimeField(
+                        key: TherapyKeys.scheduleField,
+                        format: DateFormat.Hm(),
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().scheduleHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                            ),
                         ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
+                        onShowPicker: (context, currentValue) async {
+                          final time = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.fromDateTime(currentValue ?? DateTime.now())
+                          );
+                          return DateTimeField.convert(time);
                         },
-                      onSaved: (value) => _frequency = int.parse(value),
+                        validator: (val) {
+                          if (val == null) {
+                            return AppLocalizations().emptyError;
+                          }
+                          return null;
+                        },
+                        onSaved: (value) => _schedule = value.hour.toString()+':'+value.minute.toString(),
+                      ),
+                    ),
+                    PaddingRowBottom(
+                      localization: AppLocalizations().frequency,
+                      formField: TextFormField(
+                        key: TherapyKeys.frequencyField,
+                        initialValue: isEditing ? widget.medTile.doses : '',
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().frequencyHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)
+                            ),
+                          ),
+                        validator: (val) {
+                            return val.trim().isEmpty
+                              ? AppLocalizations().emptyError
+                              : null;
+                          },
+                        onSaved: (value) => _frequency = int.parse(value),
+                      ),
                     ),
                   ],
                 ),

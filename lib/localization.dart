@@ -33,17 +33,21 @@ class AppLocalizations {
   String get editMedTile => 'Edit MedTile';
   String get addMedTile => 'Add MedTile';
   String get saveMedTile => 'Save MedTile';
+  String get emptyError => 'Please enter a value';
 
   String get name => 'Medication:';
   String get intakeType => 'Intake type:';
+  String get dose => 'Dose per intake:';
+  String get doses => 'Total doses:';
+  String get nextIntakeTime => 'Next intake:';
+  String get frequency => 'Days between:';
   
   String get nameHint => 'Medication name';
-  String get emptyError => 'Please enter a value';
   String get formHint => 'Method of intake';
   String get doseHint => 'Dose per sitting';
-  String get dosesHint => 'Total amount of doses in package';
+  String get dosesHint => 'Total doses';
   String get scheduleHint => 'Next intake time';
-  String get frequencyHint => 'Number of days between intakes';  
+  String get frequencyHint => 'Intake frequency';  
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
