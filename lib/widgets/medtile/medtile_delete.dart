@@ -34,6 +34,7 @@ class DeleteMedTileButton extends StatelessWidget {
                 undo: false,
                 medTile: medTile,
                 content: AppLocalizations().deleteMedTile,
+                //TODO: add undo functionality
                 // onUndo: () =>
                 //   BlocProvider.of<MedTileBloc>(context).add(
                 //     AddMedTile(medTile)
