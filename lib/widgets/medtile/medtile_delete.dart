@@ -31,9 +31,14 @@ class DeleteMedTileButton extends StatelessWidget {
             Scaffold.of(context).showSnackBar(
               MedTileSnackBar(
                 key: TherapyKeys.snackbar,
+                undo: false,
                 medTile: medTile,
-                content: AppLocalizations().deleteMedTile,),
-                );
+                content: AppLocalizations().deleteMedTile,
+                // onUndo: () =>
+                //   BlocProvider.of<MedTileBloc>(context).add(
+                //     AddMedTile(medTile)
+                //   ),
+                ));
           },
         );
       },

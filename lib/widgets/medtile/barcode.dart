@@ -37,6 +37,7 @@ class BarcodeButton extends StatelessWidget {
                 Scaffold.of(context).showSnackBar(
                   MedTileSnackBar(
                     medTile: medTile,
+                    undo: true,
                     content: AppLocalizations().updated,
                     onUndo: () => 
                       BlocProvider.of<MedTileBloc>(context).add(
@@ -45,6 +46,7 @@ class BarcodeButton extends StatelessWidget {
               } else {
                 Scaffold.of(context).showSnackBar(
                   MedTileSnackBar(
+                    undo: false,
                     key: TherapyKeys.snackbar,
                     medTile: medTile,
                     content: AppLocalizations().unsuccessful,

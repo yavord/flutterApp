@@ -33,6 +33,7 @@ class TakeNowButton extends StatelessWidget {
             Scaffold.of(context).showSnackBar(
                   MedTileSnackBar(
                     medTile: medTile,
+                    undo: true,
                     content: AppLocalizations().updated,
                     onUndo: () => 
                       BlocProvider.of<MedTileBloc>(context).add(

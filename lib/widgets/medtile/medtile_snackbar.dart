@@ -6,6 +6,7 @@ class MedTileSnackBar extends SnackBar {
   MedTileSnackBar({
     Key key,
     VoidCallback onUndo,
+    @required bool undo,
     @required MedTile medTile,
     @required String content,
   }) : super(
@@ -16,9 +17,9 @@ class MedTileSnackBar extends SnackBar {
             overflow: TextOverflow.ellipsis,
           ),
           duration: Duration(seconds: 2),
-          // action: SnackBarAction(
-          //   label: AppLocalizations().undo,
-          //   onPressed: onUndo,
-          // ),
+          action: undo ? SnackBarAction(
+            label: AppLocalizations().undo,
+            onPressed: onUndo,
+          ) : null,
   );
 }
