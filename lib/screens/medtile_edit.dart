@@ -157,6 +157,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                       formField: DateTimeField(
                         key: TherapyKeys.scheduleField,
                         format: DateFormat.Hm(),
+                        initialValue: isEditing ? DateFormat.Hm().parse(widget.medTile.schedule) : null,
                         decoration: InputDecoration(
                           hintText: AppLocalizations().scheduleHint,
                           focusedBorder: UnderlineInputBorder(
