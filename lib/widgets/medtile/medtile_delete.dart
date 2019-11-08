@@ -21,11 +21,12 @@ class DeleteMedTileButton extends StatelessWidget {
       builder: (context, state) {
         final medTile = (state as MedTilesLoaded)
           .medTiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
-        return OutlineButton(
+        return FlatButton(
           shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(5.0),
+            borderRadius: new BorderRadius.circular(5.0),
             ),
-          child: Icon(Icons.delete_outline),
+          child: Icon(Icons.delete_outline, color: Colors.white,),
+          color: Colors.redAccent,
           onPressed: () {
             BlocProvider.of<MedTileBloc>(context).add(DeleteMedTile(medTile));
             Scaffold.of(context).showSnackBar(
