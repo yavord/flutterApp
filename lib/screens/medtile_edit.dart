@@ -133,7 +133,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                       ),
                     ),
                     PaddingRowTop(
-                      localization: AppLocalizations().dose,
+                      localization: AppLocalizations().doses,
                       formField: TextFormField(
                         key: TherapyKeys.dosesField,
                         initialValue: isEditing ? widget.medTile.doses : '',
