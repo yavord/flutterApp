@@ -28,7 +28,7 @@ class TakeNowButton extends StatelessWidget {
           onPressed: () async {
             int nextDose = int.parse(medTile.doses) - 1;
             BlocProvider.of<MedTileBloc>(context).add(
-              UpdateMedTile(medTile.copyWith(doses: nextDose.toString()))
+              UpdateMedTile(medTile.copyWith(doses: nextDose.toString(), start: DateTime.now()))
               );
             Scaffold.of(context).showSnackBar(
                   MedTileSnackBar(
