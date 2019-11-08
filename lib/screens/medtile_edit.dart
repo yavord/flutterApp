@@ -183,7 +183,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                       localization: AppLocalizations().frequency,
                       formField: TextFormField(
                         key: TherapyKeys.frequencyField,
-                        initialValue: isEditing ? widget.medTile.doses : '',
+                        initialValue: isEditing ? widget.medTile.frequency : '',
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: AppLocalizations().frequencyHint,
