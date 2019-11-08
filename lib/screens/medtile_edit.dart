@@ -75,7 +75,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 100, 0),
+                      padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -91,7 +91,6 @@ class _AddEditScreenState extends State<AddEditScreen> {
                                 initialValue: isEditing ? widget.medTile.name : '',
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations().nameHint,
-                                  // border: InputBorder.none,
                                   ),
                                 validator: (val) {
                                     return val.trim().isEmpty
@@ -105,19 +104,36 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         ] 
                       ),
                     ),
-                    TextFormField(
-                      key: TherapyKeys.formField,
-                      initialValue: isEditing ? widget.medTile.form : '',
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations().formHint,
-                        border: InputBorder.none,
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children : <Widget>[
+                          Text(
+                            AppLocalizations().intakeType,
+                            style: style,
+                          ),
+                          Container(
+                          child: SizedBox(
+                            width: 150,
+                            child: TextFormField(
+                              key: TherapyKeys.formField,
+                              initialValue: isEditing ? widget.medTile.form : '',
+                              decoration: InputDecoration(
+                                hintText: AppLocalizations().formHint,
+                                border: InputBorder.none,
+                                ),
+                              validator: (val) {
+                                  return val.trim().isEmpty
+                                    ? AppLocalizations().emptyError
+                                    : null;
+                                },
+                              onSaved: (value) => _form = value,
+                            ),
+                          ),
                         ),
-                      validator: (val) {
-                          return val.trim().isEmpty
-                            ? AppLocalizations().emptyError
-                            : null;
-                        },
-                      onSaved: (value) => _form = value,
+                        ] 
+                      ),
                     ),
                     TextFormField(
                       key: TherapyKeys.doseField,

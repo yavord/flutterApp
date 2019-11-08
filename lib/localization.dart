@@ -33,7 +33,10 @@ class AppLocalizations {
   String get editMedTile => 'Edit MedTile';
   String get addMedTile => 'Add MedTile';
   String get saveMedTile => 'Save MedTile';
+
   String get name => 'Medication:';
+  String get intakeType => 'Intake type:';
+  
   String get nameHint => 'Medication name';
   String get emptyError => 'Please enter a value';
   String get formHint => 'Method of intake';
