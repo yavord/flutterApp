@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
-import 'package:proba123/widgets/medtile_edit/padding_row.dart';
 import 'package:proba123/widgets/widgets.dart';
 
 
