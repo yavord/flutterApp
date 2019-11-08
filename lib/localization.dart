@@ -10,31 +10,36 @@ class AppLocalizations {
       );
   }
 
-  //MedTiles
-
+  //Main
   String get appTitle => 'My Therapy';
   String get medId => 'Medical ID';
   String get nextIntake => 'Next Intake';
+
+  //MedTiles
   String get takeDose => 'Take ';
   String get formLeft => 's left';
-
   String get takeAfter => 'Take after';
   String get qR => 'QR ';
-  String get editMedTile => 'Edit MedTile';
-  String get updated => 'Updated ';
+  String get editButton => 'Edit';
   String get unsuccessful => 'Scan unsuccessful: ';
+  String get deleteMedTile => 'MedTile deleted: ';
+  String get updated => 'Updated ';
+  String get undo => 'Undo';
+
+  //Login
+  String get loginFail => 'Login Failed';
+
+  //Add/Edit Page
+  String get editMedTile => 'Edit MedTile';
   String get addMedTile => 'Add MedTile';
+  String get saveMedTile => 'Save MedTile';
   String get nameHint => 'Medication name';
   String get emptyError => 'Please enter a value';
   String get formHint => 'Method of intake';
   String get doseHint => 'Dose per sitting';
   String get dosesHint => 'Total amount of doses in package';
   String get scheduleHint => 'Next intake time';
-  String get frequencyHint => 'Number of days between intakes';
-  String get saveMedTile => 'Save MedTile';
-  String get deleteMedTile => 'MedTile deleted: ';
-  String get undo => 'Undo';
-  String get loginFail => 'Login Failed';
+  String get frequencyHint => 'Number of days between intakes';  
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

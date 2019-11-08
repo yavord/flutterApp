@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
-import 'package:proba123/screens/screens.dart';
+import 'package:proba123/localization.dart';
 
 
 class EditButton extends StatelessWidget {
@@ -21,7 +19,7 @@ class EditButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(5.0)),
           child: Text(
-            'Edit',
+            AppLocalizations().editButton,
             style: TextStyle(color: Colors.white, fontSize: 15.0)
           ),
           onPressed: onTap,
