@@ -16,7 +16,7 @@ class MedTileSnackBar extends SnackBar {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          duration: Duration(seconds: 2),
+          duration: undo ? Duration(seconds: 5) : Duration(seconds: 2),
           action: undo ? SnackBarAction(
             label: AppLocalizations().undo,
             onPressed: onUndo,
