@@ -47,6 +47,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   DateTime _start;
 
   bool get isEditing => widget.isEditing;
+  TextStyle style = TextStyle(fontWeight: FontWeight.bold, );
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +75,13 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 120, 0),
+                      padding: EdgeInsets.fromLTRB(20, 20, 100, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'test:',
+                            'Medication:',
+
                           ),
                           Container(
                             child: SizedBox(
