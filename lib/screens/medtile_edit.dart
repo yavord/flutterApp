@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
+import 'package:proba123/widgets/medtile_edit/padding_row.dart';
 import 'package:proba123/widgets/widgets.dart';
 
 
@@ -74,36 +75,52 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 color: Theme.of(context).cardColor,
                 child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations().name,
-                            style: style,
+                    PaddingRow(
+                      localization: AppLocalizations().name,
+                      textFormField: TextFormField(
+                        key: TherapyKeys.nameField,
+                        initialValue: isEditing ? widget.medTile.name : '',
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations().nameHint,
                           ),
-                          Container(
-                            child: SizedBox(
-                              width: 150,
-                              child: TextFormField(
-                                key: TherapyKeys.nameField,
-                                initialValue: isEditing ? widget.medTile.name : '',
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations().nameHint,
-                                  ),
-                                validator: (val) {
-                                    return val.trim().isEmpty
-                                      ? AppLocalizations().emptyError
-                                      : null;
-                                  },
-                                onSaved: (value) => _name = value,
-                              ),
-                            ),
-                          ),
-                        ] 
+                        validator: (val) {
+                            return val.trim().isEmpty
+                              ? AppLocalizations().emptyError
+                              : null;
+                          },
+                        onSaved: (value) => _name = value,
                       ),
                     ),
+                    // Padding(
+                    //   padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: <Widget>[
+                    //       Text(
+                    //         AppLocalizations().name,
+                    //         style: style,
+                    //       ),
+                    //       Container(
+                    //         child: SizedBox(
+                    //           width: 150,
+                    //           child: TextFormField(
+                    //             key: TherapyKeys.nameField,
+                    //             initialValue: isEditing ? widget.medTile.name : '',
+                    //             decoration: InputDecoration(
+                    //               hintText: AppLocalizations().nameHint,
+                    //               ),
+                    //             validator: (val) {
+                    //                 return val.trim().isEmpty
+                    //                   ? AppLocalizations().emptyError
+                    //                   : null;
+                    //               },
+                    //             onSaved: (value) => _name = value,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ] 
+                    //   ),
+                    // ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, 15, 65, 0),
                       child: Row(
