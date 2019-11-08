@@ -53,7 +53,7 @@ class BarcodeButton extends StatelessWidget {
             },
           child: Row(
             children: <Widget>[
-              Text(AppLocalizations().qR),
+              Text(AppLocalizations().qRButton),
               Image.asset(
                 "assets/img/qr.png",
                 width: 30.0,

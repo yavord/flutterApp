@@ -25,6 +25,7 @@ class TherapyKeys {
   static final barcodeButton = const Key('__barcodeButton__');
   static final editButton = const Key('__editButton__');
   static final deleteButton = const Key('__deleteButton__');
+  static final takeNowButton = const Key('__takeNowButton__');
   
   //Add Screen
   static final addMedTileScreen = const Key('__addScreen__');

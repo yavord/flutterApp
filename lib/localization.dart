@@ -19,8 +19,11 @@ class AppLocalizations {
   String get takeDose => 'Take ';
   String get formLeft => 's left';
   String get takeAfter => 'Take after';
-  String get qR => 'QR ';
+
+  String get qRButton => 'QR ';
   String get editButton => 'Edit';
+  String get takeNowButton => 'Take Now';
+
   String get unsuccessful => 'Scan unsuccessful: ';
   String get deleteMedTile => 'MedTile deleted: ';
   String get updated => 'Updated ';

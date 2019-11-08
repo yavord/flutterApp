@@ -5,3 +5,4 @@ export 'medtile_snackbar.dart';
 export 'nfc.dart';
 export 'medtile_edit_button.dart';
 export 'medtile_delete.dart';
+export 'medtile_takenow.dart';

@@ -119,13 +119,20 @@ class MedTileItem extends StatelessWidget{
                 EditButton(
                   onTap: edit,
                 ),
+                TakeNowButton(
+                  id: medTile.id,
+                ),
                 BarcodeButton(
                   id: medTile.id,
                 ),
-                DeleteMedTileButton(
-                  id: medTile.id,
-                ),
+                
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20),
+                child: DeleteMedTileButton(
+                id: medTile.id,
+                ),
             ),
           ],
         ),
