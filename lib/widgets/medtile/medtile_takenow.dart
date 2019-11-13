@@ -27,7 +27,7 @@ class TakeNowButton extends StatelessWidget {
             ),
           child: Text(AppLocalizations().takeNowButton),
           onPressed: () async {
-            int nextDose = int.parse(medTile.doses) - 1;
+            int nextDose = int.parse(medTile.doses) - int.parse(medTile.dose);
             BlocProvider.of<MedTileBloc>(context).add(
               UpdateMedTile(medTile.copyWith(doses: nextDose.toString(), start: DateTime.now()))
               );

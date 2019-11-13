@@ -30,7 +30,7 @@ class BarcodeButton extends StatelessWidget {
             final barcode = await FlutterBarcodeScanner
               .scanBarcode("#ff6666", "Cancel", true, ScanMode.QR);
             if(barcode == medTile.name) {
-                int nextDose = int.parse(medTile.doses) - 1;
+                int nextDose = int.parse(medTile.doses) - int.parse(medTile.dose);
                 BlocProvider.of<MedTileBloc>(context).add(
                   UpdateMedTile(medTile.copyWith(doses: nextDose.toString(), start: DateTime.now()))
                   );
