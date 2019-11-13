@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
-import 'package:proba123/widgets/widgets.dart';
-import 'package:proba123/localization.dart';
+
 
 
 class DeleteMedTileButton extends StatelessWidget {
@@ -17,10 +14,6 @@ class DeleteMedTileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocBuilder<MedTileBloc, MedTileState>(
-    //   builder: (context, state) {
-    //     final medTile = (state as MedTilesLoaded)
-    //       .medTiles.firstWhere((medTile) => medTile.id == id, orElse: () => null);
         return FlatButton(
           shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
@@ -29,7 +22,5 @@ class DeleteMedTileButton extends StatelessWidget {
           color: Colors.redAccent,
           onPressed: onTap,
         );
-    //   },
-    // );
   }
 }
