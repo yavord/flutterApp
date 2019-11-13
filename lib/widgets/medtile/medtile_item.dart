@@ -16,11 +16,13 @@ import 'package:proba123/bloc/blocs.dart';
 class MedTileItem extends StatelessWidget{
   final MedTile medTile;
   final GestureTapCallback edit;
+  final GestureTapCallback delete;
 
   MedTileItem({
     Key key,
     @required this.medTile,
     @required this.edit,
+    @required this.delete,
   }) : super(key: key);
 
   @override
@@ -135,7 +137,7 @@ class MedTileItem extends StatelessWidget{
             Padding(
               padding: EdgeInsets.only(bottom: 20),
                 child: DeleteMedTileButton(
-                id: medTile.id,
+                  onTap: delete,
                 ),
             ),
           ],

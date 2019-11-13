@@ -38,7 +38,6 @@ class TakeNowButton extends StatelessWidget {
                 content: AppLocalizations().updated,
                 onUndo: () => 
                   BlocProvider.of<MedTileBloc>(context).add(
-                    // AddMedTile(medTile),
                     UpdateMedTile(medTile.copyWith(doses: medTile.doses)),
                 )));
           },

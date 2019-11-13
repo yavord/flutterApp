@@ -8,6 +8,7 @@ import 'package:proba123/keys.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/screens/screens.dart';
 import 'package:proba123/models/models.dart';
+import 'package:proba123/localization.dart';
 
 
 class MedTiles extends StatelessWidget {
@@ -54,6 +55,21 @@ class MedTiles extends StatelessWidget {
                         }
                       )
                     );
+                },
+                delete: () async {
+                  BlocProvider.of<MedTileBloc>(context).add(
+                    DeleteMedTile(medTile)
+                    );
+                  Scaffold.of(context).showSnackBar(
+                    MedTileSnackBar(
+                      undo: true,
+                      medTile: medTile,
+                      content: AppLocalizations().deleteMedTile,
+                      onUndo: () =>
+                        BlocProvider.of<MedTileBloc>(context).add(
+                          AddMedTile(medTile)
+                        ),
+                      ));
                 },
               );
             },
