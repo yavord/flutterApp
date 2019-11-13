@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:proba123/bloc/timer/timer_event.dart';
 
 import 'package:proba123/keys.dart';
 import 'package:proba123/models/models.dart';
 import 'package:proba123/util/ticker.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
-import 'package:proba123/bloc/timer/timer_bloc.dart';
+import 'package:proba123/bloc/blocs.dart';
 
 
 class MedTileItem extends StatelessWidget{
@@ -106,7 +107,11 @@ class MedTileItem extends StatelessWidget{
                         schedule: medTile.schedule,
                         start: medTile.start,
                         ),
-                      ),
+                      )..add(StartTimer(NextIntake(
+                        frequency: medTile.frequency,
+                        schedule: medTile.schedule,
+                        start: medTile.start,
+                        ))),
                       child: CircleTimer(),
                   )
                 ],
