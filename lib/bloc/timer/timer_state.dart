@@ -3,8 +3,6 @@ import 'package:meta/meta.dart';
 import 'package:proba123/models/models.dart';
 
 
-
-
 @immutable
 abstract class TimerState extends Equatable {
   final NextIntake nextIntake;
@@ -24,7 +22,7 @@ class TimerReady extends TimerState {
   List<Object> get props => [nextIntake];
 
   @override
-  String toString() => 'Timer Ready: {nextIntake : $nextIntake}';
+  String toString() => 'Timer Ready';
 }
 
 class TimerRunning extends TimerState{
@@ -33,7 +31,7 @@ class TimerRunning extends TimerState{
   const TimerRunning(this.nextIntake) : super(nextIntake);
 
   @override
-  String toString() => 'Timer Running: {nextIntake : $nextIntake}';
+  String toString() => 'Timer Running';
 }
 
 class TimerZero extends TimerState {

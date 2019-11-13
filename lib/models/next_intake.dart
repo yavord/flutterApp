@@ -16,6 +16,14 @@ class NextIntake extends Equatable {
 
   List<Object> get props => [schedule, frequency, start];
 
+  NextIntake copyWith({String schedule, int frequency, DateTime start}) {
+    return NextIntake(
+      schedule: schedule ?? this.schedule,
+      frequency: frequency ?? this.frequency,
+      start: start ?? this.start,
+    );
+  }
+
   DateTime getFutureDateTime() {
     DateTime toDateTime = DateFormat.Hm().parse(schedule);
     DateTime future = new DateTime.utc(start.year, start.month, start.day+frequency, 

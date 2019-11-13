@@ -46,7 +46,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
       .tick(ticks: start.nextIntake.minsRemaining())
-        .listen((tick) => add(Tick(nextIntake)));
+      .listen((tick) => add(Tick(nextIntake)));
   }
 
   Stream<TimerState> _mapTickToState(Tick tick) async* {
