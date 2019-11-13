@@ -38,8 +38,6 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
     }
   }
 
-
-  //TODO: server/api
   Stream<MedTileState> _mapLoadMedTileToState() async* {
     try{
       final medtiles = this.data; //TODO: replace this with server/api
