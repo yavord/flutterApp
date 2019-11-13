@@ -45,12 +45,12 @@ class AppLocalizations {
   String get nextIntakeTime => 'Next intake:';
   String get frequency => 'Days between:';
   
-  String get nameHint => 'Medication name';
-  String get formHint => 'Method of intake';
-  String get doseHint => 'Dose per sitting';
-  String get dosesHint => 'Total doses';
-  String get scheduleHint => 'Next intake time';
-  String get frequencyHint => 'Intake frequency';  
+  String get nameHint => 'medication name';
+  String get formHint => 'method of intake';
+  String get doseHint => 'dose per sitting';
+  String get dosesHint => 'total doses';
+  String get scheduleHint => 'next intake time';
+  String get frequencyHint => 'intake frequency';  
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
