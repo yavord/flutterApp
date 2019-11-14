@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:db_repo/src/entity/medtile_entity.dart';
 
 
 @immutable
 class MedTile extends Equatable {
-  final bool complete;
   final int id;
   final String name;
   final String dose;
@@ -15,7 +15,6 @@ class MedTile extends Equatable {
   final DateTime start;
 
   MedTile({
-    this.complete = false,
     @required this.id,
     @required this.name,
     @required this.dose,
@@ -27,10 +26,12 @@ class MedTile extends Equatable {
   });
       // this.id = id ?? Uuid().generateV4();
 
-  MedTile copyWith({bool complete, int id, String name, 
+  @override
+  List<Object> get props => [id, name, dose, form, doses, schedule, frequency];
+
+  MedTile copyWith({int id, String name, 
     String dose, String form, String doses, String schedule, int frequency, DateTime start}) {
     return MedTile(
-      complete: complete ?? this.complete,
       id: id ?? this.id,
       name: name ?? this.name,
       dose: dose ?? this.dose,
@@ -42,11 +43,32 @@ class MedTile extends Equatable {
     );
   }
 
-  @override
-  List<Object> get props => [complete, id, name, dose, form, doses, schedule, frequency];
+  MedTileEntity toEntity() {
+    return MedTileEntity(
+      id: id,
+      name: name,
+      dose: dose,
+      form: form,
+      doses: doses,
+      schedule: schedule,
+      frequency: frequency,
+      start: start,
+    );
+  }
+
+  static MedTile fromEntity(MedTileEntity entity) {
+    return MedTile(
+      id: entity.id,
+      name: entity.name,
+      dose: entity.dose,
+      form: entity.form,
+      doses: entity.doses,
+      schedule: entity.schedule,
+      frequency: entity.frequency,
+      start: entity.start,
+    );
+  }
 
   @override
-  String toString() {
-    return 'MedTile { $name }';
-  }
+  String toString() => 'MedTile { $name }';
 }

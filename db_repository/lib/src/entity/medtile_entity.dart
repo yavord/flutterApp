@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 
 
 class MedTileEntity extends Equatable{
-  final bool complete;
   final int id;
   final String name;
   final String dose;
@@ -13,7 +12,6 @@ class MedTileEntity extends Equatable{
   final DateTime start;
 
   const MedTileEntity({
-    this.complete,
     this.id,
     this.name,
     this.dose,
@@ -25,11 +23,10 @@ class MedTileEntity extends Equatable{
   });
 
   @override
-  List<Object> get props => [complete, id, name, dose, form, doses, schedule, frequency, start];
+  List<Object> get props => [id, name, dose, form, doses, schedule, frequency, start];
 
   Map<String, Object> toMap(){
     return {
-      "complete" : complete,
       "id" : id,
       "name" : name,
       "dose" : dose,
@@ -43,7 +40,6 @@ class MedTileEntity extends Equatable{
 
   static MedTileEntity fromMap(Map<String, Object> json) {
     return MedTileEntity(
-      complete: json["complete"],
       id: json["id"],
       name: json["name"],
       dose: json["dose"],
@@ -54,4 +50,7 @@ class MedTileEntity extends Equatable{
       start: json["start"],
     );
   }
+
+  @override
+  String toString() => 'MedTileEntity { $name }';
 }
