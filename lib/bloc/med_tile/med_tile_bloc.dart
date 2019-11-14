@@ -49,7 +49,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapAddMedTileToState(
       AddMedTile event,
       ) async* {
-        SqliteRepo.db.addMedTile(event.medTile);
+        SqliteRepo.db.addMedTile(event.medTile.toEntity());
       // if(state is MedTilesLoaded) {
       //   final List<MedTile> updatedMedTiles = List.from((state as MedTilesLoaded).medTiles)
       //       ..add(event.medTile);
@@ -61,7 +61,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapUpdateMedTileToState(
       UpdateMedTile event,
       ) async* {
-        SqliteRepo.db.updateMedTile(event.updatedMedTile);
+        SqliteRepo.db.updateMedTile(event.updatedMedTile.toEntity());
       // if(state is MedTilesLoaded) {
       //   final List<MedTile> updatedMedTiles = (state as MedTilesLoaded).medTiles.map((medtile) {
       //     return medtile.id == event.updatedMedTile.id ? event.updatedMedTile : medtile;
@@ -74,7 +74,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapDeleteMedTileToState(
       DeleteMedTile event,
       ) async* {
-        SqliteRepo.db.deleteMedTile(event.medTile.id);
+        SqliteRepo.db.deleteMedTile(event.medTile.toEntity().id);
       // if(state is MedTilesLoaded) {
       //   final updatedMedTiles =
       //       (state as MedTilesLoaded).medTiles.where((medtile) => medtile.id != event.medTile.id).toList();

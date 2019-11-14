@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'model/medtile.dart';
+import 'entity/medtile_entity.dart';
 
 
 abstract class MedTileRepo {
   Future<List<MedTile>> medTiles();
 
-  Future<void> addMedTile(MedTile medTile);
+  addMedTile(MedTileEntity medTile);
 
-  Future<void> updateMedTile(MedTile medTile);
+  updateMedTile(MedTileEntity medTile);
 
-  Future<void> deleteMedTile(int id);
+  deleteMedTile(int id);
 }

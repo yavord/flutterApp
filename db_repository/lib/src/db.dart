@@ -37,11 +37,12 @@ class SqliteRepo implements MedTileRepo {
           "start TEXT"
           ")");
       for(MedTile medTile in medications) {
+        MedTileEntity entity = medTile.toEntity();
         await db.rawInsert(
           "INSERT Into MedTiles (id,name,dose,form,doses,schedule,frequency,start)"
           " VALUES (?,?,?,?,?,?,?,?)",
-          [id+1, medTile.name, medTile.dose, medTile.form, medTile.doses, 
-          medTile.schedule, medTile.frequency, medTile.start]
+          [id+1, entity.name, entity.dose, entity.form, entity.doses, 
+          entity.schedule, entity.frequency, entity.start]
         );
         id += 1;
       }
@@ -56,7 +57,7 @@ class SqliteRepo implements MedTileRepo {
     return list;
   }
 
-  Future<void> addMedTile(MedTile medTile) async {
+  addMedTile(MedTileEntity medTile) async {
     final db = await database;
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM MedTiles");
     int id = table.first["id"];
@@ -68,14 +69,14 @@ class SqliteRepo implements MedTileRepo {
     return raw;
   }
 
-  Future<void> updateMedTile(MedTile medTile) async {
+  updateMedTile(MedTileEntity medTile) async {
     final db = await database;
-    var res = await db.update("MedTiles", medTile.toEntity().toMap(),
+    var res = await db.update("MedTiles", medTile.toMap(),
         where: "id = ?", whereArgs: [medTile.id]);
     return res;
   }
 
-  Future<void> deleteMedTile(int id) async {
+  deleteMedTile(int id) async {
     final db = await database;
     return db.delete("MedTiles", where: "id = ?", whereArgs: [id]);
   }
