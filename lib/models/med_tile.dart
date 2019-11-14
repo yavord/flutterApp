@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:proba123/util/uuid.dart';
 
 
 @immutable
@@ -18,7 +17,7 @@ class MedTile extends Equatable {
   //TODO: Edit constructors to fit database input/output
   MedTile({
     this.complete = false,
-    String id,
+    @required this.id,
     @required this.name,
     @required this.dose,
     @required this.form,
@@ -26,8 +25,7 @@ class MedTile extends Equatable {
     @required this.schedule,
     @required this.frequency,
     @required this.start,
-  }) :
-      this.id = id ?? Uuid().generateV4();
+  });
 
   MedTile copyWith({bool complete, String id, String name, 
     String dose, String form, String doses, String schedule, int frequency, DateTime start}) {
