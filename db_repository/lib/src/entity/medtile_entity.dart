@@ -9,7 +9,7 @@ class MedTileEntity extends Equatable{
   final String doses;
   final String schedule;
   final int frequency;
-  final DateTime start;
+  final String start;
 
   const MedTileEntity({
     this.id,

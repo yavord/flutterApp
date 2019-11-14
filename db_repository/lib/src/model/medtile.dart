@@ -24,7 +24,6 @@ class MedTile extends Equatable {
     @required this.frequency,
     @required this.start,
   });
-      // this.id = id ?? Uuid().generateV4();
 
   @override
   List<Object> get props => [id, name, dose, form, doses, schedule, frequency];
@@ -52,7 +51,7 @@ class MedTile extends Equatable {
       doses: doses,
       schedule: schedule,
       frequency: frequency,
-      start: start,
+      start: start.toIso8601String(),
     );
   }
 
@@ -65,7 +64,7 @@ class MedTile extends Equatable {
       doses: entity.doses,
       schedule: entity.schedule,
       frequency: entity.frequency,
-      start: entity.start,
+      start: DateTime.parse(entity.start),
     );
   }
 

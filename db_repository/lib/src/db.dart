@@ -34,7 +34,7 @@ class SqliteRepo implements MedTileRepo {
           "doses TEXT,"
           "schedule TEXT,"
           "frequency INTEGER,"
-          "start DATETIME"
+          "start TEXT"
           ")");
       for(MedTile medTile in medications) {
         await db.rawInsert(
