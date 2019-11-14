@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:db_repo/medtile_repo.dart';
+import 'utils/medtiles.dart';
 
 
 class SqliteRepo implements MedTileRepo {
@@ -13,19 +14,16 @@ class SqliteRepo implements MedTileRepo {
   Database _database;
 
   Future<Database> get database async {
-    try{
-      if (_database!= null) return _database;
+    if (_database!= null) return _database;
     // if _database is null we instantiate it
     _database = await initDB();
     return _database;
-    } catch(e) {
-      print(e);
-    }
   }
 
   initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "TherapyDB.db");
+    int id = 0;
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute("CREATE TABLE MedTiles ("
@@ -38,6 +36,15 @@ class SqliteRepo implements MedTileRepo {
           "frequency INTEGER,"
           "start DATETIME"
           ")");
+      for(MedTile medTile in medications) {
+        await db.rawInsert(
+          "INSERT Into MedTiles (id,name,dose,form,doses,schedule,frequency,start)"
+          " VALUES (?,?,?,?,?,?,?,?)",
+          [id+1, medTile.name, medTile.dose, medTile.form, medTile.doses, 
+          medTile.schedule, medTile.frequency, medTile.start]
+        );
+        id += 1;
+      }
     });
   }
 
