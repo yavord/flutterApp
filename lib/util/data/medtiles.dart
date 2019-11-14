@@ -1,13 +1,12 @@
-import 'package:proba123/models/med_tile.dart';
+// import 'package:proba123/models/med_tile.dart';
 import 'package:proba123/util/uuid.dart';
+import 'package:db_repo/medtile_repo.dart';
 
 
 DateTime now = DateTime.now();
 
 List<MedTile> medications = [
   MedTile(
-    complete: false,
-    id: Uuid().generateV4(),
     name: "Aerius 5mg",
     form: "tablet",
     dose: "1",
@@ -17,8 +16,6 @@ List<MedTile> medications = [
     start: new DateTime.utc(now.year, now.month, now.day-1, now.hour, now.minute),
   ),
   MedTile(
-    complete: false,
-    id: Uuid().generateV4(),
     name: "Paracetamol",
     form: "tablet",
     dose: "1",
@@ -28,8 +25,6 @@ List<MedTile> medications = [
     start: new DateTime.utc(now.year, now.month, now.day-1, now.hour, now.minute),
   ),
   MedTile(
-    complete: false,
-    id: Uuid().generateV4(),
     name: 'Аспиринец',
     form: 'tablet',
     dose: '2',
