@@ -1,4 +1,4 @@
-name: hello
+name: db_repo
 description: A new Flutter package project.
 version: 0.0.1
 author:
@@ -14,6 +14,7 @@ dependencies:
   #db
   sqflite: ^1.1.7+2
   path_provider: ^1.4.0
+  equatable: ^0.6.1
 
 
 dev_dependencies:
