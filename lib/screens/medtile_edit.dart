@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:proba123/models/models.dart';
+import 'package:db_repo/medtile_repo.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/localization.dart';
 import 'package:proba123/widgets/widgets.dart';

@@ -15,7 +15,7 @@ class MedTile extends Equatable {
   final DateTime start;
 
   MedTile({
-    @required this.id,
+    this.id,
     @required this.name,
     @required this.dose,
     @required this.form,

@@ -7,7 +7,7 @@ import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/keys.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/screens/screens.dart';
-import 'package:proba123/models/models.dart';
+import 'package:db_repo/medtile_repo.dart';
 import 'package:proba123/localization.dart';
 
 

@@ -5,11 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:proba123/bloc/timer/timer_event.dart';
 
 import 'package:proba123/keys.dart';
-import 'package:proba123/models/models.dart';
+import 'package:db_repo/medtile_repo.dart';
 import 'package:proba123/util/ticker.dart';
 import 'package:proba123/widgets/widgets.dart';
 import 'package:proba123/localization.dart';
 import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/models/models.dart';
 
 
 class MedTileItem extends StatelessWidget{
@@ -27,7 +28,7 @@ class MedTileItem extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      key: TherapyKeys.medTileItem(medTile.id),
+      key: TherapyKeys.medTileItem(medTile.id.toString()),
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
       child: Card(
         elevation: 0,
@@ -55,7 +56,7 @@ class MedTileItem extends StatelessWidget{
                       ),
                       SizedBox(width: 13),
                       Text(medTile.name, 
-                      key: TherapyKeys.medTileItemName(medTile.id),
+                      key: TherapyKeys.medTileItemName(medTile.id.toString()),
                       style: TextStyle(fontSize: 22,),
                       ) 
                     ],
@@ -64,12 +65,12 @@ class MedTileItem extends StatelessWidget{
                     children: <Widget>[
                     Text(
                       '${AppLocalizations().takeDose}'+'${medTile.dose}',
-                      key: TherapyKeys.medTileItemDose(medTile.id),
+                      key: TherapyKeys.medTileItemDose(medTile.id.toString()),
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
                     Text(
                       medTile.form,
-                      key: TherapyKeys.medTileItemForm(medTile.id),
+                      key: TherapyKeys.medTileItemForm(medTile.id.toString()),
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
                   ],
@@ -85,12 +86,12 @@ class MedTileItem extends StatelessWidget{
                 children: <Widget>[
                   Text(
                     medTile.doses,
-                    key: TherapyKeys.medTileItemDoses(medTile.id),
+                    key: TherapyKeys.medTileItemDoses(medTile.id.toString()),
                     style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
                   ),
                   Text(
                     ' ${medTile.form}'+'${AppLocalizations().formLeft}',
-                    key: TherapyKeys.medTileItemForm(medTile.id),
+                    key: TherapyKeys.medTileItemForm(medTile.id.toString()),
                     style: TextStyle(fontSize: 15, color: Theme.of(context).accentColor,),
                   ),
                 ],
@@ -126,10 +127,10 @@ class MedTileItem extends StatelessWidget{
                   onTap: edit,
                 ),
                 TakeNowButton(
-                  id: medTile.id,
+                  id: medTile.id.toString(),
                 ),
                 BarcodeButton(
-                  id: medTile.id,
+                  id: medTile.id.toString(),
                 ),
               ],
             ),

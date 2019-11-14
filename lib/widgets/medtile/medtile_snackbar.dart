@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proba123/models/models.dart';
+import 'package:db_repo/medtile_repo.dart';
 import 'package:proba123/localization.dart';
 
 class MedTileSnackBar extends SnackBar {

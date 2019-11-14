@@ -1,4 +1,4 @@
-import 'package:proba123/models/models.dart';
+import 'package:proba123/models/med_tile.dart';
 import 'package:proba123/util/uuid.dart';
 
 

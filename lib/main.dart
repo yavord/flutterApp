@@ -7,10 +7,9 @@ import 'package:proba123/localization.dart';
 import 'package:proba123/bloc/blocs.dart';
 import 'package:proba123/screens/screens.dart';
 import 'package:proba123/util/const.dart';
-import 'package:proba123/util/data/data.dart';
 import 'package:proba123/routes.dart';
 import 'package:firebase_repository/firebase_repo.dart';
-import 'package:proba123/models/models.dart';
+import 'package:db_repo/medtile_repo.dart';
 
 
 void main() {
@@ -31,7 +30,6 @@ void main() {
           builder: (context) =>
             MedTileBloc(
               messagingRepo: messagingRepo,
-              data: medications,
             )..add(LoadMedTiles()),
         ),
       ],
