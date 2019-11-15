@@ -6,9 +6,9 @@ import 'entity/medtile_entity.dart';
 abstract class MedTileRepo {
   Future<List<MedTile>> medTiles();
 
-  addMedTile(MedTileEntity medTile);
+  addMedTile(MedTile medTile);
 
-  updateMedTile(MedTileEntity medTile);
+  updateMedTile(MedTile medTile);
 
   deleteMedTile(int id);
 }

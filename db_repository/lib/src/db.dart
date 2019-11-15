@@ -57,8 +57,9 @@ class SqliteRepo implements MedTileRepo {
     return list;
   }
 
-  addMedTile(MedTileEntity entity) async {
+  addMedTile(MedTile medTile) async {
     final db = await database;
+    final MedTileEntity entity = medTile.toEntity();
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM MedTiles");
     int id = table.first["id"];
     var raw = await db.rawInsert(
@@ -69,10 +70,10 @@ class SqliteRepo implements MedTileRepo {
     return raw;
   }
 
-  updateMedTile(MedTileEntity entity) async {
+  updateMedTile(MedTile medTile) async {
     final db = await database;
-    var res = await db.update("MedTiles", entity.toMap(),
-        where: "id = ?", whereArgs: [entity.id]);
+    var res = await db.update("MedTiles", medTile.toEntity().toMap(),
+        where: "id = ?", whereArgs: [medTile.id]);
     return res;
   }
 

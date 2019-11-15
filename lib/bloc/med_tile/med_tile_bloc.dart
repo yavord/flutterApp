@@ -38,16 +38,16 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   }
 
   Stream<MedTileState> _mapLoadMedTileToState() async* {
-    final medtiles = await SqliteRepo.db.medTiles();
+    final List<MedTile> medTiles = await SqliteRepo.db.medTiles();
     yield MedTilesLoaded(
-      medtiles,
+      medTiles,
     );
   }
 
   Stream<MedTileState> _mapAddMedTileToState(
       AddMedTile event,
       ) async* {
-        SqliteRepo.db.addMedTile(event.medTile.toEntity());
+        SqliteRepo.db.addMedTile(event.medTile);
       // if(state is MedTilesLoaded) {
       //   final List<MedTile> updatedMedTiles = List.from((state as MedTilesLoaded).medTiles)
       //       ..add(event.medTile);
@@ -59,7 +59,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapUpdateMedTileToState(
       UpdateMedTile event,
       ) async* {
-        SqliteRepo.db.updateMedTile(event.updatedMedTile.toEntity());
+        SqliteRepo.db.updateMedTile(event.updatedMedTile);
       // if(state is MedTilesLoaded) {
       //   final List<MedTile> updatedMedTiles = (state as MedTilesLoaded).medTiles.map((medtile) {
       //     return medtile.id == event.updatedMedTile.id ? event.updatedMedTile : medtile;
