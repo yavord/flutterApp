@@ -57,22 +57,22 @@ class SqliteRepo implements MedTileRepo {
     return list;
   }
 
-  addMedTile(MedTileEntity medTile) async {
+  addMedTile(MedTileEntity entity) async {
     final db = await database;
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM MedTiles");
     int id = table.first["id"];
     var raw = await db.rawInsert(
         "INSERT Into MedTiles (id,name,dose,form,doses,schedule,frequency,start)"
         " VALUES (?,?,?,?,?,?,?,?)",
-        [id, medTile.name, medTile.dose, medTile.form, medTile.doses, 
-          medTile.schedule, medTile.frequency, medTile.start]);
+        [id, entity.name, entity.dose, entity.form, entity.doses, 
+          entity.schedule, entity.frequency, entity.start]);
     return raw;
   }
 
-  updateMedTile(MedTileEntity medTile) async {
+  updateMedTile(MedTileEntity entity) async {
     final db = await database;
-    var res = await db.update("MedTiles", medTile.toMap(),
-        where: "id = ?", whereArgs: [medTile.id]);
+    var res = await db.update("MedTiles", entity.toMap(),
+        where: "id = ?", whereArgs: [entity.id]);
     return res;
   }
 
