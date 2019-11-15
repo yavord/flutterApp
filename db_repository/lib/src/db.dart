@@ -36,16 +36,16 @@ class SqliteRepo implements MedTileRepo {
           "frequency INTEGER,"
           "start TEXT"
           ")");
-      for(MedTile medTile in medications) {
-        MedTileEntity entity = medTile.toEntity();
-        await db.rawInsert(
-          "INSERT Into MedTiles (id,name,dose,form,doses,schedule,frequency,start)"
-          " VALUES (?,?,?,?,?,?,?,?)",
-          [id+1, entity.name, entity.dose, entity.form, entity.doses, 
-          entity.schedule, entity.frequency, entity.start]
-        );
-        id += 1;
-      }
+      // for(MedTile medTile in medications) {
+      //   MedTileEntity entity = medTile.toEntity();
+      //   await db.rawInsert(
+      //     "INSERT Into MedTiles (id,name,dose,form,doses,schedule,frequency,start)"
+      //     " VALUES (?,?,?,?,?,?,?,?)",
+      //     [id+1, entity.name, entity.dose, entity.form, entity.doses, 
+      //     entity.schedule, entity.frequency, entity.start]
+      //   );
+      //   id += 1;
+      // }
     });
   }
 

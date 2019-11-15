@@ -32,18 +32,16 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       yield* _mapUpdateMedTileToState(event);
     } else if(event is DeleteMedTile) {
       yield* _mapDeleteMedTileToState(event);
+    } else if(event is UpdatedMedTiles) {
+      yield* _mapUpdatedMedTilesToState(event);
     }
   }
 
   Stream<MedTileState> _mapLoadMedTileToState() async* {
-    try{
-      final medtiles = await SqliteRepo.db.medTiles();
-      yield MedTilesLoaded(
-        medtiles,
-      );
-    } catch(_) {
-      yield MedTilesNotLoaded();
-    }
+    final medtiles = await SqliteRepo.db.medTiles();
+    yield MedTilesLoaded(
+      medtiles,
+    );
   }
 
   Stream<MedTileState> _mapAddMedTileToState(
@@ -86,4 +84,8 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   // _saveMedTiles(List<MedTile> medtiles) {
   //   return data = medtiles;
   // }
-}
+
+  Stream<MedTileState> _mapUpdatedMedTilesToState(UpdatedMedTiles event) async* {
+    yield MedTilesLoaded(event.medTiles);
+  }
+} 

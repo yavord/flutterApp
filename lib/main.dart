@@ -10,6 +10,7 @@ import 'package:proba123/util/const.dart';
 import 'package:proba123/routes.dart';
 import 'package:firebase_repository/firebase_repo.dart';
 import 'package:db_repo/medtile_repo.dart';
+import 'package:db_repo/src/utils/medtiles.dart';
 
 
 void main() {
@@ -30,7 +31,8 @@ void main() {
           builder: (context) =>
             MedTileBloc(
               messagingRepo: messagingRepo,
-            )..add(LoadMedTiles()),
+            )..add(LoadMedTiles())
+            ..add(AddMedTile(medications[0])),
         ),
       ],
       child: TherapyApp(

@@ -50,3 +50,12 @@ class DeleteMedTile extends MedTileEvent {
 
   String toString() => 'DeleteMedTile { medtile: $medTile }';
 }
+
+class UpdatedMedTiles extends MedTileEvent {
+  final List<MedTile> medTiles;
+
+  const UpdatedMedTiles(this.medTiles);
+
+  @override
+  List<Object> get props => [medTiles];
+}
