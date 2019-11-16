@@ -9,12 +9,18 @@ import 'package:db_repo/medtile_repo.dart';
 
 class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   final FirebaseMessagingRepo _messagingRepo;
+  final MedTileRepo _medTileRepo;
+  final StreamController<List<MedTile>> _medTileController = 
+    StreamController<List<MedTile>>.broadcast();
   //TODO: add notification methods that depend on user settings
 
   MedTileBloc({
     @required FirebaseMessagingRepo messagingRepo,
+    @required MedTileRepo medTileRepo,
     })
       : assert(messagingRepo != null),
+      assert(medTileRepo != null),
+      _medTileRepo = medTileRepo,
       _messagingRepo = messagingRepo;
 
   @override
@@ -25,7 +31,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
       MedTileEvent event,
       ) async* {
     if(event is LoadMedTiles) {
-      yield* _mapLoadMedTileToState();
+      yield* _mapLoadMedTilesToState();
     } else if(event is AddMedTile) {
       yield* _mapAddMedTileToState(event);
     } else if(event is UpdateMedTile) {
@@ -37,17 +43,15 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
     }
   }
 
-  Stream<MedTileState> _mapLoadMedTileToState() async* {
-    final List<MedTile> medTiles = await SqliteRepo.db.medTiles();
-    yield MedTilesLoaded(
-      medTiles,
-    );
+  Stream<MedTileState> _mapLoadMedTilesToState() async* {
+    
   }
 
   Stream<MedTileState> _mapAddMedTileToState(
       AddMedTile event,
       ) async* {
-        SqliteRepo.db.addMedTile(event.medTile);
+        await SqliteRepo.db.addMedTile(event.medTile);
+        await SqliteRepo.db.getMedTiles();
       // if(state is MedTilesLoaded) {
       //   final List<MedTile> updatedMedTiles = List.from((state as MedTilesLoaded).medTiles)
       //       ..add(event.medTile);
@@ -72,7 +76,7 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
   Stream<MedTileState> _mapDeleteMedTileToState(
       DeleteMedTile event,
       ) async* {
-        SqliteRepo.db.deleteMedTile(event.medTile.toEntity().id);
+        SqliteRepo.db.deleteMedTileById(event.medTile.toEntity().id);
       // if(state is MedTilesLoaded) {
       //   final updatedMedTiles =
       //       (state as MedTilesLoaded).medTiles.where((medtile) => medtile.id != event.medTile.id).toList();
@@ -87,5 +91,11 @@ class MedTileBloc extends Bloc<MedTileEvent, MedTileState> {
 
   Stream<MedTileState> _mapUpdatedMedTilesToState(UpdatedMedTiles event) async* {
     yield MedTilesLoaded(event.medTiles);
+  }
+
+  @override
+  void close() {
+    _medTileController.close();
+    super.close();
   }
 } 

@@ -27,14 +27,14 @@ class MedTileEntity extends Equatable{
 
   Map<String, Object> toMap(){
     return {
-      "id" : id,
-      "name" : name,
-      "dose" : dose,
-      "form" : form,
-      "doses" : doses,
-      "schedule" : schedule,
-      "frequency" : frequency,
-      "start" : start,
+      "id" : this.id,
+      "name" : this.name,
+      "dose" : this.dose,
+      "form" : this.form,
+      "doses" : this.doses,
+      "schedule" : this.schedule,
+      "frequency" : this.frequency,
+      "start" : this.start,
     };
   }
 

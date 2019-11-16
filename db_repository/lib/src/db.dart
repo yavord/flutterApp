@@ -15,7 +15,6 @@ class SqliteRepo implements MedTileRepo {
 
   Future<Database> get database async {
     if (_database!= null) return _database;
-    // if _database is null we instantiate it
     _database = await initDB();
     return _database;
   }
@@ -49,11 +48,11 @@ class SqliteRepo implements MedTileRepo {
     });
   }
 
-  Future<List<MedTile>> medTiles() async {
+  Future<List<MedTile>> getMedTiles() async {
     final db = await database;
-    var res = await db.query("MedTiles");
+    var result = await db.query("MedTiles");
     List<MedTile> list =
-        res.isNotEmpty ? res.map((c) => MedTileEntity.fromMap(c)).toList() : [];
+        result.isNotEmpty ? result.map((c) => MedTile.fromEntity(MedTileEntity.fromMap(c))).toList() : [];
     return list;
   }
 
@@ -72,12 +71,12 @@ class SqliteRepo implements MedTileRepo {
 
   updateMedTile(MedTile medTile) async {
     final db = await database;
-    var res = await db.update("MedTiles", medTile.toEntity().toMap(),
+    var result = await db.update("MedTiles", medTile.toEntity().toMap(),
         where: "id = ?", whereArgs: [medTile.id]);
-    return res;
+    return result;
   }
 
-  deleteMedTile(int id) async {
+  deleteMedTileById(int id) async {
     final db = await database;
     return db.delete("MedTiles", where: "id = ?", whereArgs: [id]);
   }
