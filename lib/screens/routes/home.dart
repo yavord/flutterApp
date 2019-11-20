@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
               ),
             ],
           ),
-          body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(), 
+          body: activeTab == AppTab.medTiles ? MedTiles() : MedicalID(),
           bottomNavigationBar: TabSelector(
             activeTab: activeTab,
             onTabSelected: (tab) => BlocProvider.of<TabsBloc>(context).add(UpdateTab(tab)),
