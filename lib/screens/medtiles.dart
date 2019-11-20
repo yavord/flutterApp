@@ -20,7 +20,7 @@ class MedTiles extends StatelessWidget {
     return BlocBuilder<MedTileBloc, MedTileState>(
       builder: (context, state) {
         if (state is MedTilesLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: SplashScreen());
         } else if (state is MedTilesLoaded) {
           final medTiles = state.medTiles;
           return ListView.builder(
