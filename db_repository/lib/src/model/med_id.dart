@@ -18,4 +18,18 @@ class MedId extends Equatable {
 
   @override
   List<Object> get props => [id, patientName, patientInfo, doctorInfo];
+
+  MedId copyWith({int id, String patientName, List<Map> patientInfo, List<Map> doctorInfo}) {
+    return MedId(
+      id: id,
+      patientName: patientName,
+      patientInfo: patientInfo,
+      doctorInfo: doctorInfo,
+    );
+  }
+
+  //TODO: add to and from entity
+
+  @override
+  String toString() => 'MedId: { $patientName }';
 }
