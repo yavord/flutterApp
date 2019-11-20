@@ -1,1 +1,1 @@
-enum AppTab {medTiles, medId}
+enum AppTab {medTiles, medId, calendar}
