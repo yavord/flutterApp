@@ -43,7 +43,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Registering...'),
-                    SplashScreen(),
                   ],
                 ),
               ),

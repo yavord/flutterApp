@@ -74,6 +74,9 @@ class TherapyApp extends StatelessWidget {
         TherapyAppRoutes.home: (context) {
           return BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (context, state) {
+              if(state is AuthUninitialized) {
+                return SplashScreen();
+              }
               if(state is Unauthenticated) {
                 return LoginScreen(authRepo: _authRepo,);
               } 
@@ -117,9 +120,6 @@ class TherapyApp extends StatelessWidget {
             isEditing: false,
           );
         },
-        TherapyAppRoutes.splash: (context) {
-          return SplashScreen();
-        }
       },
     );
   }

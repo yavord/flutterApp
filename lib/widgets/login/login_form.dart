@@ -68,7 +68,6 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Logging In...'),
-                    SplashScreen(),
                   ],
                 ),
               ),
