@@ -127,10 +127,10 @@ class MedTileItem extends StatelessWidget{
                   onTap: edit,
                 ),
                 TakeNowButton(
-                  id: medTile.id.toString(),
+                  id: medTile.id,
                 ),
                 BarcodeButton(
-                  id: medTile.id.toString(),
+                  id: medTile.id,
                 ),
               ],
             ),

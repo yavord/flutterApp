@@ -8,7 +8,7 @@ import 'package:proba123/widgets/widgets.dart';
 
 
 class TakeNowButton extends StatelessWidget {
-  final String id;
+  final int id;
 
   TakeNowButton({
     Key key,

@@ -9,7 +9,7 @@ import 'package:proba123/widgets/widgets.dart';
 
 
 class BarcodeButton extends StatelessWidget {
-  final String id;
+  final int id;
 
   BarcodeButton({
     Key key,
