@@ -117,6 +117,9 @@ class TherapyApp extends StatelessWidget {
             isEditing: false,
           );
         },
+        TherapyAppRoutes.splash: (context) {
+          return SplashScreen();
+        }
       },
     );
   }
