@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:db_repo/src/entity/medtile_entity.dart';
+import 'package:db_repo/src/entity/entity.dart';
 
 
 @immutable

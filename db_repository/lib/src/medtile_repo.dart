@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'model/medtile.dart';
+import 'model/model.dart';
 
 
 abstract class MedTileRepo {
