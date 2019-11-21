@@ -5,31 +5,48 @@ import 'package:meta/meta.dart';
 @immutable
 class MedTile extends Equatable {
   final bool complete;
+  final String id;
   final String name;
   final String dose;
   final String form;
   final String doses;
   final String schedule;
+  final int frequency;
+  final DateTime start;
 
   //TODO: Edit constructors to fit database input/output
   MedTile({
     this.complete = false,
+    @required this.id,
     @required this.name,
-    this.dose,
-    this.form,
-    this.doses,
-    this.schedule
-  }) : super([complete, name, dose, form, doses, schedule]);
+    @required this.dose,
+    @required this.form,
+    @required this.doses,
+    @required this.schedule,
+    @required this.frequency,
+    @required this.start,
+  });
 
-  //TODO: implement MedTileEntity
-//  MedTileEntity toEntity() {
-//    return MedTileEntity(name, dose, form, doses, schedule);
-//  }
+  MedTile copyWith({bool complete, String id, String name, 
+    String dose, String form, String doses, String schedule, int frequency, DateTime start}) {
+    return MedTile(
+      complete: complete ?? this.complete,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      dose: dose ?? this.dose,
+      form: form ?? this.form,
+      doses: doses ?? this.doses,
+      schedule: schedule ?? this.schedule,
+      frequency: frequency ?? this.frequency,
+      start: start ?? this.start,
+    );
+  }
 
-  //TODO: implement this thing
-//  static MedTile fromEntity(MedTileEntity entity) {
-//    return MedTile(
-//      entity.
-//    )
-//  }
+  @override
+  List<Object> get props => [complete, id, name, dose, form, doses, schedule, frequency];
+
+  @override
+  String toString() {
+    return 'MedTile { $name }';
+  }
 }

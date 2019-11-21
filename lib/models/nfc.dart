@@ -8,5 +8,8 @@ class Nfc extends Equatable {
 
   Nfc({
    @required this.nfc
-  }) : super([nfc]);
+  });
+
+  @override
+  List<Object> get props => [nfc];
 }

@@ -1,0 +1,22 @@
+name: db_repo
+description: A new Flutter package project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  #db
+  sqflite: ^1.1.7+2
+  path_provider: ^1.4.0
+  equatable: ^0.6.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

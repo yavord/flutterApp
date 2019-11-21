@@ -1,12 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import 'package:patients_platform/models/nfc.dart';
+import 'package:proba123/models/models.dart';
 
 
 @immutable
 abstract class NfcState extends Equatable {
-  NfcState([List props = const[]]) : super(props);
+  const NfcState();
+
+  @override
+  List<Object> get props => [];
 }
 
 class NfcInitial extends NfcState {}
@@ -16,5 +19,7 @@ class NfcLoading extends NfcState {}
 class NfcLoaded extends NfcState {
   final Nfc nfc;
 
-  NfcLoaded(this.nfc) : super([nfc]);
+  const NfcLoaded(this.nfc);
+
+  List<Object> get props => [nfc];
 }

@@ -1,0 +1,1 @@
+export 'med_id_entity.dart';

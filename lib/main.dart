@@ -1,40 +1,126 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:patients_platform/screens/home.dart';
-import 'package:patients_platform/util/const.dart';
 
-void main() async{
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
-    runApp(MyApp());
-  });
+import 'package:proba123/keys.dart';
+import 'package:proba123/localization.dart';
+import 'package:proba123/bloc/blocs.dart';
+import 'package:proba123/screens/screens.dart';
+import 'package:proba123/util/const.dart';
+import 'package:proba123/routes.dart';
+import 'package:firebase_repository/firebase_repo.dart';
+import 'package:db_repo/medtile_repo.dart';
+
+
+void main() {
+  BlocSupervisor.delegate = NewBlocDelegate();
+  final FirebaseAuthRepo authRepo = FirebaseAuthRepo();
+  final FirebaseMessagingRepo messagingRepo = FirebaseMessagingRepo();
+  final FirebaseFirestoreRepo firestoreRepo = FirebaseFirestoreRepo();
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthenticationBloc>(
+          builder: (context) =>
+            AuthenticationBloc(
+              authRepo: authRepo,
+            )..add(AuthInit()),
+        ),
+        BlocProvider<MedTileBloc>(
+          builder: (context) =>
+            MedTileBloc(
+              messagingRepo: messagingRepo,
+            )..add(LoadMedTiles()),
+        ),
+      ],
+      child: TherapyApp(
+        authRepo: authRepo,
+        messagingRepo: messagingRepo,
+        firestoreRepo: firestoreRepo,
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+class TherapyApp extends StatelessWidget {
+  final FirebaseAuthRepo _authRepo;
+  final FirebaseMessagingRepo _messagingRepo;
+  final FirebaseFirestoreRepo _firestoreRepo;
 
-class _MyAppState extends State<MyApp> {
-  bool isDark = false;
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDark ? Constants.darkPrimary : Constants.lightPrimary,
-      statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
-    ));
-  }
-
+  TherapyApp({
+    Key key, 
+    @required FirebaseAuthRepo authRepo, 
+    @required FirebaseMessagingRepo messagingRepo,
+    @required FirebaseFirestoreRepo firestoreRepo,
+    })
+      : assert(authRepo != null),
+        assert(messagingRepo != null),
+        assert(firestoreRepo != null),
+        _firestoreRepo = firestoreRepo,
+        _authRepo = authRepo,
+        _messagingRepo = messagingRepo,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: Constants.appName,
-      theme: isDark ? Constants.darkTheme : Constants.lightTheme,
-      home: Home(),
+      title: AppLocalizations().appTitle,
+      theme: Constants.lightTheme,
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+      ],
+      routes: {
+        TherapyAppRoutes.home: (context) {
+          return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+            builder: (context, state) {
+              if(state is AuthUninitialized) {
+                return SplashScreen();
+              }
+              if(state is Unauthenticated) {
+                return LoginScreen(authRepo: _authRepo,);
+              } 
+              if(state is Authenticated) {
+                return MultiBlocProvider(
+                  providers: [
+                    BlocProvider<TabsBloc>(
+                      builder: (context) => TabsBloc(),
+                    ),
+                    BlocProvider<MessagingBloc>(
+                      builder: (context) => MessagingBloc(
+                        authRepo: _authRepo,
+                        firestoreRepo: _firestoreRepo,
+                        messagingRepo: _messagingRepo,
+                      )..add(MessagingInit()),
+                    )
+                  ],
+                  child: Home(),
+                  );
+                }
+              return Center(child: SplashScreen());
+            },
+          );
+        },
+        TherapyAppRoutes.addMedTile: (context) {
+          return AddEditScreen(
+            key: TherapyKeys.addMedTileScreen,
+            onSave: (name, form, dose, doses, schedule, frequency, start) {
+              BlocProvider.of<MedTileBloc>(context).add(
+                AddMedTile(MedTile(
+                    name: name,
+                    form: form,
+                    dose: dose,
+                    doses: doses,
+                    schedule: schedule,
+                    frequency: frequency,
+                    start: DateTime.now(),
+                ))
+              );
+            },
+            isEditing: false,
+          );
+        },
+      },
     );
   }
 }

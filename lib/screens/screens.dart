@@ -1,3 +1,3 @@
-export 'daily_goals.dart';
-export 'home.dart';
-export 'medical_id.dart';
+export 'auth/auth.dart';
+export 'routes/routes.dart';
+export 'tabs/tabs.dart';
