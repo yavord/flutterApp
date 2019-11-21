@@ -34,4 +34,7 @@ class MedIdEntity extends Equatable {
       doctorInfo: json["doctorInfo"],
     );
   }
+
+  @override
+  String toString() => 'MedIdEntity : { $patientName }';
 }
