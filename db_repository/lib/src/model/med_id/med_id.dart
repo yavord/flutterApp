@@ -5,31 +5,25 @@ import 'package:meta/meta.dart';
 @immutable
 class MedId extends Equatable {
   final int id;
-  final String patientName;
   final List<Map> patientInfo;
   final List<Map> doctorInfo;
 
   MedId({
     @required this.id,
-    @required this.patientName,
     @required this.patientInfo,
     @required this.doctorInfo,
   });
 
   @override
-  List<Object> get props => [id, patientName, patientInfo, doctorInfo];
+  List<Object> get props => [id, patientInfo, doctorInfo];
 
   MedId copyWith({int id, String patientName, List<Map> patientInfo, List<Map> doctorInfo}) {
     return MedId(
       id: id,
-      patientName: patientName,
       patientInfo: patientInfo,
       doctorInfo: doctorInfo,
     );
   }
 
   //TODO: add to and from entity
-
-  @override
-  String toString() => 'MedId: { $patientName }';
 }
