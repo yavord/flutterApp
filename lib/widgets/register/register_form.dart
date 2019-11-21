@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:proba123/bloc/blocs.dart';
-import 'package:proba123/screens/screens.dart';
 import 'register_button.dart';
 
 class RegisterForm extends StatefulWidget {
